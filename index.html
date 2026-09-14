@@ -183,7 +183,7 @@
         }
 
         #listaCarrinho {
-            max-height: 60%;
+            max-height: 55%;
             overflow-y: auto;
         }
 
@@ -210,7 +210,7 @@
             font-weight: bold;
         }
 
-        #finalizar {
+        #pagamentoPix {
             width: 100%;
             margin-top: 20px;
             padding: 14px;
@@ -222,7 +222,97 @@
             cursor: pointer;
         }
 
+        /* MODAL PIX */
+
+        #modalPix {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 50;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        #modalPix.aberto {
+            display: flex;
+        }
+
+        .pix-box {
+            width: 420px;
+            max-width: 100%;
+            background: #151515;
+            border: 1px solid #333;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .pix-box h2 {
+            margin-bottom: 10px;
+        }
+
+        .pix-box p {
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+
+        .qr {
+            width: 220px;
+            height: 220px;
+            margin: 20px auto;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .qr img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .codigoPix {
+            background: #222;
+            border: 1px solid #444;
+            padding: 12px;
+            border-radius: 8px;
+            word-break: break-all;
+            font-size: 13px;
+            color: #ddd;
+            margin-bottom: 12px;
+        }
+
+        .copiar {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 8px;
+            background: white;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .fecharPix {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+        }
+
+        .aviso {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #777 !important;
+        }
+
         @media(max-width:600px) {
+
             .hero h1 {
                 font-size: 36px;
             }
@@ -234,6 +324,10 @@
             .produtos {
                 padding: 40px 5%;
             }
+
+            .pix-box {
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -241,17 +335,29 @@
 <body>
 
 <header>
-    <div class="logo">BLACK<span>7</span></div>
+
+    <div class="logo">
+        BLACK<span>7</span>
+    </div>
 
     <button id="cartButton">
         🛒 Carrinho (<span id="quantidade">0</span>)
     </button>
+
 </header>
 
+
 <section class="hero">
+
     <h1>BLACK7</h1>
-    <p>Produtos digitais para você aprender, criar e evoluir.</p>
+
+    <p>
+        Produtos digitais para você aprender,
+        criar e evoluir.
+    </p>
+
 </section>
+
 
 <section class="produtos">
 
@@ -259,87 +365,160 @@
 
     <div class="grid">
 
+
+        <!-- PRODUTO 1 -->
+
         <div class="produto">
-            <div class="imagem">📘</div>
+
+            <div class="imagem">
+                📘
+            </div>
 
             <div class="info">
-                <h3>Guia da Reserva de Emergência</h3>
+
+                <h3>
+                    Guia da Reserva de Emergência
+                </h3>
 
                 <p>
-                    Aprenda conceitos básicos para organizar
-                    sua reserva financeira.
+                    Material digital para aprender
+                    conceitos básicos de organização financeira.
                 </p>
 
-                <div class="preco">R$ 19,90</div>
+                <div class="preco">
+                    R$ 19,90
+                </div>
 
-                <button class="comprar"
-                    onclick="adicionar('Guia da Reserva de Emergência', 19.90)">
+                <button
+                    class="comprar"
+                    onclick="adicionar(
+                        'Guia da Reserva de Emergência',
+                        19.90
+                    )">
+
                     Adicionar ao carrinho
+
                 </button>
+
             </div>
+
         </div>
 
 
+        <!-- PRODUTO 2 -->
+
         <div class="produto">
-            <div class="imagem">📊</div>
+
+            <div class="imagem">
+                📊
+            </div>
 
             <div class="info">
-                <h3>Planilha Financeira</h3>
+
+                <h3>
+                    Planilha Financeira
+                </h3>
 
                 <p>
                     Organize seus gastos e acompanhe
                     suas finanças.
                 </p>
 
-                <div class="preco">R$ 14,90</div>
+                <div class="preco">
+                    R$ 14,90
+                </div>
 
-                <button class="comprar"
-                    onclick="adicionar('Planilha Financeira', 14.90)">
+                <button
+                    class="comprar"
+                    onclick="adicionar(
+                        'Planilha Financeira',
+                        14.90
+                    )">
+
                     Adicionar ao carrinho
+
                 </button>
+
             </div>
+
         </div>
 
 
+        <!-- PRODUTO 3 -->
+
         <div class="produto">
-            <div class="imagem">🎨</div>
+
+            <div class="imagem">
+                🎨
+            </div>
 
             <div class="info">
-                <h3>Pack de Templates</h3>
+
+                <h3>
+                    Pack de Templates
+                </h3>
 
                 <p>
-                    Templates digitais para seus projetos
-                    e trabalhos.
+                    Templates digitais para seus
+                    projetos e trabalhos.
                 </p>
 
-                <div class="preco">R$ 24,90</div>
+                <div class="preco">
+                    R$ 24,90
+                </div>
 
-                <button class="comprar"
-                    onclick="adicionar('Pack de Templates', 24.90)">
+                <button
+                    class="comprar"
+                    onclick="adicionar(
+                        'Pack de Templates',
+                        24.90
+                    )">
+
                     Adicionar ao carrinho
+
                 </button>
+
             </div>
+
         </div>
 
 
+        <!-- PRODUTO 4 -->
+
         <div class="produto">
-            <div class="imagem">📚</div>
+
+            <div class="imagem">
+                📚
+            </div>
 
             <div class="info">
-                <h3>Kit de Estudos</h3>
+
+                <h3>
+                    Kit de Estudos
+                </h3>
 
                 <p>
-                    Materiais digitais para ajudar na
-                    organização dos estudos.
+                    Materiais digitais para ajudar
+                    na organização dos estudos.
                 </p>
 
-                <div class="preco">R$ 29,90</div>
+                <div class="preco">
+                    R$ 29,90
+                </div>
 
-                <button class="comprar"
-                    onclick="adicionar('Kit de Estudos', 29.90)">
+                <button
+                    class="comprar"
+                    onclick="adicionar(
+                        'Kit de Estudos',
+                        29.90
+                    )">
+
                     Adicionar ao carrinho
+
                 </button>
+
             </div>
+
         </div>
 
     </div>
@@ -348,7 +527,9 @@
 
 
 <footer>
+
     © 2026 Black7 — Todos os direitos reservados.
+
 </footer>
 
 
@@ -357,22 +538,111 @@
 <div id="carrinho">
 
     <div class="carrinho-topo">
-        <h2>Seu carrinho</h2>
 
-        <button id="fechar">✕</button>
+        <h2>
+            Seu carrinho
+        </h2>
+
+        <button id="fechar">
+            ✕
+        </button>
+
     </div>
+
 
     <div id="listaCarrinho">
-        <p>Seu carrinho está vazio.</p>
+
+        <p>
+            Seu carrinho está vazio.
+        </p>
+
     </div>
+
 
     <div class="total">
-        Total: R$ <span id="total">0,00</span>
+
+        Total:
+        R$
+        <span id="total">
+            0,00
+        </span>
+
     </div>
 
-    <button id="finalizar" onclick="finalizarCompra()">
-        Finalizar pedido pelo WhatsApp
+
+    <button
+        id="pagamentoPix"
+        onclick="abrirPix()">
+
+        💚 Pagar com Pix
+
     </button>
+
+</div>
+
+
+<!-- MODAL PIX -->
+
+<div id="modalPix">
+
+    <div class="pix-box">
+
+        <h2>
+            💚 Pagamento via Pix
+        </h2>
+
+        <p>
+            Total do pedido:
+            <strong>
+                R$ <span id="pixTotal">0,00</span>
+            </strong>
+        </p>
+
+
+        <!-- QR CODE DEMONSTRATIVO -->
+
+        <div class="qr">
+
+            <img
+                src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=PIX-DEMONSTRATIVO-BLACK7"
+                alt="QR Code Pix demonstrativo">
+
+        </div>
+
+
+        <div class="codigoPix">
+
+            PIX-DEMONSTRATIVO-BLACK7
+
+        </div>
+
+
+        <button
+            class="copiar"
+            onclick="copiarPix()">
+
+            📋 Copiar código Pix
+
+        </button>
+
+
+        <button
+            class="fecharPix"
+            onclick="fecharPix()">
+
+            Fechar
+
+        </button>
+
+
+        <p class="aviso">
+
+            Este QR Code é apenas demonstrativo
+            e não realiza um pagamento real.
+
+        </p>
+
+    </div>
 
 </div>
 
@@ -382,30 +652,53 @@
     let carrinho = [];
 
 
+    /* ADICIONAR PRODUTO */
+
     function adicionar(nome, preco) {
 
         carrinho.push({
+
             nome: nome,
             preco: preco
+
         });
+
 
         atualizarCarrinho();
 
-        document.getElementById("carrinho")
-            .classList.add("aberto");
+
+        document
+            .getElementById("carrinho")
+            .classList
+            .add("aberto");
+
     }
 
 
+    /* ATUALIZAR CARRINHO */
+
     function atualizarCarrinho() {
 
-        const lista = document.getElementById("listaCarrinho");
+        const lista =
+            document.getElementById(
+                "listaCarrinho"
+            );
 
-        const quantidade = document.getElementById("quantidade");
 
-        const totalElemento = document.getElementById("total");
+        const quantidade =
+            document.getElementById(
+                "quantidade"
+            );
 
 
-        quantidade.innerText = carrinho.length;
+        const totalElemento =
+            document.getElementById(
+                "total"
+            );
+
+
+        quantidade.innerText =
+            carrinho.length;
 
 
         if (carrinho.length === 0) {
@@ -413,9 +706,11 @@
             lista.innerHTML =
                 "<p>Seu carrinho está vazio.</p>";
 
-            totalElemento.innerText = "0,00";
+            totalElemento.innerText =
+                "0,00";
 
             return;
+
         }
 
 
@@ -424,110 +719,186 @@
         let total = 0;
 
 
-        carrinho.forEach((produto, index) => {
+        carrinho.forEach(
+            (produto, index) => {
 
-            total += produto.preco;
+                total += produto.preco;
 
-            const item = document.createElement("div");
 
-            item.className = "item";
+                const item =
+                    document.createElement(
+                        "div"
+                    );
 
-            item.innerHTML = `
-                <strong>${produto.nome}</strong>
-                <br>
-                R$ ${produto.preco.toFixed(2).replace(".", ",")}
-                <br>
-                <button onclick="remover(${index})">
-                    Remover
-                </button>
-            `;
 
-            lista.appendChild(item);
+                item.className =
+                    "item";
 
-        });
+
+                item.innerHTML = `
+
+                    <strong>
+                        ${produto.nome}
+                    </strong>
+
+                    <br>
+
+                    R$
+                    ${produto.preco
+                        .toFixed(2)
+                        .replace(".", ",")}
+
+                    <br>
+
+                    <button
+                        onclick="remover(${index})">
+
+                        Remover
+
+                    </button>
+
+                `;
+
+
+                lista.appendChild(item);
+
+            }
+        );
 
 
         totalElemento.innerText =
-            total.toFixed(2).replace(".", ",");
+            total
+                .toFixed(2)
+                .replace(".", ",");
+
     }
 
+
+    /* REMOVER */
 
     function remover(index) {
 
-        carrinho.splice(index, 1);
+        carrinho.splice(
+            index,
+            1
+        );
+
 
         atualizarCarrinho();
+
     }
 
 
-    document.getElementById("cartButton")
-        .addEventListener("click", function() {
+    /* ABRIR CARRINHO */
 
-            document.getElementById("carrinho")
-                .classList.add("aberto");
+    document
+        .getElementById("cartButton")
+        .addEventListener(
+            "click",
+            function() {
 
-        });
+                document
+                    .getElementById("carrinho")
+                    .classList
+                    .add("aberto");
+
+            }
+        );
 
 
-    document.getElementById("fechar")
-        .addEventListener("click", function() {
+    /* FECHAR CARRINHO */
 
-            document.getElementById("carrinho")
-                .classList.remove("aberto");
+    document
+        .getElementById("fechar")
+        .addEventListener(
+            "click",
+            function() {
 
-        });
+                document
+                    .getElementById("carrinho")
+                    .classList
+                    .remove("aberto");
+
+            }
+        );
 
 
-    function finalizarCompra() {
+    /* ABRIR PIX */
+
+    function abrirPix() {
 
         if (carrinho.length === 0) {
 
-            alert("Seu carrinho está vazio!");
+            alert(
+                "Seu carrinho está vazio!"
+            );
 
             return;
+
         }
 
-
-        let mensagem =
-            "Olá! Quero comprar:%0A%0A";
 
         let total = 0;
 
 
-        carrinho.forEach(produto => {
+        carrinho.forEach(
+            produto => {
 
-            mensagem +=
-                "- " + produto.nome +
-                " - R$ " +
-                produto.preco.toFixed(2) +
-                "%0A";
+                total += produto.preco;
 
-            total += produto.preco;
-
-        });
-
-
-        mensagem +=
-            "%0ATotal: R$ " +
-            total.toFixed(2);
-
-
-        /*
-        TROQUE 5511999999999
-        PELO NÚMERO DO WHATSAPP DA SUA LOJA
-        */
-
-        const numero =
-            "5512991536902";
-
-
-        window.open(
-            "https://wa.me/" +
-            numero +
-            "?text=" +
-            mensagem,
-            "_blank"
+            }
         );
+
+
+        document
+            .getElementById("pixTotal")
+            .innerText =
+            total
+                .toFixed(2)
+                .replace(".", ",");
+
+
+        document
+            .getElementById("modalPix")
+            .classList
+            .add("aberto");
+
+    }
+
+
+    /* FECHAR PIX */
+
+    function fecharPix() {
+
+        document
+            .getElementById("modalPix")
+            .classList
+            .remove("aberto");
+
+    }
+
+
+    /* COPIAR PIX */
+
+    function copiarPix() {
+
+        const codigo =
+            "PIX-DEMONSTRATIVO-BLACK7";
+
+
+        navigator
+            .clipboard
+            .writeText(codigo)
+            .then(
+                function() {
+
+                    alert(
+                        "Código Pix copiado!"
+                    );
+
+                }
+            );
+
     }
 
 </script>
