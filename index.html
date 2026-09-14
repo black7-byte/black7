@@ -3,129 +3,100 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="BLACK7 - produtos digitais para estudos, organização, finanças e criação.">
 <title>BLACK7 - Produtos Digitais</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
-body{background:#080808;color:#fff}
-header{position:sticky;top:0;z-index:20;background:#111;padding:18px 7%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #292929}
-.logo{font-size:28px;font-weight:bold}.logo span{color:#777}
-button{cursor:pointer}
-#cartButton{border:0;padding:12px 18px;border-radius:8px;font-weight:bold}
-.hero{text-align:center;padding:80px 20px;background:linear-gradient(#151515,#080808)}
-.hero h1{font-size:52px;margin-bottom:12px}.hero p{color:#aaa;font-size:18px}
-.produtos{padding:50px 7%}.produtos h2{text-align:center;margin-bottom:35px;font-size:32px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
-.produto{background:#151515;border:1px solid #292929;border-radius:14px;overflow:hidden;transition:.2s}
-.produto:hover{transform:translateY(-5px);border-color:#555}
-.imagem{height:170px;display:flex;justify-content:center;align-items:center;background:#202020;font-size:55px}
-.info{padding:20px}.info h3{margin-bottom:10px}.info p{color:#999;font-size:14px;min-height:55px;line-height:1.5}
-.preco{margin:16px 0;font-size:22px;font-weight:bold}
-.comprar,.btn{width:100%;padding:13px;border:0;border-radius:8px;font-weight:bold;margin-top:8px}
-.comprar:hover{background:#ddd}
-footer{margin-top:50px;padding:40px;color:#777;text-align:center;border-top:1px solid #222}
-#carrinho{position:fixed;right:-430px;top:0;width:400px;max-width:94%;height:100vh;background:#111;z-index:50;padding:25px;transition:.3s;box-shadow:-8px 0 25px #000}
-#carrinho.aberto{right:0}.topoCarrinho{display:flex;justify-content:space-between;margin-bottom:25px}
-#fecharCarrinho{background:none;border:0;color:#fff;font-size:24px}
-.itemCarrinho{padding:14px;background:#1c1c1c;border-radius:8px;margin-bottom:10px}
-.remover{margin-top:8px;border:0;padding:6px 10px;border-radius:5px}
-.total{font-size:22px;font-weight:bold;margin-top:20px}
-#pagar{margin-top:20px;width:100%;padding:14px;border:0;border-radius:8px;background:#25D366;color:white;font-weight:bold}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:100;justify-content:center;align-items:center;padding:20px}
-.modal.aberto{display:flex}.caixa{background:#151515;border:1px solid #333;width:500px;max-width:100%;max-height:90vh;overflow:auto;padding:28px;border-radius:15px}
-.caixa h2{margin-bottom:15px}.codigoPix{background:#222;padding:14px;border-radius:8px;margin:15px 0;word-break:break-all;font-size:12px}
-.btnBranco{background:#fff;color:#000}.btnVerde{background:#25D366;color:#fff}.btnCinza{background:#333;color:#fff}
-.status{padding:15px;border-radius:8px;margin:15px 0;text-align:center;font-weight:bold}
-.pendente{background:#4b3b00;color:#ffd85a}.aprovado{background:#073d18;color:#64ff91}.expirado{background:#4a1010;color:#ff7777}
-#contador{font-size:28px;font-weight:bold;text-align:center;margin:15px}
-.codigoPedido{text-align:center;background:#222;padding:12px;border-radius:8px;margin:12px 0}
-.admin-link{margin-top:20px;font-size:12px;color:#555;cursor:pointer;text-align:center}
-.adminPedido{background:#222;border-radius:10px;padding:15px;margin:12px 0}.adminPedido p{margin:5px 0;color:#ccc}
-.aprovar{background:#25D366;border:0;padding:9px 12px;border-radius:6px;font-weight:bold;margin-top:8px}
-.rejeitar{background:#aa3333;color:white;border:0;padding:9px 12px;border-radius:6px;margin-left:6px}
-input{width:100%;padding:13px;margin:7px 0;border-radius:7px;border:0}
-@media(max-width:600px){.hero h1{font-size:38px}}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+:root{--bg:#070707;--card:#131313;--card2:#1c1c1c;--line:#2a2a2a;--muted:#a2a2a2;--green:#25D366}
+body{font-family:Arial,sans-serif;background:var(--bg);color:#fff;line-height:1.55}
+button,input{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}.container{width:min(1180px,92%);margin:auto}
+header{position:sticky;top:0;z-index:50;background:rgba(8,8,8,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.header{height:70px;display:flex;align-items:center;gap:24px}.logo{font-size:28px;font-weight:900;margin-right:auto}.logo span{color:#777}
+nav{display:flex;gap:18px;color:#bbb;font-size:14px}.hbtn{background:#171717;color:#fff;border:1px solid #333;padding:10px 13px;border-radius:10px;font-weight:700}
+#pedidoButton{display:none}.hero{text-align:center;padding:88px 20px 72px;background:radial-gradient(circle at 50% -10%,#303030,#111 42%,#070707 72%)}
+.eyebrow{display:inline-block;background:#151515;border:1px solid #333;border-radius:999px;padding:7px 12px;color:#ccc;font-size:13px;margin-bottom:18px}
+.hero h1{font-size:clamp(44px,8vw,78px);line-height:.95;letter-spacing:-4px}.hero p{max-width:720px;margin:20px auto 0;color:#b6b6b6;font-size:18px}
+.hero-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:28px}.cta{border:0;border-radius:11px;padding:14px 20px;font-weight:800}
+.primary{background:#fff;color:#090909}.secondary{background:#171717;color:#fff;border:1px solid #333}
+.chips{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:24px}.chip{background:#111;border:1px solid #282828;border-radius:999px;padding:8px 10px;color:#bdbdbd;font-size:13px}
+.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:-26px;position:relative;z-index:2}.benefit{background:#111;border:1px solid #292929;border-radius:16px;padding:22px}
+.benefit b{display:block;margin:7px 0}.benefit p{color:#999;font-size:14px}
+.section{padding:68px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:26px}.section h2{font-size:34px;letter-spacing:-1px}.section-head p{color:#999;max-width:620px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}.search{flex:1;min-width:230px;background:#111;color:#fff;border:1px solid #2c2c2c;padding:12px 14px;border-radius:10px}
+.filters{display:flex;gap:7px;flex-wrap:wrap}.filter{background:#111;color:#bbb;border:1px solid #2c2c2c;padding:10px 12px;border-radius:9px}.filter.ativo{background:#fff;color:#000}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:18px}.produto{background:#121212;border:1px solid #292929;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:.2s}
+.produto:hover{transform:translateY(-4px);border-color:#505050}.capa{min-height:185px;padding:18px;background:linear-gradient(145deg,#292929,#111);display:flex;flex-direction:column;justify-content:space-between}
+.capa-top{display:flex;justify-content:space-between;align-items:start}.icone{font-size:48px}.badge{background:#fff;color:#000;font-size:11px;font-weight:900;border-radius:999px;padding:6px 8px}
+.capa-nome{font-size:20px;font-weight:900;line-height:1.1}.info{padding:19px;display:flex;flex-direction:column;flex:1}.categoria{font-size:12px;color:#777;text-transform:uppercase;letter-spacing:1px}
+.info p{color:#aaa;font-size:14px;min-height:66px;margin-top:5px}.recebe-mini{font-size:13px;color:#d0d0d0;margin:12px 0}.recebe-mini div{margin:4px 0}
+.preco-area{display:flex;align-items:end;gap:8px;margin-top:auto;padding-top:10px}.old{color:#777;text-decoration:line-through;font-size:13px}.preco{font-size:23px;font-weight:900}
+.actions{display:grid;grid-template-columns:1fr 1.1fr;gap:8px;margin-top:12px}.btn{width:100%;border:0;border-radius:9px;padding:12px;font-weight:800}.dark{background:#282828;color:#fff}.light{background:#fff;color:#090909}.green{background:var(--green);color:#fff}.red{background:#9e3434;color:#fff}
+.freebox{background:linear-gradient(135deg,#181818,#0d0d0d);border:1px solid #333;border-radius:22px;padding:30px;display:grid;grid-template-columns:1.4fr .6fr;gap:20px;align-items:center}.freebox p{color:#aaa;margin-top:8px}.freeicon{font-size:100px;text-align:center}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.step{background:#111;border:1px solid #292929;border-radius:16px;padding:22px}.n{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#fff;color:#000;font-weight:900;margin-bottom:13px}.step p{color:#999;font-size:14px;margin-top:5px}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:15px}.about>div{background:#111;border:1px solid #292929;border-radius:16px;padding:22px}.about p{color:#999;margin-top:7px}
+.faq{display:grid;gap:10px}details{background:#111;border:1px solid #292929;border-radius:13px;padding:17px 19px}summary{cursor:pointer;font-weight:800}details p{color:#aaa;margin-top:10px}
+footer{border-top:1px solid #222;padding:36px 0;color:#888}.footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer-links{display:flex;gap:15px;flex-wrap:wrap}.footer button{background:none;border:0;color:#aaa;padding:0}.admin-link{cursor:pointer;color:#666}
+#overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:70}#overlay.aberto{display:block}
+#carrinho{position:fixed;right:-440px;top:0;width:420px;max-width:94%;height:100vh;background:#101010;z-index:80;padding:24px;transition:.3s;box-shadow:-10px 0 35px #000;overflow:auto}#carrinho.aberto{right:0}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px}.iconbtn{background:#222;border:0;color:#fff;border-radius:8px;padding:8px 11px}
+.item{padding:14px;background:#191919;border:1px solid #242424;border-radius:10px;margin:10px 0}.item small{color:#888}.remover{margin-top:8px;border:0;padding:6px 9px;border-radius:6px;background:#2d2d2d;color:#ddd}
+.total{font-size:23px;font-weight:900;margin-top:18px}.note{font-size:12px;color:#888;margin:8px 0 14px}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.83);z-index:100;justify-content:center;align-items:center;padding:20px}.modal.aberto{display:flex}.box{background:#141414;border:1px solid #333;width:560px;max-width:100%;max-height:91vh;overflow:auto;padding:27px;border-radius:17px}.box.large{width:760px}
+.codigoPix{background:#222;padding:14px;border-radius:8px;margin:15px 0;word-break:break-all;font-size:12px}.status{padding:15px;border-radius:9px;margin:15px 0;text-align:center;font-weight:900}.pendente{background:#4b3b00;color:#ffd85a}.aprovado{background:#073d18;color:#64ff91}.expirado{background:#4a1010;color:#ff7777}
+#contador{font-size:28px;font-weight:900;text-align:center;margin:15px}.codigoPedido{text-align:center;background:#222;padding:12px;border-radius:8px;margin:12px 0}
+.recebe-lista{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0}.recebe-item{background:#202020;border-radius:8px;padding:10px;font-size:14px}
+.adminPedido{background:#202020;border:1px solid #2d2d2d;border-radius:11px;padding:15px;margin:12px 0}.adminPedido p{margin:5px 0;color:#ccc;font-size:14px}.pill{display:inline-block;padding:4px 8px;border-radius:999px;background:#303030;font-size:11px}
+input{width:100%;padding:13px;margin:7px 0;border-radius:8px;border:1px solid #333;background:#202020;color:#fff}.toast{position:fixed;left:50%;bottom:25px;transform:translateX(-50%) translateY(20px);opacity:0;background:#fff;color:#080808;padding:11px 16px;border-radius:10px;font-weight:800;z-index:200;transition:.2s;pointer-events:none}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.legal p,.legal li{color:#b5b5b5;margin:8px 0}.legal ul{padding-left:20px}.empty{text-align:center;color:#888;padding:28px 10px}
+@media(max-width:850px){nav{display:none}.benefits,.steps{grid-template-columns:1fr 1fr}.about,.freebox{grid-template-columns:1fr}.freeicon{display:none}}
+@media(max-width:560px){.hero h1{letter-spacing:-2px}.benefits,.steps{grid-template-columns:1fr}.section{padding:50px 0}.section-head{display:block}.section-head p{margin-top:7px}.actions,.recebe-lista{grid-template-columns:1fr}.header{gap:8px}.logo{font-size:24px}.hbtn{padding:9px 10px}}
 </style>
 </head>
 <body>
+<header><div class="container header"><a href="#" class="logo">BLACK<span>7</span></a><nav><a href="#produtos">Produtos</a><a href="#gratis">Grátis</a><a href="#como">Como funciona</a><a href="#faq">FAQ</a></nav><button id="pedidoButton" class="hbtn" onclick="abrirUltimoPedido()">Meu pedido</button><button id="cartButton" class="hbtn">🛒 <span id="qtd">0</span></button></div></header>
 
-<header>
-<div class="logo">BLACK<span>7</span></div>
-<button id="cartButton">🛒 Carrinho (<span id="qtd">0</span>)</button>
-</header>
+<section class="hero"><div class="container"><div class="eyebrow">Materiais digitais BLACK7</div><h1>Aprenda. Organize.<br>Coloque em prática.</h1><p>Guias, planners, templates e kits digitais para ajudar você a estudar, criar e se organizar de um jeito simples.</p><div class="hero-actions"><a class="cta primary" href="#produtos">Ver produtos</a><a class="cta secondary" href="#gratis">Baixar material grátis</a></div><div class="chips"><span class="chip">✓ Pagamento por Pix</span><span class="chip">✓ Conferência manual</span><span class="chip">✓ Liberação após aprovação</span><span class="chip">✓ Materiais digitais</span></div></div></section>
 
-<section class="hero">
-<h1>BLACK7</h1>
-<p>Produtos digitais para aprender, criar e evoluir.</p>
-</section>
+<div class="container benefits"><div class="benefit">⚡<b>Entrega digital</b><p>Após a confirmação do pagamento, o download aparece no pedido.</p></div><div class="benefit">🔒<b>Pagamento conferido</b><p>O Pix é conferido manualmente antes da liberação.</p></div><div class="benefit">📚<b>Conteúdo claro</b><p>Você vê o que está incluído em cada produto antes de comprar.</p></div></div>
 
-<section class="produtos">
-<h2>Produtos digitais</h2>
-<div class="grid" id="produtos"></div>
-</section>
+<section class="section" id="produtos"><div class="container"><div class="section-head"><div><h2>Produtos digitais</h2><p>Escolha um material ou aproveite os combos.</p></div></div><div class="toolbar"><input id="busca" class="search" placeholder="Buscar produto..." oninput="renderizarProdutos()"><div class="filters" id="filters"></div></div><div class="grid" id="produtosGrid"></div></div></section>
 
-<footer>
-© 2026 BLACK7 — Todos os direitos reservados.
-<div class="admin-link" onclick="abrirAdmin()">Administração</div>
-</footer>
+<section class="section" id="gratis"><div class="container"><div class="freebox"><div><div class="eyebrow">Experimente antes de comprar</div><h2>Mini Planner Semanal grátis</h2><p>Baixe um material gratuito para conhecer o formato dos produtos BLACK7.</p><button class="cta primary" style="margin-top:18px" onclick="baixarProduto(9)">Baixar grátis</button></div><div class="freeicon">🎁</div></div></div></section>
 
-<div id="carrinho">
-<div class="topoCarrinho"><h2>Seu carrinho</h2><button id="fecharCarrinho">✕</button></div>
-<div id="listaCarrinho">Carrinho vazio.</div>
-<div class="total">Total: R$ <span id="total">0,00</span></div>
-<button id="pagar" onclick="iniciarPagamento()">💚 Pagar com Pix</button>
-</div>
+<section class="section" id="como"><div class="container"><div class="section-head"><div><h2>Como funciona a compra</h2><p>Um processo simples e transparente.</p></div></div><div class="steps"><div class="step"><div class="n">1</div><b>Escolha</b><p>Adicione os produtos ao carrinho.</p></div><div class="step"><div class="n">2</div><b>Pague pelo Pix</b><p>O código Pix sai com o valor exato.</p></div><div class="step"><div class="n">3</div><b>Aguarde a conferência</b><p>Marque que pagou e acompanhe o status.</p></div><div class="step"><div class="n">4</div><b>Baixe</b><p>Após a aprovação, o download é liberado.</p></div></div></div></section>
 
-<div class="modal" id="modalPagamento">
-<div class="caixa">
-<h2>💚 Pagamento via Pix</h2>
-<p>Valor: <strong>R$ <span id="valorPix"></span></strong></p>
-<div class="codigoPix" id="codigoPix"></div>
-<button class="btn btnBranco" onclick="copiarPix()">📋 Copiar Pix</button>
-<button class="btn btnVerde" onclick="criarPedido()">✅ Já realizei o pagamento</button>
-<button class="btn btnCinza" onclick="fecharModalPagamento()">Fechar</button>
-</div>
-</div>
+<section class="section"><div class="container about"><div><h3>O que você recebe</h3><p>Cada produto mostra os materiais incluídos. Os combos reúnem vários produtos em um único arquivo.</p></div><div><h3>Avaliações só quando forem reais</h3><p>A loja não mostra depoimentos inventados. Quando você tiver clientes reais, pode adicionar avaliações verdadeiras.</p></div></div></section>
 
-<div class="modal" id="modalPedido">
-<div class="caixa">
-<h2>Pedido recebido</h2>
-<div class="codigoPedido">Pedido: <strong id="numeroPedido"></strong></div>
-<div id="statusPedido" class="status pendente">⏳ Aguardando aprovação</div>
-<p style="text-align:center;color:#aaa">Tempo restante para aprovação:</p>
-<div id="contador">30:00</div>
-<p style="text-align:center;color:#888">Seu pagamento será conferido manualmente.</p>
-<div id="downloads"></div>
-<button class="btn btnCinza" onclick="fecharPedido()">Fechar</button>
-</div>
-</div>
+<section class="section" id="faq"><div class="container"><div class="section-head"><div><h2>Perguntas frequentes</h2><p>Informações importantes antes da compra.</p></div></div><div class="faq">
+<details><summary>Os produtos são físicos?</summary><p>Não. Todos os produtos são digitais.</p></details>
+<details><summary>Como recebo meu produto?</summary><p>Depois do Pix, clique em “Já realizei o pagamento”. Quando o pagamento for aprovado, o download aparece no pedido.</p></details>
+<details><summary>Quanto tempo demora a aprovação?</summary><p>O pedido mostra um contador de até 30 minutos para a conferência manual.</p></details>
+<details><summary>Posso fechar a página?</summary><p>O último pedido fica salvo neste navegador. Ao voltar, use “Meu pedido”.</p></details>
+<details><summary>Posso revender os arquivos?</summary><p>Não. Os materiais são para uso pessoal do comprador e não devem ser revendidos ou redistribuídos.</p></details>
+<details><summary>Como funciona o suporte?</summary><p>Use o canal oficial em que a BLACK7 foi divulgada para falar com o responsável pela loja.</p></details>
+</div></div></section>
 
-<div class="modal" id="modalAdmin">
-<div class="caixa">
-<h2>🔐 Administração BLACK7</h2>
-<input id="adminEmail" type="email" placeholder="E-mail do administrador">
-<input id="adminSenha" type="password" placeholder="Senha">
-<button class="btn btnBranco" onclick="loginAdmin()">Entrar</button>
-<button class="btn btnCinza" onclick="fecharAdmin()">Fechar</button>
-<div id="painelAdmin" style="display:none">
-<hr style="margin:25px 0;border-color:#333">
-<h3>Pedidos</h3>
-<div id="listaPedidosAdmin"></div>
-</div>
-</div>
-</div>
+<footer><div class="container footer"><div>© 2026 BLACK7 — Produtos digitais.</div><div class="footer-links"><button onclick="abrirLegal('termos')">Termos de uso</button><button onclick="abrirLegal('privacidade')">Privacidade</button><span class="admin-link" onclick="abrirAdmin()">Administração</span></div></div></footer>
+
+<div id="overlay" onclick="fecharCarrinho()"></div>
+<div id="carrinho"><div class="row"><h2>Seu carrinho</h2><button class="iconbtn" onclick="fecharCarrinho()">✕</button></div><div id="listaCarrinho"></div><div class="total">Total: R$ <span id="total">0,00</span></div><div class="note">Produtos digitais. O pagamento é conferido manualmente.</div><button class="btn green" onclick="iniciarPagamento()">💚 Pagar com Pix</button><button class="btn dark" style="margin-top:8px" onclick="limparCarrinho()">Limpar carrinho</button></div>
+
+<div class="modal" id="modalDetalhes"><div class="box"><div class="row"><div><div id="detalheCategoria" class="categoria"></div><h2 id="detalheNome"></h2></div><button class="iconbtn" onclick="fecharModal('modalDetalhes')">✕</button></div><p id="detalheDescricao" style="color:#aaa;margin-top:8px"></p><h3 style="margin-top:20px">O que você recebe</h3><div class="recebe-lista" id="detalheRecebe"></div><div id="detalhePreco" class="preco"></div><button id="detalheComprar" class="btn light" style="margin-top:12px"></button></div></div>
+
+<div class="modal" id="modalPagamento"><div class="box"><div class="row"><h2>💚 Pagamento via Pix</h2><button class="iconbtn" onclick="fecharModalPagamento()">✕</button></div><div id="resumoPagamento" style="color:#aaa;margin-top:12px"></div><p style="margin-top:15px">Valor exato: <strong>R$ <span id="valorPix"></span></strong></p><div class="codigoPix" id="codigoPix"></div><button class="btn light" onclick="copiarPix()">📋 Copiar Pix Copia e Cola</button><button class="btn green" style="margin-top:8px" onclick="criarPedido()">✅ Já realizei o pagamento</button><p class="note">Clique no botão acima somente depois de concluir o Pix.</p></div></div>
+
+<div class="modal" id="modalPedido"><div class="box"><div class="row"><h2>Seu pedido</h2><button class="iconbtn" onclick="fecharPedido()">✕</button></div><div class="codigoPedido">Pedido: <strong id="numeroPedido"></strong></div><div id="statusPedido" class="status pendente">⏳ Aguardando aprovação</div><p style="text-align:center;color:#aaa">Tempo restante para aprovação:</p><div id="contador">30:00</div><p id="mensagemPedido" style="text-align:center;color:#888">Seu pagamento será conferido manualmente.</p><div id="downloads"></div></div></div>
+
+<div class="modal" id="modalAdmin"><div class="box large"><div class="row"><h2>🔐 Administração BLACK7</h2><button class="iconbtn" onclick="fecharAdmin()">✕</button></div><div id="adminLogin"><input id="adminEmail" type="email" placeholder="E-mail do administrador"><input id="adminSenha" type="password" placeholder="Senha"><button class="btn light" onclick="loginAdmin()">Entrar</button></div><div id="painelAdmin" style="display:none"><div class="row" style="margin:16px 0"><h3>Pedidos recentes</h3><button class="hbtn" onclick="sairAdmin()">Sair</button></div><div id="listaPedidosAdmin"></div></div></div></div>
+
+<div class="modal" id="modalLegal"><div class="box large legal"><div class="row"><h2 id="legalTitulo"></h2><button class="iconbtn" onclick="fecharModal('modalLegal')">✕</button></div><div id="legalConteudo" style="margin-top:12px"></div></div></div>
+<div class="toast" id="toast"></div>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
 <script>
-/*
-=========================
-VOCÊ SÓ PRECISA MEXER AQUI
-=========================
-Cole abaixo os dados do seu Firebase.
-*/
 const firebaseConfig = {
   apiKey: "AIzaSyCHMQQMXUj8rnazFzUtFnsuFyre-O8HKyY",
   authDomain: "black7-3aea6.firebaseapp.com",
@@ -135,204 +106,67 @@ const firebaseConfig = {
   appId: "1:600503554842:web:f4af9ff4fba465309252a3",
   measurementId: "G-70EVBCBT8J"
 };
-
 firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-const auth = firebase.auth();
-
-/* PIX JÁ CONFIGURADO COM OS DADOS DO SEU ARQUIVO */
+const db=firebase.firestore(),auth=firebase.auth();
 const CHAVE_PIX = "bb8a569e-2f49-481f-a97a-38977551cbc9";
 const NOME_RECEBEDOR = "ISAC FERNANDES DA SILVA";
 const CIDADE_RECEBEDOR = "PINDAMONHANGA";
+const TEMPO_APROVACAO=30*60*1000;
+const produtos=[{"id":1,"icone":"📘","nome":"Guia Completo da Reserva de Emergência","preco":19.9,"descricao":"Aprenda a organizar uma reserva para imprevistos com planejamento, exemplos e checklist.","conteudo":["GUIA DA RESERVA DE EMERGÊNCIA","BLACK7 • Edição 2026","","INTRODUÇÃO","Uma reserva de emergência é um valor separado para lidar com imprevistos sem depender imediatamente de empréstimos ou dívidas. Este material é educativo e não substitui orientação financeira profissional.","","CAPÍTULO 1 — O QUE É UMA RESERVA DE EMERGÊNCIA","Ela serve para situações inesperadas, como um gasto urgente, perda temporária de renda ou necessidade familiar. O objetivo principal é segurança e organização, não lucro rápido.","","CAPÍTULO 2 — ANTES DE COMEÇAR","1. Liste suas fontes de renda.","2. Anote despesas fixas: moradia, transporte, contas e alimentação.","3. Anote despesas variáveis: lazer, compras e gastos ocasionais.","4. Calcule quanto normalmente sobra no mês.","","CAPÍTULO 3 — DEFININDO UMA META","Não existe um valor único que sirva para todo mundo. Uma forma simples de começar é definir uma primeira meta pequena e alcançável e, depois, aumentar gradualmente.","Exemplo educativo: se seus gastos essenciais mensais forem R$ 1.000, uma meta inicial pode ser R$ 500 e depois R$ 1.000. O importante é criar consistência.","","CAPÍTULO 4 — COMO GUARDAR AOS POUCOS","Escolha um valor que caiba no orçamento.","Separe esse valor logo que receber.","Evite depender do que 'sobrar' no fim do mês.","Aumente o valor apenas quando isso não prejudicar despesas essenciais.","","CAPÍTULO 5 — ONDE MANTER A RESERVA","Priorize opções simples, líquidas e de baixo risco. Antes de escolher qualquer produto financeiro, entenda as regras de resgate, taxas e riscos. Para menores de idade, decisões financeiras devem ser feitas com responsável legal quando necessário.","","CAPÍTULO 6 — QUANDO USAR","Use para imprevistos reais e importantes.","Evite usar para compras planejadas, lazer ou desejos momentâneos.","Se usar parte da reserva, crie um plano para reconstruí-la.","","CAPÍTULO 7 — ERROS COMUNS","Misturar reserva com dinheiro do dia a dia.","Guardar um valor alto demais e faltar para necessidades básicas.","Usar toda a reserva em uma compra não urgente.","Buscar retornos altos assumindo riscos desnecessários.","","CAPÍTULO 8 — PLANO DE 30 DIAS","Semana 1: anote todos os gastos.","Semana 2: identifique despesas que podem ser reduzidas.","Semana 3: defina uma meta inicial.","Semana 4: faça o primeiro depósito e registre o progresso.","","CHECKLIST","[ ] Sei quanto gasto por mês","[ ] Defini uma meta inicial","[ ] Escolhi quanto guardar por mês","[ ] Separei a reserva do dinheiro do dia a dia","[ ] Sei em quais situações posso usar","","FICHA DE ACOMPANHAMENTO","Meta total: __________","Valor já guardado: __________","Valor mensal planejado: __________","Data da próxima revisão: __________","","CONCLUSÃO","Construir uma reserva é um processo. Começar pequeno e manter constância costuma ser mais sustentável do que tentar guardar muito de uma vez."],"categoria":"Finanças","badge":"Guia completo","recebe":["Guia passo a passo","Plano de 30 dias","Checklist de acompanhamento","Ficha de metas"]},{"id":2,"icone":"📊","nome":"Kit de Controle Financeiro Mensal","preco":14.9,"descricao":"Controle receitas, despesas, metas, assinaturas e o fechamento do mês em um só material.","conteudo":["PLANILHA FINANCEIRA — KIT DE CONTROLE","BLACK7 • Modelo imprimível","","COMO USAR","Preencha as entradas, depois registre despesas fixas e variáveis. No fim, compare o planejado com o realizado.","","1 — RECEITAS DO MÊS","Salário/bolsa: __________","Renda extra: __________","Outras entradas: __________","TOTAL DE RECEITAS: __________","","2 — DESPESAS FIXAS","Moradia: __________","Energia: __________","Água: __________","Internet/telefone: __________","Transporte: __________","Alimentação básica: __________","Educação: __________","Outras: __________","TOTAL FIXAS: __________","","3 — DESPESAS VARIÁVEIS","Lazer: __________","Compras: __________","Aplicativos/assinaturas: __________","Lanches: __________","Presentes: __________","Outras: __________","TOTAL VARIÁVEIS: __________","","4 — RESUMO DO MÊS","Receitas: __________","Despesas fixas: __________","Despesas variáveis: __________","Valor guardado: __________","SALDO FINAL: __________","","5 — PLANEJADO X REALIZADO","Categoria | Planejado | Realizado","Alimentação | ______ | ______","Transporte | ______ | ______","Lazer | ______ | ______","Compras | ______ | ______","Outros | ______ | ______","","6 — CONTROLE SEMANAL","Semana 1: gastos ______ | observação __________________","Semana 2: gastos ______ | observação __________________","Semana 3: gastos ______ | observação __________________","Semana 4: gastos ______ | observação __________________","","7 — METAS","Meta 1: __________________","Valor necessário: __________","Prazo: __________","Valor já separado: __________","Próxima ação: __________________","","8 — ASSINATURAS E GASTOS RECORRENTES","Serviço: __________ | Valor: ______ | Uso real: ______","Serviço: __________ | Valor: ______ | Uso real: ______","Serviço: __________ | Valor: ______ | Uso real: ______","","9 — FECHAMENTO DO MÊS","O que funcionou bem? ______________________________","Onde gastei mais do que esperava? __________________","O que vou ajustar no próximo mês? __________________","","10 — CHECKLIST MENSAL","[ ] Registrei minhas receitas","[ ] Registrei despesas fixas","[ ] Registrei despesas variáveis","[ ] Comparei planejado e realizado","[ ] Revisei minhas metas","[ ] Fiz o fechamento do mês"],"categoria":"Finanças","badge":"Modelo prático","recebe":["Controle de receitas","Despesas fixas e variáveis","Planejado x realizado","Revisão mensal"]},{"id":3,"icone":"🎨","nome":"Pack com 10 Templates de Organização","preco":24.9,"descricao":"Modelos para planejamento semanal, metas, projetos, conteúdo, hábitos e revisão mensal.","conteudo":["PACK DE TEMPLATES BLACK7","10 modelos prontos para preencher","","TEMPLATE 1 — PLANEJAMENTO SEMANAL","Objetivo principal da semana: __________________","Segunda: __________________","Terça: __________________","Quarta: __________________","Quinta: __________________","Sexta: __________________","Sábado: __________________","Domingo: __________________","","TEMPLATE 2 — META SMART","Meta: __________________","Por que ela importa? __________________","Como vou medir? __________________","Prazo: __________________","Primeira ação: __________________","","TEMPLATE 3 — PROJETO","Nome do projeto: __________________","Objetivo: __________________","Público: __________________","Etapa atual: __________________","Próxima etapa: __________________","Prazo: __________________","","TEMPLATE 4 — LISTA DE PRIORIDADES","URGENTE E IMPORTANTE: __________________","IMPORTANTE, NÃO URGENTE: __________________","URGENTE, MENOS IMPORTANTE: __________________","PODE ESPERAR: __________________","","TEMPLATE 5 — CALENDÁRIO DE CONTEÚDO","Data: ______ | Tema: ______ | Formato: ______","Objetivo: ______ | CTA: ______ | Status: ______","","TEMPLATE 6 — ROTEIRO CURTO","Título: __________________","Gancho inicial: __________________","Ponto 1: __________________","Ponto 2: __________________","Ponto 3: __________________","Chamada para ação: __________________","","TEMPLATE 7 — REUNIÃO/IDEIAS","Tema: __________________","Ideias principais: __________________","Decisões: __________________","Próximos passos: __________________","Responsável: __________________","","TEMPLATE 8 — HÁBITOS","Hábito: __________________","Frequência: __________________","Seg | Ter | Qua | Qui | Sex | Sáb | Dom","Observações: __________________","","TEMPLATE 9 — REVISÃO MENSAL","O que concluí: __________________","O que ficou pendente: __________________","O que aprendi: __________________","O que vou melhorar: __________________","","TEMPLATE 10 — CHECKLIST DE ENTREGA","[ ] Conteúdo revisado","[ ] Arquivos organizados","[ ] Nome dos arquivos conferido","[ ] Links testados","[ ] Versão final salva","[ ] Backup realizado"],"categoria":"Organização","badge":"10 templates","recebe":["10 templates prontos","Planner semanal","Meta SMART","Calendário de conteúdo"]},{"id":4,"icone":"📚","nome":"Kit Completo de Estudos e Revisão","preco":29.9,"descricao":"Organize estudos, provas, revisões, exercícios, dúvidas e acompanhamento de evolução.","conteudo":["KIT DE ESTUDOS BLACK7","Organização, revisão e acompanhamento","","1 — DEFINA O QUE PRECISA ESTUDAR","Liste matérias, conteúdos e datas importantes. Evite colocar tudo como prioridade máxima ao mesmo tempo.","","2 — PLANEJAMENTO SEMANAL","Matéria: __________","Conteúdo: __________","Dia: __________","Tempo previsto: __________","Tipo: teoria / exercício / revisão","","3 — SESSÃO DE ESTUDO","Objetivo da sessão: __________________","Conteúdo: __________________","Hora de início: ______","Hora de término: ______","Dúvidas encontradas: __________________","","4 — MÉTODO DE REVISÃO","Após estudar um assunto, faça uma revisão curta depois, resolva exercícios e volte aos pontos em que teve dificuldade. Ajuste a frequência conforme a matéria e sua rotina.","","5 — FICHA DE EXERCÍCIOS","Matéria: __________________","Questões feitas: ______","Acertos: ______","Erros: ______","Assuntos para revisar: __________________","","6 — MAPA DE DÚVIDAS","Dúvida: __________________","Onde apareceu: __________________","O que já entendi: __________________","O que ainda preciso perguntar/pesquisar: __________________","","7 — FOCO","Antes de começar: silencie notificações desnecessárias, organize o material e escolha uma tarefa específica.","Durante: faça pausas razoáveis quando necessário e evite tentar estudar várias matérias ao mesmo tempo.","","8 — CRONOGRAMA DE PROVA","Data da prova: __________","Conteúdos: __________________","Dias disponíveis: ______","Dia 1: __________________","Dia 2: __________________","Dia 3: __________________","Revisão final: __________________","","9 — AUTOAVALIAÇÃO","Conteúdo que domino: __________________","Conteúdo que ainda confundo: __________________","Exercícios que preciso refazer: __________________","","10 — CHECKLIST","[ ] Planejei o que estudar","[ ] Separei o material","[ ] Fiz exercícios","[ ] Anotei dúvidas","[ ] Revisei os erros","[ ] Organizei a próxima sessão","","11 — REVISÃO DO MÊS","Matéria com maior evolução: __________________","Maior dificuldade: __________________","O que vou ajustar: __________________"],"categoria":"Estudos","badge":"11 módulos","recebe":["Cronograma de estudos","Ficha de exercícios","Mapa de dúvidas","Checklist de revisão"]},{"id":5,"icone":"💡","nome":"Guia com Ideias para Renda Extra","preco":17.9,"descricao":"Ideias realistas de serviços e produtos digitais com planejamento, portfólio e divulgação.","conteudo":["GUIA DE IDEIAS PARA RENDA EXTRA","BLACK7 • Guia educativo","","AVISO","Não existe ganho garantido. Resultados dependem de habilidade, demanda, tempo, qualidade e divulgação. Se você for menor de idade, combine pagamentos, contas e vendas com seu responsável quando necessário.","","1 — ARTES DIGITAIS","Você pode aprender a criar posts, banners e capas simples. Comece fazendo exemplos para portfólio e peça feedback antes de cobrar.","","2 — APRESENTAÇÕES","Crie slides organizados para trabalhos, pequenos negócios e projetos. Foque em clareza, revisão e visual limpo.","","3 — TEMPLATES","Planejadores, checklists e modelos editáveis podem ser vendidos como arquivos digitais. Produza conteúdo original e não copie materiais protegidos.","","4 — EDIÇÃO BÁSICA DE IMAGENS","Recorte, ajuste, montagem simples e criação de miniaturas podem virar um serviço. Mostre exemplos do antes/depois sem expor dados pessoais.","","5 — ORGANIZAÇÃO DIGITAL","Ajudar a organizar arquivos, pastas, calendários ou documentos pode ser útil para pessoas e pequenos projetos.","","6 — MATERIAL DE ESTUDO","Resumos próprios, planners e fichas de revisão podem ser transformados em produtos, desde que o conteúdo seja original e correto.","","7 — ROTEIROS E LEGENDAS","Pequenos criadores podem precisar de ajuda com ideias, roteiros curtos e legendas. Combine claramente quantidade, prazo e revisões.","","8 — COMO ESCOLHER UMA IDEIA","Pergunte: eu sei fazer isso? Consigo mostrar um exemplo? Existe alguém que precisa disso? Quanto tempo demora? Quais custos existem?","","9 — PORTFÓLIO","Monte 3 a 5 exemplos bem feitos. Mostre apenas trabalhos próprios ou autorizados. Um portfólio pequeno e bom é melhor do que muitos exemplos fracos.","","10 — PREÇO","Considere tempo, dificuldade, revisões e custos. Evite prometer resultado financeiro ao cliente. Deixe claro o que está incluído.","","11 — ATENDIMENTO","Confirme o pedido por escrito.","Defina prazo realista.","Explique quantas revisões estão incluídas.","Entregue arquivos organizados.","","12 — DIVULGAÇÃO GRATUITA","Publique demonstrações do seu trabalho, dicas curtas e exemplos. Evite spam e mensagens enganosas. Peça autorização antes de usar trabalhos de clientes como portfólio.","","13 — CHECKLIST PARA COMEÇAR","[ ] Escolhi uma habilidade","[ ] Criei exemplos","[ ] Defini o que entrego","[ ] Defini um prazo","[ ] Pensei em um preço","[ ] Preparei uma forma simples de divulgação","[ ] Combinei pagamentos com responsável, se necessário"],"categoria":"Criação","badge":"Guia educativo","recebe":["Ideias de serviços","Montagem de portfólio","Noções de preço","Checklist para começar"]},{"id":6,"icone":"📝","nome":"Pack com 12 Checklists Práticos","preco":12.9,"descricao":"Listas prontas para rotina, estudos, projetos, conteúdo, compras e organização digital.","conteudo":["PACK DE CHECKLISTS BLACK7","12 listas prontas para usar","","CHECKLIST 1 — ROTINA DIÁRIA","[ ] Ver compromissos","[ ] Definir 3 prioridades","[ ] Organizar materiais","[ ] Fazer tarefa principal","[ ] Revisar pendências","","CHECKLIST 2 — ESTUDOS","[ ] Escolher matéria","[ ] Definir conteúdo","[ ] Separar material","[ ] Estudar teoria","[ ] Fazer exercícios","[ ] Anotar dúvidas","[ ] Revisar erros","","CHECKLIST 3 — PROVA","[ ] Conferir data","[ ] Listar conteúdos","[ ] Separar exercícios","[ ] Fazer revisão","[ ] Dormir e se organizar para o horário","","CHECKLIST 4 — PROJETO","[ ] Definir objetivo","[ ] Dividir em etapas","[ ] Definir prazo","[ ] Separar arquivos","[ ] Executar","[ ] Revisar","[ ] Entregar","","CHECKLIST 5 — CONTEÚDO DIGITAL","[ ] Escolher tema","[ ] Criar roteiro","[ ] Produzir","[ ] Revisar texto","[ ] Conferir imagem","[ ] Adicionar CTA","[ ] Publicar","","CHECKLIST 6 — ORGANIZAÇÃO DE ARQUIVOS","[ ] Criar pastas","[ ] Renomear arquivos","[ ] Apagar duplicados","[ ] Separar documentos importantes","[ ] Fazer backup","","CHECKLIST 7 — COMPRA PLANEJADA","[ ] Preciso realmente?","[ ] Comparei opções?","[ ] Cabe no orçamento?","[ ] Conferi taxas/frete?","[ ] Guardei comprovante?","","CHECKLIST 8 — FECHAMENTO DO MÊS","[ ] Conferir entradas","[ ] Conferir despesas","[ ] Revisar assinaturas","[ ] Atualizar metas","[ ] Planejar próximo mês","","CHECKLIST 9 — ENTREGA DIGITAL","[ ] Arquivo abre corretamente","[ ] Nome está correto","[ ] Conteúdo foi revisado","[ ] Link funciona","[ ] Backup salvo","","CHECKLIST 10 — REUNIÃO","[ ] Definir pauta","[ ] Separar informações","[ ] Anotar decisões","[ ] Definir responsáveis","[ ] Registrar próximos passos","","CHECKLIST 11 — SEMANA","[ ] Ver calendário","[ ] Definir prioridades","[ ] Reservar tempo para estudo","[ ] Organizar tarefas pessoais","[ ] Revisar no domingo","","CHECKLIST 12 — SEGURANÇA DIGITAL","[ ] Usar senha forte","[ ] Não compartilhar senha","[ ] Ativar verificação em duas etapas quando disponível","[ ] Conferir links antes de clicar","[ ] Manter backup de arquivos importantes"],"categoria":"Organização","badge":"12 checklists","recebe":["12 checklists","Rotina e estudos","Projetos e conteúdo","Segurança digital"]},{"id":7,"icone":"💻","nome":"Kit de Planejamento para Criadores","preco":22.9,"descricao":"Planeje ideias, roteiros, calendário de conteúdo, publicação e organização de arquivos.","conteudo":["KIT PARA CRIADORES BLACK7","Planejamento de conteúdo e produção","","1 — POSICIONAMENTO","Tema principal: __________________","Para quem eu crio: __________________","Que problema ou interesse quero atender: __________________","","2 — BANCO DE IDEIAS","Ideia 1: __________________","Ideia 2: __________________","Ideia 3: __________________","Ideia 4: __________________","Ideia 5: __________________","","3 — CALENDÁRIO DE CONTEÚDO","Data: ______","Tema: __________________","Formato: vídeo / imagem / texto","Objetivo: informar / ensinar / divulgar","Status: ideia / produção / revisão / publicado","","4 — ROTEIRO CURTO","Gancho: __________________","Contexto: __________________","Ponto principal: __________________","Exemplo: __________________","CTA: __________________","","5 — ROTEIRO DE VÍDEO","Título: __________________","Cena 1: __________________","Cena 2: __________________","Cena 3: __________________","Final: __________________","","6 — CHECKLIST DE PUBLICAÇÃO","[ ] Título revisado","[ ] Texto revisado","[ ] Imagem/vídeo conferido","[ ] Sem dados pessoais expostos","[ ] CTA claro","[ ] Links testados","","7 — REAPROVEITAMENTO","Conteúdo original: __________________","Pode virar: vídeo curto / carrossel / texto / checklist / resumo","","8 — ACOMPANHAMENTO","Publicação: __________________","Data: ______","O que funcionou bem: __________________","O que posso melhorar: __________________","","9 — ORGANIZAÇÃO DE ARQUIVOS","Pasta 01 — Ideias","Pasta 02 — Em produção","Pasta 03 — Prontos","Pasta 04 — Publicados","Pasta 05 — Recursos autorizados","","10 — BOAS PRÁTICAS","Use apenas imagens, músicas e materiais que você tenha direito de usar.","Evite copiar trabalhos de outros criadores.","Não exponha dados pessoais seus ou de clientes.","Não faça promessas falsas para conseguir cliques ou vendas."],"categoria":"Criação","badge":"Kit completo","recebe":["Banco de ideias","Roteiros","Calendário de conteúdo","Checklist de publicação"]},{"id":8,"icone":"🚀","nome":"Kit de Organização Digital","preco":16.9,"descricao":"Organize metas, tarefas, projetos, pastas, arquivos e sua revisão semanal.","conteudo":["KIT DE ORGANIZAÇÃO DIGITAL BLACK7","Metas, tarefas, projetos e arquivos","","1 — PAINEL PRINCIPAL","Meta do mês: __________________","Projeto principal: __________________","Tarefa mais importante da semana: __________________","","2 — CAPTURA RÁPIDA","Use esta área para anotar ideias e tarefas antes de organizar.","1. __________________","2. __________________","3. __________________","4. __________________","","3 — ORGANIZE POR ÁREA","Estudos: __________________","Trabalho/projetos: __________________","Pessoal: __________________","Finanças: __________________","Conteúdo: __________________","","4 — LISTA DE TAREFAS","Tarefa: __________________","Prazo: ______","Prioridade: alta / média / baixa","Status: não iniciada / fazendo / concluída","","5 — PROJETOS","Projeto: __________________","Objetivo: __________________","Prazo: __________________","Etapa atual: __________________","Próxima ação: __________________","","6 — METAS","Meta: __________________","Motivo: __________________","Prazo: __________________","Como medir: __________________","Próximo passo: __________________","","7 — ORGANIZAÇÃO DE PASTAS","01_Documentos","02_Estudos","03_Projetos","04_Imagens","05_Entregas","06_Backup","Adapte os nomes à sua rotina e evite criar pastas demais.","","8 — PADRÃO DE NOMES","Use nomes claros, por exemplo: 2026-09_projeto_versao1.pdf","Evite nomes como arquivo-final-final2.pdf.","","9 — REVISÃO SEMANAL","[ ] Limpar caixa de entrada de tarefas","[ ] Revisar calendário","[ ] Atualizar projetos","[ ] Arquivar o que terminou","[ ] Escolher prioridades da próxima semana","","10 — BACKUP","Mantenha cópias de arquivos importantes em local confiável. Não dependa de um único dispositivo.","","11 — CHECKLIST FINAL","[ ] Sei minhas prioridades","[ ] Minhas tarefas têm prazo quando necessário","[ ] Meus projetos têm próxima ação","[ ] Meus arquivos estão organizados","[ ] Tenho backup do que é importante"],"categoria":"Organização","badge":"Sistema prático","recebe":["Painel de prioridades","Organização de tarefas","Sistema de pastas","Revisão semanal"]},{"id":9,"icone":"🎁","nome":"Mini Planner Semanal","preco":0,"categoria":"Grátis","badge":"GRÁTIS","gratis":true,"descricao":"Um planner simples para conhecer a qualidade dos materiais BLACK7 antes de comprar.","recebe":["Planner de 7 dias","3 prioridades da semana","Área de tarefas","Revisão semanal"],"conteudo":["MINI PLANNER SEMANAL BLACK7","Material gratuito","","OBJETIVO DA SEMANA","Meu principal objetivo: ______________________________","","3 PRIORIDADES","1. _________________________________________________","2. _________________________________________________","3. _________________________________________________","","PLANEJAMENTO","Segunda: ____________________________________________","Terça: ______________________________________________","Quarta: _____________________________________________","Quinta: _____________________________________________","Sexta: ______________________________________________","Sábado: _____________________________________________","Domingo: ____________________________________________","","TAREFAS","[ ] _________________________________________________","[ ] _________________________________________________","[ ] _________________________________________________","[ ] _________________________________________________","[ ] _________________________________________________","","REVISÃO DA SEMANA","O que concluí: _______________________________________","O que ficou pendente: ________________________________","O que vou melhorar na próxima semana: _________________"]},{"id":10,"icone":"🎓","nome":"Combo Estudos BLACK7","preco":49.9,"precoOriginal":67.7,"categoria":"Combos","badge":"COMBO","itens":[4,6,3],"descricao":"Kit de Estudos + Pack de Checklists + Pack de Templates em um único combo.","recebe":["Kit Completo de Estudos","12 Checklists Práticos","10 Templates de Organização","PDF combinado para download"]},{"id":11,"icone":"🧩","nome":"Combo Organização BLACK7","preco":39.9,"precoOriginal":51.7,"categoria":"Combos","badge":"COMBO","itens":[1,2,8],"descricao":"Reserva de Emergência + Controle Financeiro + Organização Digital em um só pacote.","recebe":["Guia da Reserva de Emergência","Kit de Controle Financeiro","Kit de Organização Digital","PDF combinado para download"]}];
+let carrinho=[],categoriaAtual="Todos",pedidoAtual=null,intervalo=null,unsubscribePedido=null,unsubscribeAdmin=null;
 
-const TEMPO_APROVACAO = 30 * 60 * 1000;
+const moeda=v=>Number(v).toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2});
+const produtoPorId=id=>produtos.find(p=>p.id===Number(id));
+const calcularTotal=()=>Number(carrinho.reduce((t,p)=>t+p.preco,0).toFixed(2));
+function toast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200)}
+function abrirModal(id){document.getElementById(id).classList.add("aberto")} function fecharModal(id){document.getElementById(id).classList.remove("aberto")}
 
-const produtos = [{"id":1,"icone":"📘","nome":"Guia da Reserva de Emergência","preco":19.9,"descricao":"Guia completo e prático para entender, planejar e acompanhar uma reserva financeira.","conteudo":["GUIA DA RESERVA DE EMERGÊNCIA","BLACK7 • Edição 2026","","INTRODUÇÃO","Uma reserva de emergência é um valor separado para lidar com imprevistos sem depender imediatamente de empréstimos ou dívidas. Este material é educativo e não substitui orientação financeira profissional.","","CAPÍTULO 1 — O QUE É UMA RESERVA DE EMERGÊNCIA","Ela serve para situações inesperadas, como um gasto urgente, perda temporária de renda ou necessidade familiar. O objetivo principal é segurança e organização, não lucro rápido.","","CAPÍTULO 2 — ANTES DE COMEÇAR","1. Liste suas fontes de renda.","2. Anote despesas fixas: moradia, transporte, contas e alimentação.","3. Anote despesas variáveis: lazer, compras e gastos ocasionais.","4. Calcule quanto normalmente sobra no mês.","","CAPÍTULO 3 — DEFININDO UMA META","Não existe um valor único que sirva para todo mundo. Uma forma simples de começar é definir uma primeira meta pequena e alcançável e, depois, aumentar gradualmente.","Exemplo educativo: se seus gastos essenciais mensais forem R$ 1.000, uma meta inicial pode ser R$ 500 e depois R$ 1.000. O importante é criar consistência.","","CAPÍTULO 4 — COMO GUARDAR AOS POUCOS","Escolha um valor que caiba no orçamento.","Separe esse valor logo que receber.","Evite depender do que 'sobrar' no fim do mês.","Aumente o valor apenas quando isso não prejudicar despesas essenciais.","","CAPÍTULO 5 — ONDE MANTER A RESERVA","Priorize opções simples, líquidas e de baixo risco. Antes de escolher qualquer produto financeiro, entenda as regras de resgate, taxas e riscos. Para menores de idade, decisões financeiras devem ser feitas com responsável legal quando necessário.","","CAPÍTULO 6 — QUANDO USAR","Use para imprevistos reais e importantes.","Evite usar para compras planejadas, lazer ou desejos momentâneos.","Se usar parte da reserva, crie um plano para reconstruí-la.","","CAPÍTULO 7 — ERROS COMUNS","Misturar reserva com dinheiro do dia a dia.","Guardar um valor alto demais e faltar para necessidades básicas.","Usar toda a reserva em uma compra não urgente.","Buscar retornos altos assumindo riscos desnecessários.","","CAPÍTULO 8 — PLANO DE 30 DIAS","Semana 1: anote todos os gastos.","Semana 2: identifique despesas que podem ser reduzidas.","Semana 3: defina uma meta inicial.","Semana 4: faça o primeiro depósito e registre o progresso.","","CHECKLIST","[ ] Sei quanto gasto por mês","[ ] Defini uma meta inicial","[ ] Escolhi quanto guardar por mês","[ ] Separei a reserva do dinheiro do dia a dia","[ ] Sei em quais situações posso usar","","FICHA DE ACOMPANHAMENTO","Meta total: __________","Valor já guardado: __________","Valor mensal planejado: __________","Data da próxima revisão: __________","","CONCLUSÃO","Construir uma reserva é um processo. Começar pequeno e manter constância costuma ser mais sustentável do que tentar guardar muito de uma vez."]},{"id":2,"icone":"📊","nome":"Planilha Financeira","preco":14.9,"descricao":"Kit de controle financeiro com orçamento mensal, metas, revisão semanal e fechamento do mês.","conteudo":["PLANILHA FINANCEIRA — KIT DE CONTROLE","BLACK7 • Modelo imprimível","","COMO USAR","Preencha as entradas, depois registre despesas fixas e variáveis. No fim, compare o planejado com o realizado.","","1 — RECEITAS DO MÊS","Salário/bolsa: __________","Renda extra: __________","Outras entradas: __________","TOTAL DE RECEITAS: __________","","2 — DESPESAS FIXAS","Moradia: __________","Energia: __________","Água: __________","Internet/telefone: __________","Transporte: __________","Alimentação básica: __________","Educação: __________","Outras: __________","TOTAL FIXAS: __________","","3 — DESPESAS VARIÁVEIS","Lazer: __________","Compras: __________","Aplicativos/assinaturas: __________","Lanches: __________","Presentes: __________","Outras: __________","TOTAL VARIÁVEIS: __________","","4 — RESUMO DO MÊS","Receitas: __________","Despesas fixas: __________","Despesas variáveis: __________","Valor guardado: __________","SALDO FINAL: __________","","5 — PLANEJADO X REALIZADO","Categoria | Planejado | Realizado","Alimentação | ______ | ______","Transporte | ______ | ______","Lazer | ______ | ______","Compras | ______ | ______","Outros | ______ | ______","","6 — CONTROLE SEMANAL","Semana 1: gastos ______ | observação __________________","Semana 2: gastos ______ | observação __________________","Semana 3: gastos ______ | observação __________________","Semana 4: gastos ______ | observação __________________","","7 — METAS","Meta 1: __________________","Valor necessário: __________","Prazo: __________","Valor já separado: __________","Próxima ação: __________________","","8 — ASSINATURAS E GASTOS RECORRENTES","Serviço: __________ | Valor: ______ | Uso real: ______","Serviço: __________ | Valor: ______ | Uso real: ______","Serviço: __________ | Valor: ______ | Uso real: ______","","9 — FECHAMENTO DO MÊS","O que funcionou bem? ______________________________","Onde gastei mais do que esperava? __________________","O que vou ajustar no próximo mês? __________________","","10 — CHECKLIST MENSAL","[ ] Registrei minhas receitas","[ ] Registrei despesas fixas","[ ] Registrei despesas variáveis","[ ] Comparei planejado e realizado","[ ] Revisei minhas metas","[ ] Fiz o fechamento do mês"]},{"id":3,"icone":"🎨","nome":"Pack de Templates","preco":24.9,"descricao":"Coleção de templates para planejamento, metas, projetos, conteúdo e organização semanal.","conteudo":["PACK DE TEMPLATES BLACK7","10 modelos prontos para preencher","","TEMPLATE 1 — PLANEJAMENTO SEMANAL","Objetivo principal da semana: __________________","Segunda: __________________","Terça: __________________","Quarta: __________________","Quinta: __________________","Sexta: __________________","Sábado: __________________","Domingo: __________________","","TEMPLATE 2 — META SMART","Meta: __________________","Por que ela importa? __________________","Como vou medir? __________________","Prazo: __________________","Primeira ação: __________________","","TEMPLATE 3 — PROJETO","Nome do projeto: __________________","Objetivo: __________________","Público: __________________","Etapa atual: __________________","Próxima etapa: __________________","Prazo: __________________","","TEMPLATE 4 — LISTA DE PRIORIDADES","URGENTE E IMPORTANTE: __________________","IMPORTANTE, NÃO URGENTE: __________________","URGENTE, MENOS IMPORTANTE: __________________","PODE ESPERAR: __________________","","TEMPLATE 5 — CALENDÁRIO DE CONTEÚDO","Data: ______ | Tema: ______ | Formato: ______","Objetivo: ______ | CTA: ______ | Status: ______","","TEMPLATE 6 — ROTEIRO CURTO","Título: __________________","Gancho inicial: __________________","Ponto 1: __________________","Ponto 2: __________________","Ponto 3: __________________","Chamada para ação: __________________","","TEMPLATE 7 — REUNIÃO/IDEIAS","Tema: __________________","Ideias principais: __________________","Decisões: __________________","Próximos passos: __________________","Responsável: __________________","","TEMPLATE 8 — HÁBITOS","Hábito: __________________","Frequência: __________________","Seg | Ter | Qua | Qui | Sex | Sáb | Dom","Observações: __________________","","TEMPLATE 9 — REVISÃO MENSAL","O que concluí: __________________","O que ficou pendente: __________________","O que aprendi: __________________","O que vou melhorar: __________________","","TEMPLATE 10 — CHECKLIST DE ENTREGA","[ ] Conteúdo revisado","[ ] Arquivos organizados","[ ] Nome dos arquivos conferido","[ ] Links testados","[ ] Versão final salva","[ ] Backup realizado"]},{"id":4,"icone":"📚","nome":"Kit de Estudos","preco":29.9,"descricao":"Guia de rotina de estudos com cronograma, revisão, exercícios, foco e acompanhamento.","conteudo":["KIT DE ESTUDOS BLACK7","Organização, revisão e acompanhamento","","1 — DEFINA O QUE PRECISA ESTUDAR","Liste matérias, conteúdos e datas importantes. Evite colocar tudo como prioridade máxima ao mesmo tempo.","","2 — PLANEJAMENTO SEMANAL","Matéria: __________","Conteúdo: __________","Dia: __________","Tempo previsto: __________","Tipo: teoria / exercício / revisão","","3 — SESSÃO DE ESTUDO","Objetivo da sessão: __________________","Conteúdo: __________________","Hora de início: ______","Hora de término: ______","Dúvidas encontradas: __________________","","4 — MÉTODO DE REVISÃO","Após estudar um assunto, faça uma revisão curta depois, resolva exercícios e volte aos pontos em que teve dificuldade. Ajuste a frequência conforme a matéria e sua rotina.","","5 — FICHA DE EXERCÍCIOS","Matéria: __________________","Questões feitas: ______","Acertos: ______","Erros: ______","Assuntos para revisar: __________________","","6 — MAPA DE DÚVIDAS","Dúvida: __________________","Onde apareceu: __________________","O que já entendi: __________________","O que ainda preciso perguntar/pesquisar: __________________","","7 — FOCO","Antes de começar: silencie notificações desnecessárias, organize o material e escolha uma tarefa específica.","Durante: faça pausas razoáveis quando necessário e evite tentar estudar várias matérias ao mesmo tempo.","","8 — CRONOGRAMA DE PROVA","Data da prova: __________","Conteúdos: __________________","Dias disponíveis: ______","Dia 1: __________________","Dia 2: __________________","Dia 3: __________________","Revisão final: __________________","","9 — AUTOAVALIAÇÃO","Conteúdo que domino: __________________","Conteúdo que ainda confundo: __________________","Exercícios que preciso refazer: __________________","","10 — CHECKLIST","[ ] Planejei o que estudar","[ ] Separei o material","[ ] Fiz exercícios","[ ] Anotei dúvidas","[ ] Revisei os erros","[ ] Organizei a próxima sessão","","11 — REVISÃO DO MÊS","Matéria com maior evolução: __________________","Maior dificuldade: __________________","O que vou ajustar: __________________"]},{"id":5,"icone":"💡","nome":"Guia de Ideias para Renda Extra","preco":17.9,"descricao":"Guia educativo com ideias de serviços e produtos digitais, planejamento e cuidados para começar.","conteudo":["GUIA DE IDEIAS PARA RENDA EXTRA","BLACK7 • Guia educativo","","AVISO","Não existe ganho garantido. Resultados dependem de habilidade, demanda, tempo, qualidade e divulgação. Se você for menor de idade, combine pagamentos, contas e vendas com seu responsável quando necessário.","","1 — ARTES DIGITAIS","Você pode aprender a criar posts, banners e capas simples. Comece fazendo exemplos para portfólio e peça feedback antes de cobrar.","","2 — APRESENTAÇÕES","Crie slides organizados para trabalhos, pequenos negócios e projetos. Foque em clareza, revisão e visual limpo.","","3 — TEMPLATES","Planejadores, checklists e modelos editáveis podem ser vendidos como arquivos digitais. Produza conteúdo original e não copie materiais protegidos.","","4 — EDIÇÃO BÁSICA DE IMAGENS","Recorte, ajuste, montagem simples e criação de miniaturas podem virar um serviço. Mostre exemplos do antes/depois sem expor dados pessoais.","","5 — ORGANIZAÇÃO DIGITAL","Ajudar a organizar arquivos, pastas, calendários ou documentos pode ser útil para pessoas e pequenos projetos.","","6 — MATERIAL DE ESTUDO","Resumos próprios, planners e fichas de revisão podem ser transformados em produtos, desde que o conteúdo seja original e correto.","","7 — ROTEIROS E LEGENDAS","Pequenos criadores podem precisar de ajuda com ideias, roteiros curtos e legendas. Combine claramente quantidade, prazo e revisões.","","8 — COMO ESCOLHER UMA IDEIA","Pergunte: eu sei fazer isso? Consigo mostrar um exemplo? Existe alguém que precisa disso? Quanto tempo demora? Quais custos existem?","","9 — PORTFÓLIO","Monte 3 a 5 exemplos bem feitos. Mostre apenas trabalhos próprios ou autorizados. Um portfólio pequeno e bom é melhor do que muitos exemplos fracos.","","10 — PREÇO","Considere tempo, dificuldade, revisões e custos. Evite prometer resultado financeiro ao cliente. Deixe claro o que está incluído.","","11 — ATENDIMENTO","Confirme o pedido por escrito.","Defina prazo realista.","Explique quantas revisões estão incluídas.","Entregue arquivos organizados.","","12 — DIVULGAÇÃO GRATUITA","Publique demonstrações do seu trabalho, dicas curtas e exemplos. Evite spam e mensagens enganosas. Peça autorização antes de usar trabalhos de clientes como portfólio.","","13 — CHECKLIST PARA COMEÇAR","[ ] Escolhi uma habilidade","[ ] Criei exemplos","[ ] Defini o que entrego","[ ] Defini um prazo","[ ] Pensei em um preço","[ ] Preparei uma forma simples de divulgação","[ ] Combinei pagamentos com responsável, se necessário"]},{"id":6,"icone":"📝","nome":"Pack de Checklists","preco":12.9,"descricao":"Pacote com checklists para rotina, estudos, projetos, compras, arquivos e organização digital.","conteudo":["PACK DE CHECKLISTS BLACK7","12 listas prontas para usar","","CHECKLIST 1 — ROTINA DIÁRIA","[ ] Ver compromissos","[ ] Definir 3 prioridades","[ ] Organizar materiais","[ ] Fazer tarefa principal","[ ] Revisar pendências","","CHECKLIST 2 — ESTUDOS","[ ] Escolher matéria","[ ] Definir conteúdo","[ ] Separar material","[ ] Estudar teoria","[ ] Fazer exercícios","[ ] Anotar dúvidas","[ ] Revisar erros","","CHECKLIST 3 — PROVA","[ ] Conferir data","[ ] Listar conteúdos","[ ] Separar exercícios","[ ] Fazer revisão","[ ] Dormir e se organizar para o horário","","CHECKLIST 4 — PROJETO","[ ] Definir objetivo","[ ] Dividir em etapas","[ ] Definir prazo","[ ] Separar arquivos","[ ] Executar","[ ] Revisar","[ ] Entregar","","CHECKLIST 5 — CONTEÚDO DIGITAL","[ ] Escolher tema","[ ] Criar roteiro","[ ] Produzir","[ ] Revisar texto","[ ] Conferir imagem","[ ] Adicionar CTA","[ ] Publicar","","CHECKLIST 6 — ORGANIZAÇÃO DE ARQUIVOS","[ ] Criar pastas","[ ] Renomear arquivos","[ ] Apagar duplicados","[ ] Separar documentos importantes","[ ] Fazer backup","","CHECKLIST 7 — COMPRA PLANEJADA","[ ] Preciso realmente?","[ ] Comparei opções?","[ ] Cabe no orçamento?","[ ] Conferi taxas/frete?","[ ] Guardei comprovante?","","CHECKLIST 8 — FECHAMENTO DO MÊS","[ ] Conferir entradas","[ ] Conferir despesas","[ ] Revisar assinaturas","[ ] Atualizar metas","[ ] Planejar próximo mês","","CHECKLIST 9 — ENTREGA DIGITAL","[ ] Arquivo abre corretamente","[ ] Nome está correto","[ ] Conteúdo foi revisado","[ ] Link funciona","[ ] Backup salvo","","CHECKLIST 10 — REUNIÃO","[ ] Definir pauta","[ ] Separar informações","[ ] Anotar decisões","[ ] Definir responsáveis","[ ] Registrar próximos passos","","CHECKLIST 11 — SEMANA","[ ] Ver calendário","[ ] Definir prioridades","[ ] Reservar tempo para estudo","[ ] Organizar tarefas pessoais","[ ] Revisar no domingo","","CHECKLIST 12 — SEGURANÇA DIGITAL","[ ] Usar senha forte","[ ] Não compartilhar senha","[ ] Ativar verificação em duas etapas quando disponível","[ ] Conferir links antes de clicar","[ ] Manter backup de arquivos importantes"]},{"id":7,"icone":"💻","nome":"Kit para Criadores","preco":22.9,"descricao":"Kit para planejar conteúdo, organizar ideias, criar roteiros e acompanhar publicações.","conteudo":["KIT PARA CRIADORES BLACK7","Planejamento de conteúdo e produção","","1 — POSICIONAMENTO","Tema principal: __________________","Para quem eu crio: __________________","Que problema ou interesse quero atender: __________________","","2 — BANCO DE IDEIAS","Ideia 1: __________________","Ideia 2: __________________","Ideia 3: __________________","Ideia 4: __________________","Ideia 5: __________________","","3 — CALENDÁRIO DE CONTEÚDO","Data: ______","Tema: __________________","Formato: vídeo / imagem / texto","Objetivo: informar / ensinar / divulgar","Status: ideia / produção / revisão / publicado","","4 — ROTEIRO CURTO","Gancho: __________________","Contexto: __________________","Ponto principal: __________________","Exemplo: __________________","CTA: __________________","","5 — ROTEIRO DE VÍDEO","Título: __________________","Cena 1: __________________","Cena 2: __________________","Cena 3: __________________","Final: __________________","","6 — CHECKLIST DE PUBLICAÇÃO","[ ] Título revisado","[ ] Texto revisado","[ ] Imagem/vídeo conferido","[ ] Sem dados pessoais expostos","[ ] CTA claro","[ ] Links testados","","7 — REAPROVEITAMENTO","Conteúdo original: __________________","Pode virar: vídeo curto / carrossel / texto / checklist / resumo","","8 — ACOMPANHAMENTO","Publicação: __________________","Data: ______","O que funcionou bem: __________________","O que posso melhorar: __________________","","9 — ORGANIZAÇÃO DE ARQUIVOS","Pasta 01 — Ideias","Pasta 02 — Em produção","Pasta 03 — Prontos","Pasta 04 — Publicados","Pasta 05 — Recursos autorizados","","10 — BOAS PRÁTICAS","Use apenas imagens, músicas e materiais que você tenha direito de usar.","Evite copiar trabalhos de outros criadores.","Não exponha dados pessoais seus ou de clientes.","Não faça promessas falsas para conseguir cliques ou vendas."]},{"id":8,"icone":"🚀","nome":"Kit de Organização Digital","preco":16.9,"descricao":"Sistema prático para organizar metas, tarefas, projetos, arquivos e revisão semanal.","conteudo":["KIT DE ORGANIZAÇÃO DIGITAL BLACK7","Metas, tarefas, projetos e arquivos","","1 — PAINEL PRINCIPAL","Meta do mês: __________________","Projeto principal: __________________","Tarefa mais importante da semana: __________________","","2 — CAPTURA RÁPIDA","Use esta área para anotar ideias e tarefas antes de organizar.","1. __________________","2. __________________","3. __________________","4. __________________","","3 — ORGANIZE POR ÁREA","Estudos: __________________","Trabalho/projetos: __________________","Pessoal: __________________","Finanças: __________________","Conteúdo: __________________","","4 — LISTA DE TAREFAS","Tarefa: __________________","Prazo: ______","Prioridade: alta / média / baixa","Status: não iniciada / fazendo / concluída","","5 — PROJETOS","Projeto: __________________","Objetivo: __________________","Prazo: __________________","Etapa atual: __________________","Próxima ação: __________________","","6 — METAS","Meta: __________________","Motivo: __________________","Prazo: __________________","Como medir: __________________","Próximo passo: __________________","","7 — ORGANIZAÇÃO DE PASTAS","01_Documentos","02_Estudos","03_Projetos","04_Imagens","05_Entregas","06_Backup","Adapte os nomes à sua rotina e evite criar pastas demais.","","8 — PADRÃO DE NOMES","Use nomes claros, por exemplo: 2026-09_projeto_versao1.pdf","Evite nomes como arquivo-final-final2.pdf.","","9 — REVISÃO SEMANAL","[ ] Limpar caixa de entrada de tarefas","[ ] Revisar calendário","[ ] Atualizar projetos","[ ] Arquivar o que terminou","[ ] Escolher prioridades da próxima semana","","10 — BACKUP","Mantenha cópias de arquivos importantes em local confiável. Não dependa de um único dispositivo.","","11 — CHECKLIST FINAL","[ ] Sei minhas prioridades","[ ] Minhas tarefas têm prazo quando necessário","[ ] Meus projetos têm próxima ação","[ ] Meus arquivos estão organizados","[ ] Tenho backup do que é importante"]}];
-
-let carrinho = [], pedidoAtual = null, intervalo = null;
-
-function mostrarProdutos(){
-  const area=document.getElementById("produtos"); area.innerHTML="";
-  produtos.forEach(p=>{
-    area.innerHTML += `<div class="produto"><div class="imagem">${p.icone}</div><div class="info"><h3>${p.nome}</h3><p>${p.descricao}</p><div class="preco">R$ ${moeda(p.preco)}</div><button class="comprar" onclick="adicionar(${p.id})">Adicionar ao carrinho</button></div></div>`;
-  });
+function renderFiltros(){const cats=["Todos","Finanças","Estudos","Organização","Criação","Combos","Grátis"];document.getElementById("filters").innerHTML=cats.map(c=>`<button class="filter ${categoriaAtual===c?"ativo":""}" onclick="setCategoria('${c}')">${c}</button>`).join("")}
+function setCategoria(c){categoriaAtual=c;renderFiltros();renderizarProdutos()}
+function renderizarProdutos(){
+ const q=(document.getElementById("busca").value||"").toLowerCase().trim();
+ const lista=produtos.filter(p=>(categoriaAtual==="Todos"||p.categoria===categoriaAtual)&&(p.nome+" "+p.descricao+" "+p.categoria).toLowerCase().includes(q));
+ const area=document.getElementById("produtosGrid"); if(!lista.length){area.innerHTML='<div class="empty">Nenhum produto encontrado.</div>';return}
+ area.innerHTML=lista.map(p=>{const mini=(p.recebe||[]).slice(0,2).map(x=>`<div>✓ ${x}</div>`).join("");const preco=p.gratis?'<div class="preco">Grátis</div>':`<div class="preco-area">${p.precoOriginal?`<span class="old">R$ ${moeda(p.precoOriginal)}</span>`:""}<span class="preco">R$ ${moeda(p.preco)}</span></div>`;const acao=p.gratis?`<button class="btn light" onclick="baixarProduto(${p.id})">Baixar grátis</button>`:`<button class="btn light" onclick="adicionar(${p.id})">Adicionar</button>`;return `<article class="produto"><div class="capa"><div class="capa-top"><span class="icone">${p.icone}</span><span class="badge">${p.badge}</span></div><div class="capa-nome">${p.nome}</div></div><div class="info"><div class="categoria">${p.categoria}</div><p>${p.descricao}</p><div class="recebe-mini">${mini}</div>${preco}<div class="actions"><button class="btn dark" onclick="abrirDetalhes(${p.id})">Ver detalhes</button>${acao}</div></div></article>`}).join("")
 }
-function adicionar(id){const p=produtos.find(x=>x.id===id);carrinho.push(p);atualizarCarrinho();document.getElementById("carrinho").classList.add("aberto")}
-function remover(i){carrinho.splice(i,1);atualizarCarrinho()}
-function atualizarCarrinho(){
-  const lista=document.getElementById("listaCarrinho");document.getElementById("qtd").innerText=carrinho.length;
-  if(!carrinho.length){lista.innerHTML="<p>Carrinho vazio.</p>";document.getElementById("total").innerText="0,00";return}
-  lista.innerHTML="";let total=0;
-  carrinho.forEach((p,i)=>{total+=p.preco;lista.innerHTML+=`<div class="itemCarrinho"><strong>${p.nome}</strong><br>R$ ${moeda(p.preco)}<br><button class="remover" onclick="remover(${i})">Remover</button></div>`});
-  document.getElementById("total").innerText=moeda(total)
-}
-document.getElementById("cartButton").onclick=()=>document.getElementById("carrinho").classList.add("aberto");
-document.getElementById("fecharCarrinho").onclick=()=>document.getElementById("carrinho").classList.remove("aberto");
+function abrirDetalhes(id){const p=produtoPorId(id);document.getElementById("detalheCategoria").textContent=p.categoria;document.getElementById("detalheNome").textContent=p.nome;document.getElementById("detalheDescricao").textContent=p.descricao;document.getElementById("detalheRecebe").innerHTML=(p.recebe||[]).map(x=>`<div class="recebe-item">✓ ${x}</div>`).join("");document.getElementById("detalhePreco").textContent=p.gratis?"Grátis":"R$ "+moeda(p.preco);const b=document.getElementById("detalheComprar");b.textContent=p.gratis?"Baixar grátis":"Adicionar ao carrinho";b.onclick=()=>{fecharModal("modalDetalhes");p.gratis?baixarProduto(p.id):adicionar(p.id)};abrirModal("modalDetalhes")}
 
-function iniciarPagamento(){
-  if(!carrinho.length){alert("Seu carrinho está vazio.");return}
-  const total=calcularTotal();
-  document.getElementById("valorPix").innerText=moeda(total);
-  document.getElementById("codigoPix").innerText=gerarPixCopiaECola(total);
-  document.getElementById("modalPagamento").classList.add("aberto")
-}
-function fecharModalPagamento(){document.getElementById("modalPagamento").classList.remove("aberto")}
-function copiarPix(){navigator.clipboard.writeText(document.getElementById("codigoPix").innerText);alert("Código Pix copiado!")}
+function salvarCarrinho(){localStorage.setItem("black7_carrinho",JSON.stringify(carrinho.map(p=>p.id)))} function carregarCarrinho(){try{carrinho=JSON.parse(localStorage.getItem("black7_carrinho")||"[]").map(produtoPorId).filter(p=>p&&!p.gratis)}catch(e){carrinho=[]}}
+function adicionar(id){const p=produtoPorId(id);if(!p||p.gratis)return;if(carrinho.some(x=>x.id===p.id)){toast("Esse produto já está no carrinho.");abrirCarrinho();return}carrinho.push(p);salvarCarrinho();atualizarCarrinho();abrirCarrinho();toast("Produto adicionado.")}
+function remover(i){carrinho.splice(i,1);salvarCarrinho();atualizarCarrinho()} function limparCarrinho(){carrinho=[];salvarCarrinho();atualizarCarrinho()}
+function atualizarCarrinho(){document.getElementById("qtd").textContent=carrinho.length;const l=document.getElementById("listaCarrinho");if(!carrinho.length){l.innerHTML='<div class="empty">Seu carrinho está vazio.</div>';document.getElementById("total").textContent="0,00";return}l.innerHTML=carrinho.map((p,i)=>`<div class="item"><strong>${p.nome}</strong><br><small>${p.categoria}</small><br>R$ ${moeda(p.preco)}<br><button class="remover" onclick="remover(${i})">Remover</button></div>`).join("");document.getElementById("total").textContent=moeda(calcularTotal())}
+function abrirCarrinho(){document.getElementById("carrinho").classList.add("aberto");document.getElementById("overlay").classList.add("aberto")} function fecharCarrinho(){document.getElementById("carrinho").classList.remove("aberto");document.getElementById("overlay").classList.remove("aberto")} document.getElementById("cartButton").onclick=abrirCarrinho;
 
-async function criarPedido(){
-  if(!carrinho.length)return;
-  try{
-    const pedido={produtos:carrinho.map(p=>({id:p.id,nome:p.nome,preco:p.preco})),total:calcularTotal(),status:"pendente",criadoEm:firebase.firestore.FieldValue.serverTimestamp()};
-    const doc=await db.collection("pedidos").add(pedido);
-    pedidoAtual=doc.id;fecharModalPagamento();
-    document.getElementById("modalPedido").classList.add("aberto");
-    document.getElementById("numeroPedido").innerText=doc.id.toUpperCase().substring(0,8);
-    acompanharPedido(doc.id);carrinho=[];atualizarCarrinho()
-  }catch(e){console.error(e);alert("Não foi possível criar o pedido. Confira a configuração do Firebase.")}
-}
-function acompanharPedido(id){
-  db.collection("pedidos").doc(id).onSnapshot(doc=>{
-    if(!doc.exists)return;
-    const d=doc.data();
-    if(d.status==="aprovado")pedidoAprovado(d);
-    if(d.status==="rejeitado")pedidoRejeitado();
-    if(d.criadoEm)iniciarContador(d.criadoEm.toDate())
-  })
-}
-function iniciarContador(dataCriacao){
-  clearInterval(intervalo);
-  intervalo=setInterval(()=>{
-    const restante=TEMPO_APROVACAO-(Date.now()-dataCriacao.getTime());
-    if(restante<=0){clearInterval(intervalo);document.getElementById("contador").innerText="00:00";const s=document.getElementById("statusPedido");if(!s.classList.contains("aprovado")){s.className="status expirado";s.innerText="⌛ Prazo de aprovação encerrado"}return}
-    const m=Math.floor(restante/60000),s=Math.floor((restante%60000)/1000);
-    document.getElementById("contador").innerText=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0")
-  },1000)
-}
-function pedidoAprovado(d){
-  clearInterval(intervalo);const s=document.getElementById("statusPedido");s.className="status aprovado";s.innerText="✅ Pagamento aprovado";document.getElementById("contador").innerText="APROVADO";
-  const area=document.getElementById("downloads");area.innerHTML="<h3 style='margin:20px 0 10px'>Seus produtos</h3>";
-  d.produtos.forEach(item=>area.innerHTML+=`<button class="btn btnBranco" onclick="baixarProduto(${item.id})">📥 Baixar ${item.nome}</button>`)
-}
-function pedidoRejeitado(){clearInterval(intervalo);const s=document.getElementById("statusPedido");s.className="status expirado";s.innerText="❌ Pagamento não aprovado"}
-function baixarProduto(id){
-  const p=produtos.find(x=>x.id===id);if(!p)return;
-  const {jsPDF}=window.jspdf;
-  const pdf=new jsPDF({unit:"mm",format:"a4"});
-  const margem=18, largura=174;
-  let y=20, pagina=1;
+function iniciarPagamento(){if(!carrinho.length){toast("Seu carrinho está vazio.");return}fecharCarrinho();const total=calcularTotal();document.getElementById("valorPix").textContent=moeda(total);document.getElementById("codigoPix").textContent=gerarPixCopiaECola(total);document.getElementById("resumoPagamento").innerHTML=carrinho.map(p=>`<div>• ${p.nome} — R$ ${moeda(p.preco)}</div>`).join("");abrirModal("modalPagamento")}
+function fecharModalPagamento(){fecharModal("modalPagamento")}
+async function copiarPix(){const c=document.getElementById("codigoPix").textContent;try{await navigator.clipboard.writeText(c);toast("Pix copiado!")}catch(e){const t=document.createElement("textarea");t.value=c;document.body.appendChild(t);t.select();document.execCommand("copy");t.remove();toast("Pix copiado!")}}
 
-  function rodape(){
-    pdf.setFontSize(8);
-    pdf.setTextColor(130);
-    pdf.text(`BLACK7 • ${p.nome}`,margem,289);
-    pdf.text(`Página ${pagina}`,190,289,{align:"right"});
-    pdf.setTextColor(0);
-  }
+async function criarPedido(){if(!carrinho.length)return;try{const agora=Date.now();const pedido={produtos:carrinho.map(p=>({id:p.id,nome:p.nome,preco:p.preco})),total:calcularTotal(),status:"pendente",criadoEm:firebase.firestore.FieldValue.serverTimestamp(),expiraEm:firebase.firestore.Timestamp.fromMillis(agora+TEMPO_APROVACAO)};const doc=await db.collection("pedidos").add(pedido);localStorage.setItem("black7_ultimo_pedido",doc.id);pedidoAtual=doc.id;atualizarBotaoPedido();fecharModalPagamento();carrinho=[];salvarCarrinho();atualizarCarrinho();abrirPedido(doc.id)}catch(e){console.error(e);toast("Não foi possível criar o pedido.")}}
+function resetPedido(){clearInterval(intervalo);document.getElementById("statusPedido").className="status pendente";document.getElementById("statusPedido").textContent="⏳ Aguardando aprovação";document.getElementById("contador").textContent="30:00";document.getElementById("mensagemPedido").textContent="Seu pagamento será conferido manualmente.";document.getElementById("downloads").innerHTML=""}
+function abrirPedido(id){pedidoAtual=id;document.getElementById("numeroPedido").textContent=id.toUpperCase().substring(0,8);resetPedido();abrirModal("modalPedido");acompanharPedido(id)}
+function acompanharPedido(id){if(unsubscribePedido)unsubscribePedido();unsubscribePedido=db.collection("pedidos").doc(id).onSnapshot(doc=>{if(!doc.exists){pedidoNaoEncontrado();return}const d=doc.data();if(d.status==="aprovado"){pedidoAprovado(d);return}if(d.status==="rejeitado"){pedidoRejeitado();return}const exp=d.expiraEm?.toDate?.()||(d.criadoEm?.toDate?.()?new Date(d.criadoEm.toDate().getTime()+TEMPO_APROVACAO):new Date(Date.now()+TEMPO_APROVACAO));iniciarContador(exp)},pedidoNaoEncontrado)}
+function iniciarContador(exp){clearInterval(intervalo);function tick(){const r=exp.getTime()-Date.now();if(r<=0){clearInterval(intervalo);document.getElementById("contador").textContent="00:00";const s=document.getElementById("statusPedido");s.className="status expirado";s.textContent="⌛ Prazo de aprovação encerrado";document.getElementById("mensagemPedido").textContent="Se você pagou dentro do prazo, procure o canal oficial de suporte.";return}const m=Math.floor(r/60000),s=Math.floor((r%60000)/1000);document.getElementById("contador").textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0")}tick();intervalo=setInterval(tick,1000)}
+function pedidoAprovado(d){clearInterval(intervalo);const s=document.getElementById("statusPedido");s.className="status aprovado";s.textContent="✅ Pagamento aprovado";document.getElementById("contador").textContent="APROVADO";document.getElementById("mensagemPedido").textContent="Seu material está liberado para download.";const a=document.getElementById("downloads");a.innerHTML="<h3 style='margin:20px 0 10px'>Seus produtos</h3>";d.produtos.forEach(i=>a.innerHTML+=`<button class="btn light" style="margin-top:8px" onclick="baixarProduto(${i.id})">📥 Baixar ${i.nome}</button>`)}
+function pedidoRejeitado(){clearInterval(intervalo);const s=document.getElementById("statusPedido");s.className="status expirado";s.textContent="❌ Pagamento não aprovado";document.getElementById("contador").textContent="—";document.getElementById("mensagemPedido").textContent="Se acredita que houve um erro, procure o canal oficial de suporte."} function pedidoNaoEncontrado(){clearInterval(intervalo);const s=document.getElementById("statusPedido");s.className="status expirado";s.textContent="Pedido não encontrado"}
+function fecharPedido(){fecharModal("modalPedido")} function atualizarBotaoPedido(){document.getElementById("pedidoButton").style.display=localStorage.getItem("black7_ultimo_pedido")?"inline-block":"none"} function abrirUltimoPedido(){const id=localStorage.getItem("black7_ultimo_pedido");if(!id){toast("Nenhum pedido salvo neste dispositivo.");return}abrirPedido(id)}
 
-  function novaPagina(){
-    rodape();
-    pdf.addPage();
-    pagina++;
-    y=20;
-  }
+function materialDoProduto(p){if(!p.itens)return p.conteudo||[];const l=[p.nome,"BLACK7 • Combo digital",""];p.itens.forEach(id=>{const s=produtoPorId(id);if(s){l.push("========================================",s.nome,"========================================","",...(s.conteudo||[]),"")}});return l}
+function baixarProduto(id){const p=produtoPorId(id);if(!p)return;const conteudo=materialDoProduto(p),{jsPDF}=window.jspdf,pdf=new jsPDF({unit:"mm",format:"a4"}),margem=18,largura=174;let y=20,pagina=1;function rodape(){pdf.setFontSize(8);pdf.setTextColor(130);pdf.text(`BLACK7 • ${p.nome}`,margem,289);pdf.text(`Página ${pagina}`,190,289,{align:"right"});pdf.setTextColor(0)}function nova(){rodape();pdf.addPage();pagina++;y=20}function garantir(e){if(y+e>278)nova()}pdf.setFont("helvetica","bold");pdf.setFontSize(25);pdf.text(pdf.splitTextToSize(p.nome,165),105,78,{align:"center"});pdf.setFont("helvetica","normal");pdf.setFontSize(12);pdf.text(p.gratis?"Material gratuito BLACK7":"Material digital BLACK7",105,112,{align:"center"});pdf.setFontSize(10);pdf.text("Edição 2026",105,122,{align:"center"});pdf.setDrawColor(80);pdf.line(50,134,160,134);pdf.setFontSize(9);pdf.setTextColor(110);pdf.text("Uso pessoal. Não revenda ou redistribua este arquivo.",105,147,{align:"center"});pdf.setTextColor(0);rodape();pdf.addPage();pagina++;y=20;conteudo.forEach((linha,idx)=>{const t=(linha||"").trim();if(!t){y+=4;return}const sec=/^[0-9]+ [—-]/.test(t)||/^CAPÍTULO /.test(t)||/^TEMPLATE /.test(t)||/^CHECKLIST [0-9]+/.test(t)||["INTRODUÇÃO","AVISO","CHECKLIST","CONCLUSÃO","COMO USAR","FICHA DE ACOMPANHAMENTO","OBJETIVO DA SEMANA","3 PRIORIDADES","PLANEJAMENTO","TAREFAS","REVISÃO DA SEMANA"].includes(t)||t.startsWith("====");if(idx===0){garantir(18);pdf.setFont("helvetica","bold");pdf.setFontSize(18);const ls=pdf.splitTextToSize(t,largura);pdf.text(ls,margem,y);y+=ls.length*8+5;return}if(sec){garantir(14);pdf.setFont("helvetica","bold");pdf.setFontSize(13);const ls=pdf.splitTextToSize(t,largura);pdf.text(ls,margem,y);y+=ls.length*6+3;return}garantir(10);pdf.setFont("helvetica","normal");pdf.setFontSize(10.5);const ls=pdf.splitTextToSize(t,largura);pdf.text(ls,margem,y);y+=ls.length*5.2+1.5});rodape();pdf.save(p.nome.replace(/[^\wÀ-ÿ]+/g,"_")+".pdf")}
 
-  function garantir(espaco){
-    if(y+espaco>278) novaPagina();
-  }
+function abrirAdmin(){abrirModal("modalAdmin")} function fecharAdmin(){fecharModal("modalAdmin")}
+async function loginAdmin(){const e=document.getElementById("adminEmail").value.trim(),s=document.getElementById("adminSenha").value;try{await auth.signInWithEmailAndPassword(e,s);toast("Login realizado.")}catch(x){toast("E-mail ou senha incorretos.")}}
+async function sairAdmin(){if(unsubscribeAdmin)unsubscribeAdmin();await auth.signOut();toast("Você saiu da administração.")}
+auth.onAuthStateChanged(u=>{document.getElementById("adminLogin").style.display=u?"none":"block";document.getElementById("painelAdmin").style.display=u?"block":"none";if(u)carregarPedidos()});
+function carregarPedidos(){if(unsubscribeAdmin)unsubscribeAdmin();unsubscribeAdmin=db.collection("pedidos").orderBy("criadoEm","desc").limit(40).onSnapshot(snap=>{const l=document.getElementById("listaPedidosAdmin");if(snap.empty){l.innerHTML='<div class="empty">Nenhum pedido ainda.</div>';return}l.innerHTML="";snap.forEach(doc=>{const p=doc.data(),nomes=(p.produtos||[]).map(i=>i.nome).join(", "),exp=p.expiraEm?.toDate?.(),expirado=p.status==="pendente"&&exp&&exp.getTime()<=Date.now(),data=p.criadoEm?.toDate?.(),dt=data?data.toLocaleString("pt-BR"):"processando...";const ac=p.status==="pendente"?(expirado?`<span class="pill">Prazo encerrado</span><button class="btn red" style="margin-top:8px" onclick="rejeitarPedido('${doc.id}')">Encerrar pedido</button>`:`<button class="btn green" style="margin-top:8px" onclick="aprovarPedido('${doc.id}')">✅ Aprovar</button><button class="btn red" style="margin-top:7px" onclick="rejeitarPedido('${doc.id}')">❌ Rejeitar</button>`):`<span class="pill">${p.status}</span>`;l.innerHTML+=`<div class="adminPedido"><strong>Pedido ${doc.id.substring(0,8).toUpperCase()}</strong><p>${nomes}</p><p>Total: R$ ${moeda(p.total)}</p><p>Criado em: ${dt}</p>${ac}</div>`})},e=>{console.error(e);document.getElementById("listaPedidosAdmin").innerHTML='<div class="empty">Sua conta não tem permissão para listar os pedidos ou ocorreu um erro.</div>'})}
+async function aprovarPedido(id){if(!confirm("Confirma que recebeu o pagamento e deseja liberar o produto?"))return;try{await db.collection("pedidos").doc(id).update({status:"aprovado",aprovadoEm:firebase.firestore.FieldValue.serverTimestamp()});toast("Pedido aprovado.")}catch(e){toast("Não foi possível aprovar.")}}
+async function rejeitarPedido(id){if(!confirm("Deseja encerrar/rejeitar este pedido?"))return;try{await db.collection("pedidos").doc(id).update({status:"rejeitado",rejeitadoEm:firebase.firestore.FieldValue.serverTimestamp()});toast("Pedido encerrado.")}catch(e){toast("Não foi possível alterar.")}}
 
-  pdf.setFont("helvetica","bold");
-  pdf.setFontSize(25);
-  const titulo=pdf.splitTextToSize(p.nome,165);
-  pdf.text(titulo,105,80,{align:"center"});
-  pdf.setFontSize(12);
-  pdf.setFont("helvetica","normal");
-  pdf.text("Material digital BLACK7",105,110,{align:"center"});
-  pdf.setFontSize(10);
-  pdf.text("Edição 2026",105,120,{align:"center"});
-  pdf.setDrawColor(80);
-  pdf.line(50,132,160,132);
-  pdf.setFontSize(9);
-  pdf.setTextColor(110);
-  pdf.text("Uso pessoal do comprador. Conteúdo educativo.",105,145,{align:"center"});
-  pdf.setTextColor(0);
-  rodape();
-  pdf.addPage(); pagina++; y=20;
+function abrirLegal(t){const title=document.getElementById("legalTitulo"),c=document.getElementById("legalConteudo");if(t==="termos"){title.textContent="Termos de uso";c.innerHTML="<p>Os produtos da BLACK7 são materiais digitais para uso pessoal do comprador.</p><ul><li>Os preços exibidos no site são os valores cobrados no pedido.</li><li>A liberação ocorre após a conferência manual do pagamento.</li><li>Não é permitido revender, redistribuir ou apresentar os materiais como criação própria.</li><li>Solicitações relacionadas ao pedido devem ser tratadas pelo canal oficial da loja e conforme a legislação aplicável.</li></ul>"}else{title.textContent="Privacidade";c.innerHTML="<p>Este checkout não solicita nome, telefone ou e-mail do comprador.</p><p>Para processar o pedido, são registrados no Firebase os produtos comprados, valor, status e horários.</p><p>Serviços de hospedagem e do Firebase podem processar dados técnicos necessários ao funcionamento da página conforme suas próprias políticas.</p>"}abrirModal("modalLegal")}
 
-  p.conteudo.forEach((linha,idx)=>{
-    const t=(linha||"").trim();
-    if(!t){ y+=4; return; }
-
-    const ehTituloPrincipal = idx===0;
-    const ehSecao = /^[0-9]+ —/.test(t) || /^CAPÍTULO /.test(t) || /^TEMPLATE /.test(t) || /^CHECKLIST [0-9]+/.test(t) ||
-                    ["INTRODUÇÃO","AVISO","CHECKLIST","CONCLUSÃO","COMO USAR","FICHA DE ACOMPANHAMENTO"].includes(t);
-
-    if(ehTituloPrincipal){
-      garantir(18);
-      pdf.setFont("helvetica","bold");
-      pdf.setFontSize(18);
-      const linhas=pdf.splitTextToSize(t,largura);
-      pdf.text(linhas,margem,y);
-      y+=linhas.length*8+5;
-      return;
-    }
-
-    if(ehSecao){
-      garantir(14);
-      pdf.setFont("helvetica","bold");
-      pdf.setFontSize(13);
-      const linhas=pdf.splitTextToSize(t,largura);
-      pdf.text(linhas,margem,y);
-      y+=linhas.length*6+3;
-      return;
-    }
-
-    garantir(10);
-    pdf.setFont("helvetica","normal");
-    pdf.setFontSize(10.5);
-    const linhas=pdf.splitTextToSize(t,largura);
-    pdf.text(linhas,margem,y);
-    y+=linhas.length*5.2+1.5;
-  });
-
-  rodape();
-  pdf.save(p.nome.replace(/[^\wÀ-ÿ]+/g,"_")+".pdf");
-}
-
-function abrirAdmin(){document.getElementById("modalAdmin").classList.add("aberto")}
-function fecharAdmin(){document.getElementById("modalAdmin").classList.remove("aberto")}
-async function loginAdmin(){
-  const email=document.getElementById("adminEmail").value.trim(),senha=document.getElementById("adminSenha").value;
-  try{await auth.signInWithEmailAndPassword(email,senha);document.getElementById("painelAdmin").style.display="block";carregarPedidos()}
-  catch(e){alert("E-mail ou senha incorretos.")}
-}
-function carregarPedidos(){
-  db.collection("pedidos").orderBy("criadoEm","desc").limit(30).onSnapshot(snapshot=>{
-    const lista=document.getElementById("listaPedidosAdmin");lista.innerHTML="";
-    snapshot.forEach(doc=>{
-      const p=doc.data(),nomes=p.produtos.map(i=>i.nome).join(", ");
-      lista.innerHTML+=`<div class="adminPedido"><strong>Pedido: ${doc.id.substring(0,8).toUpperCase()}</strong><p>Produtos: ${nomes}</p><p>Total: R$ ${moeda(p.total)}</p><p>Status: ${p.status}</p>${p.status==="pendente"?`<button class="aprovar" onclick="aprovarPedido('${doc.id}')">✅ Aprovar</button><button class="rejeitar" onclick="rejeitarPedido('${doc.id}')">❌ Rejeitar</button>`:""}</div>`
-    })
-  })
-}
-async function aprovarPedido(id){if(!confirm("Confirma que recebeu o pagamento?"))return;await db.collection("pedidos").doc(id).update({status:"aprovado",aprovadoEm:firebase.firestore.FieldValue.serverTimestamp()})}
-async function rejeitarPedido(id){if(!confirm("Deseja rejeitar este pedido?"))return;await db.collection("pedidos").doc(id).update({status:"rejeitado"})}
-
-function gerarPixCopiaECola(valor){
-  const merchantAccount=montarCampo("00","BR.GOV.BCB.PIX")+montarCampo("01",CHAVE_PIX);
-  const payload="000201"+montarCampo("26",merchantAccount)+"52040000"+"5303986"+montarCampo("54",valor.toFixed(2))+"5802BR"+montarCampo("59",NOME_RECEBEDOR.substring(0,25))+montarCampo("60",CIDADE_RECEBEDOR.substring(0,15))+montarCampo("62",montarCampo("05","***"))+"6304";
-  return payload+calcularCRC16(payload)
-}
+function gerarPixCopiaECola(valor){const merchantAccount=montarCampo("00","BR.GOV.BCB.PIX")+montarCampo("01",CHAVE_PIX);const payload="000201"+montarCampo("26",merchantAccount)+"52040000"+"5303986"+montarCampo("54",valor.toFixed(2))+"5802BR"+montarCampo("59",NOME_RECEBEDOR.substring(0,25))+montarCampo("60",CIDADE_RECEBEDOR.substring(0,15))+montarCampo("62",montarCampo("05","***"))+"6304";return payload+calcularCRC16(payload)}
 function montarCampo(id,valor){return id+String(valor.length).padStart(2,"0")+valor}
-function calcularCRC16(texto){
-  let crc=0xFFFF;
-  for(let i=0;i<texto.length;i++){crc^=texto.charCodeAt(i)<<8;for(let j=0;j<8;j++){crc=(crc&0x8000)!==0?(crc<<1)^0x1021:crc<<1;crc&=0xFFFF}}
-  return crc.toString(16).toUpperCase().padStart(4,"0")
-}
-function calcularTotal(){return Number(carrinho.reduce((t,p)=>t+p.preco,0).toFixed(2))}
-function moeda(v){return Number(v).toFixed(2).replace(".",",")}
-function fecharPedido(){document.getElementById("modalPedido").classList.remove("aberto")}
+function calcularCRC16(texto){let crc=0xFFFF;for(let i=0;i<texto.length;i++){crc^=texto.charCodeAt(i)<<8;for(let j=0;j<8;j++){crc=(crc&0x8000)!==0?(crc<<1)^0x1021:crc<<1;crc&=0xFFFF}}return crc.toString(16).toUpperCase().padStart(4,"0")}
 
-mostrarProdutos();atualizarCarrinho();
+carregarCarrinho();atualizarCarrinho();renderFiltros();renderizarProdutos();atualizarBotaoPedido();
 </script>
-</body>
-</html>
+</body></html>
