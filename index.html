@@ -1,335 +1,329 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Black7 - Produtos Digitais</title>
 
-    <title>Black7 - Produtos Digitais</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+body {
+    background: #0b0b0b;
+    color: white;
+}
 
-        body {
-            background: #0b0b0b;
-            color: white;
-        }
+header {
+    background: #111;
+    padding: 18px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #292929;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
 
-        header {
-            background: #111;
-            padding: 20px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #292929;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+}
 
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-        }
+.logo span {
+    color: #777;
+}
 
-        .logo span {
-            color: #777;
-        }
+#cartButton {
+    background: white;
+    color: black;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
 
-        #cartButton {
-            background: white;
-            color: black;
-            border: none;
-            padding: 12px 18px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-        }
+.hero {
+    text-align: center;
+    padding: 75px 20px;
+    background: linear-gradient(180deg, #151515, #0b0b0b);
+}
 
-        .hero {
-            text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(180deg, #151515, #0b0b0b);
-        }
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
 
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 15px;
-        }
+.hero p {
+    color: #aaa;
+    font-size: 18px;
+}
 
-        .hero p {
-            color: #aaa;
-            font-size: 18px;
-        }
+.produtos {
+    padding: 50px 8%;
+}
 
-        .produtos {
-            padding: 50px 8%;
-        }
+.produtos h2 {
+    text-align: center;
+    margin-bottom: 35px;
+    font-size: 32px;
+}
 
-        .produtos h2 {
-            text-align: center;
-            margin-bottom: 35px;
-            font-size: 32px;
-        }
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+}
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 25px;
-        }
+.produto {
+    background: #151515;
+    border: 1px solid #292929;
+    border-radius: 14px;
+    overflow: hidden;
+    transition: .25s;
+}
 
-        .produto {
-            background: #151515;
-            border: 1px solid #292929;
-            border-radius: 14px;
-            overflow: hidden;
-            transition: 0.3s;
-        }
+.produto:hover {
+    transform: translateY(-5px);
+    border-color: #555;
+}
 
-        .produto:hover {
-            transform: translateY(-5px);
-            border-color: #555;
-        }
+.imagem {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #202020;
+    font-size: 55px;
+}
 
-        .imagem {
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #202020;
-            font-size: 55px;
-        }
+.info {
+    padding: 20px;
+}
 
-        .info {
-            padding: 20px;
-        }
+.info h3 {
+    margin-bottom: 10px;
+}
 
-        .info h3 {
-            margin-bottom: 10px;
-        }
+.info p {
+    color: #999;
+    font-size: 14px;
+    min-height: 42px;
+    line-height: 1.4;
+}
 
-        .info p {
-            color: #999;
-            font-size: 14px;
-            min-height: 40px;
-        }
+.preco {
+    font-size: 23px;
+    font-weight: bold;
+    margin: 18px 0;
+}
 
-        .preco {
-            font-size: 23px;
-            font-weight: bold;
-            margin: 18px 0;
-        }
+.comprar {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background: white;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-        .comprar {
-            width: 100%;
-            padding: 13px;
-            border: none;
-            border-radius: 8px;
-            background: white;
-            color: black;
-            font-weight: bold;
-            cursor: pointer;
-        }
+.comprar:hover {
+    background: #ddd;
+}
 
-        .comprar:hover {
-            background: #ddd;
-        }
+footer {
+    text-align: center;
+    padding: 35px;
+    color: #777;
+    border-top: 1px solid #222;
+    margin-top: 50px;
+}
 
-        footer {
-            text-align: center;
-            padding: 35px;
-            color: #777;
-            border-top: 1px solid #222;
-            margin-top: 50px;
-        }
+/* CARRINHO */
 
-        /* CARRINHO */
+#carrinho {
+    position: fixed;
+    right: -410px;
+    top: 0;
+    width: 380px;
+    max-width: 92%;
+    height: 100%;
+    background: #111;
+    z-index: 20;
+    padding: 25px;
+    transition: .3s;
+    box-shadow: -5px 0 20px rgba(0,0,0,.5);
+}
 
-        #carrinho {
-            position: fixed;
-            right: -400px;
-            top: 0;
-            width: 360px;
-            max-width: 90%;
-            height: 100%;
-            background: #111;
-            z-index: 20;
-            padding: 25px;
-            transition: 0.3s;
-            box-shadow: -5px 0 20px rgba(0,0,0,0.5);
-        }
+#carrinho.aberto {
+    right: 0;
+}
 
-        #carrinho.aberto {
-            right: 0;
-        }
+.carrinho-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
 
-        .carrinho-topo {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-        }
+#fechar {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
 
-        #fechar {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 25px;
-            cursor: pointer;
-        }
+#listaCarrinho {
+    max-height: 55%;
+    overflow-y: auto;
+}
 
-        #listaCarrinho {
-            max-height: 55%;
-            overflow-y: auto;
-        }
+.item {
+    background: #1c1c1c;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
 
-        .item {
-            background: #1c1c1c;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
+.item button {
+    margin-top: 8px;
+    background: #333;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-        .item button {
-            margin-top: 8px;
-            background: #333;
-            color: white;
-            border: none;
-            padding: 6px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+.total {
+    margin-top: 25px;
+    font-size: 22px;
+    font-weight: bold;
+}
 
-        .total {
-            margin-top: 25px;
-            font-size: 22px;
-            font-weight: bold;
-        }
+#pagamentoPix {
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: #25D366;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-        #pagamentoPix {
-            width: 100%;
-            margin-top: 20px;
-            padding: 14px;
-            border: none;
-            border-radius: 8px;
-            background: #25D366;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-        }
+#pagamentoPix:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+}
 
-        /* MODAL PIX */
+/* PIX */
 
-        #modalPix {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.8);
-            z-index: 50;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
+#modalPix {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.82);
+    z-index: 50;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
 
-        #modalPix.aberto {
-            display: flex;
-        }
+#modalPix.aberto {
+    display: flex;
+}
 
-        .pix-box {
-            width: 420px;
-            max-width: 100%;
-            background: #151515;
-            border: 1px solid #333;
-            border-radius: 16px;
-            padding: 30px;
-            text-align: center;
-        }
+.pix-box {
+    width: 460px;
+    max-width: 100%;
+    background: #151515;
+    border: 1px solid #333;
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+}
 
-        .pix-box h2 {
-            margin-bottom: 10px;
-        }
+.pix-box h2 {
+    margin-bottom: 10px;
+}
 
-        .pix-box p {
-            color: #aaa;
-            margin-bottom: 20px;
-        }
+.pix-box p {
+    color: #aaa;
+    margin-bottom: 20px;
+}
 
-        .qr {
-            width: 220px;
-            height: 220px;
-            margin: 20px auto;
-            background: white;
-            padding: 10px;
-            border-radius: 10px;
-        }
+.codigoPix {
+    background: #222;
+    border: 1px solid #444;
+    padding: 14px;
+    border-radius: 8px;
+    word-break: break-all;
+    font-size: 13px;
+    color: #ddd;
+    margin: 15px 0;
+    max-height: 150px;
+    overflow: auto;
+    text-align: left;
+}
 
-        .qr img {
-            width: 100%;
-            height: 100%;
-        }
+.copiar {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background: white;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-        .codigoPix {
-            background: #222;
-            border: 1px solid #444;
-            padding: 12px;
-            border-radius: 8px;
-            word-break: break-all;
-            font-size: 13px;
-            color: #ddd;
-            margin-bottom: 12px;
-        }
+.fecharPix {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: 1px solid #444;
+    border-radius: 8px;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+}
 
-        .copiar {
-            width: 100%;
-            padding: 13px;
-            border: none;
-            border-radius: 8px;
-            background: white;
-            color: black;
-            font-weight: bold;
-            cursor: pointer;
-        }
+.aviso {
+    margin-top: 15px;
+    font-size: 12px;
+    color: #777 !important;
+}
 
-        .fecharPix {
-            width: 100%;
-            padding: 12px;
-            margin-top: 10px;
-            border: 1px solid #444;
-            border-radius: 8px;
-            background: transparent;
-            color: white;
-            cursor: pointer;
-        }
+@media(max-width:600px) {
 
-        .aviso {
-            margin-top: 15px;
-            font-size: 12px;
-            color: #777 !important;
-        }
+    .hero h1 {
+        font-size: 36px;
+    }
 
-        @media(max-width:600px) {
+    header {
+        padding: 15px 5%;
+    }
 
-            .hero h1 {
-                font-size: 36px;
-            }
+    .produtos {
+        padding: 40px 5%;
+    }
 
-            header {
-                padding: 15px 5%;
-            }
-
-            .produtos {
-                padding: 40px 5%;
-            }
-
-            .pix-box {
-                padding: 20px;
-            }
-        }
-    </style>
+    .pix-box {
+        padding: 20px;
+    }
+}
+</style>
 </head>
 
 <body>
@@ -346,7 +340,6 @@
 
 </header>
 
-
 <section class="hero">
 
     <h1>BLACK7</h1>
@@ -358,13 +351,11 @@
 
 </section>
 
-
 <section class="produtos">
 
     <h2>Produtos em destaque</h2>
 
     <div class="grid">
-
 
         <!-- PRODUTO 1 -->
 
@@ -391,19 +382,14 @@
 
                 <button
                     class="comprar"
-                    onclick="adicionar(
-                        'Guia da Reserva de Emergência',
-                        19.90
-                    )">
-
+                    onclick="adicionar('Guia da Reserva de Emergência', 19.90)"
+                >
                     Adicionar ao carrinho
-
                 </button>
 
             </div>
 
         </div>
-
 
         <!-- PRODUTO 2 -->
 
@@ -421,7 +407,7 @@
 
                 <p>
                     Organize seus gastos e acompanhe
-                    suas finanças.
+                    suas finanças de forma simples.
                 </p>
 
                 <div class="preco">
@@ -430,19 +416,14 @@
 
                 <button
                     class="comprar"
-                    onclick="adicionar(
-                        'Planilha Financeira',
-                        14.90
-                    )">
-
+                    onclick="adicionar('Planilha Financeira', 14.90)"
+                >
                     Adicionar ao carrinho
-
                 </button>
 
             </div>
 
         </div>
-
 
         <!-- PRODUTO 3 -->
 
@@ -469,19 +450,14 @@
 
                 <button
                     class="comprar"
-                    onclick="adicionar(
-                        'Pack de Templates',
-                        24.90
-                    )">
-
+                    onclick="adicionar('Pack de Templates', 24.90)"
+                >
                     Adicionar ao carrinho
-
                 </button>
 
             </div>
 
         </div>
-
 
         <!-- PRODUTO 4 -->
 
@@ -508,13 +484,145 @@
 
                 <button
                     class="comprar"
-                    onclick="adicionar(
-                        'Kit de Estudos',
-                        29.90
-                    )">
-
+                    onclick="adicionar('Kit de Estudos', 29.90)"
+                >
                     Adicionar ao carrinho
+                </button>
 
+            </div>
+
+        </div>
+
+        <!-- PRODUTO 5 -->
+
+        <div class="produto">
+
+            <div class="imagem">
+                💡
+            </div>
+
+            <div class="info">
+
+                <h3>
+                    Guia de Ideias para Renda Extra
+                </h3>
+
+                <p>
+                    Lista de ideias e orientações
+                    para começar projetos digitais.
+                </p>
+
+                <div class="preco">
+                    R$ 17,90
+                </div>
+
+                <button
+                    class="comprar"
+                    onclick="adicionar('Guia de Ideias para Renda Extra', 17.90)"
+                >
+                    Adicionar ao carrinho
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUTO 6 -->
+
+        <div class="produto">
+
+            <div class="imagem">
+                📝
+            </div>
+
+            <div class="info">
+
+                <h3>
+                    Pack de Checklists
+                </h3>
+
+                <p>
+                    Checklists prontos para organizar
+                    tarefas, estudos e projetos.
+                </p>
+
+                <div class="preco">
+                    R$ 12,90
+                </div>
+
+                <button
+                    class="comprar"
+                    onclick="adicionar('Pack de Checklists', 12.90)"
+                >
+                    Adicionar ao carrinho
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUTO 7 -->
+
+        <div class="produto">
+
+            <div class="imagem">
+                💻
+            </div>
+
+            <div class="info">
+
+                <h3>
+                    Kit para Criadores
+                </h3>
+
+                <p>
+                    Materiais digitais para ajudar
+                    na criação de conteúdo.
+                </p>
+
+                <div class="preco">
+                    R$ 22,90
+                </div>
+
+                <button
+                    class="comprar"
+                    onclick="adicionar('Kit para Criadores', 22.90)"
+                >
+                    Adicionar ao carrinho
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUTO 8 -->
+
+        <div class="produto">
+
+            <div class="imagem">
+                🚀
+            </div>
+
+            <div class="info">
+
+                <h3>
+                    Kit de Organização Digital
+                </h3>
+
+                <p>
+                    Modelos para organizar metas,
+                    tarefas e projetos.
+                </p>
+
+                <div class="preco">
+                    R$ 16,90
+                </div>
+
+                <button
+                    class="comprar"
+                    onclick="adicionar('Kit de Organização Digital', 16.90)"
+                >
+                    Adicionar ao carrinho
                 </button>
 
             </div>
@@ -525,13 +633,11 @@
 
 </section>
 
-
 <footer>
 
     © 2026 Black7 — Todos os direitos reservados.
 
 </footer>
-
 
 <!-- CARRINHO -->
 
@@ -549,7 +655,6 @@
 
     </div>
 
-
     <div id="listaCarrinho">
 
         <p>
@@ -557,7 +662,6 @@
         </p>
 
     </div>
-
 
     <div class="total">
 
@@ -569,17 +673,17 @@
 
     </div>
 
-
     <button
         id="pagamentoPix"
-        onclick="abrirPix()">
+        onclick="abrirPix()"
+        disabled
+    >
 
         💚 Pagar com Pix
 
     </button>
 
 </div>
-
 
 <!-- MODAL PIX -->
 
@@ -598,307 +702,544 @@
             </strong>
         </p>
 
-
-        <!--  -->
-
-        <div class="qr">
-
-            <img
-                src=""
-                alt="PIX COPIA E COLA">
-
+        <div
+            class="codigoPix"
+            id="codigoPix"
+        >
+            O código Pix será gerado aqui.
         </div>
-
-
-        <div class="codigoPix">
-
-            BLACK7
-
-        </div>
-
 
         <button
             class="copiar"
-            onclick="copiarPix()">
-
+            onclick="copiarPix()"
+        >
             📋 Copiar código Pix
-
         </button>
-
 
         <button
             class="fecharPix"
-            onclick="fecharPix()">
-
+            onclick="fecharPix()"
+        >
             Fechar
-
         </button>
 
-
         <p class="aviso">
-
-            APENAS PIX COPIAR E COLAR
-
+            Confira o valor e o destinatário no aplicativo
+            do seu banco antes de confirmar o pagamento.
         </p>
 
     </div>
 
 </div>
 
-
 <script>
 
-    let carrinho = [];
+let carrinho = [];
+
+/*
+====================================
+CONFIGURAÇÃO DO PIX
+====================================
+*/
+
+const CHAVE_PIX =
+"bb8a569e-2f49-481f-a97a-38977551cbc9";
+
+const NOME_RECEBEDOR =
+"ISAC FERNANDES DA SILVA";
+
+const CIDADE_RECEBEDOR =
+"PINDAMONHANGA";
 
 
-    /* ADICIONAR PRODUTO */
+/*
+====================================
+ADICIONAR PRODUTO
+====================================
+*/
 
-    function adicionar(nome, preco) {
+function adicionar(nome, preco) {
 
-        carrinho.push({
+    carrinho.push({
+        nome: nome,
+        preco: preco
+    });
 
-            nome: nome,
-            preco: preco
+    atualizarCarrinho();
 
-        });
-
-
-        atualizarCarrinho();
-
-
-        document
-            .getElementById("carrinho")
-            .classList
-            .add("aberto");
-
-    }
-
-
-    /* ATUALIZAR CARRINHO */
-
-    function atualizarCarrinho() {
-
-        const lista =
-            document.getElementById(
-                "listaCarrinho"
-            );
+    document
+        .getElementById("carrinho")
+        .classList
+        .add("aberto");
+}
 
 
-        const quantidade =
-            document.getElementById(
-                "quantidade"
-            );
+/*
+====================================
+ATUALIZAR CARRINHO
+====================================
+*/
+
+function atualizarCarrinho() {
+
+    const lista =
+        document.getElementById("listaCarrinho");
+
+    const quantidade =
+        document.getElementById("quantidade");
+
+    const totalElemento =
+        document.getElementById("total");
+
+    const botaoPix =
+        document.getElementById("pagamentoPix");
 
 
-        const totalElemento =
-            document.getElementById(
-                "total"
-            );
+    quantidade.innerText =
+        carrinho.length;
 
 
-        quantidade.innerText =
-            carrinho.length;
+    if (carrinho.length === 0) {
 
-
-        if (carrinho.length === 0) {
-
-            lista.innerHTML =
-                "<p>Seu carrinho está vazio.</p>";
-
-            totalElemento.innerText =
-                "0,00";
-
-            return;
-
-        }
-
-
-        lista.innerHTML = "";
-
-        let total = 0;
-
-
-        carrinho.forEach(
-            (produto, index) => {
-
-                total += produto.preco;
-
-
-                const item =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                item.className =
-                    "item";
-
-
-                item.innerHTML = `
-
-                    <strong>
-                        ${produto.nome}
-                    </strong>
-
-                    <br>
-
-                    R$
-                    ${produto.preco
-                        .toFixed(2)
-                        .replace(".", ",")}
-
-                    <br>
-
-                    <button
-                        onclick="remover(${index})">
-
-                        Remover
-
-                    </button>
-
-                `;
-
-
-                lista.appendChild(item);
-
-            }
-        );
-
+        lista.innerHTML =
+            "<p>Seu carrinho está vazio.</p>";
 
         totalElemento.innerText =
-            total
-                .toFixed(2)
-                .replace(".", ",");
+            "0,00";
 
+        botaoPix.disabled =
+            true;
+
+        return;
     }
 
 
-    /* REMOVER */
+    lista.innerHTML = "";
 
-    function remover(index) {
-
-        carrinho.splice(
-            index,
-            1
-        );
+    let total = 0;
 
 
-        atualizarCarrinho();
+    carrinho.forEach(
+        (produto, index) => {
 
-    }
-
-
-    /* ABRIR CARRINHO */
-
-    document
-        .getElementById("cartButton")
-        .addEventListener(
-            "click",
-            function() {
-
-                document
-                    .getElementById("carrinho")
-                    .classList
-                    .add("aberto");
-
-            }
-        );
+            total += produto.preco;
 
 
-    /* FECHAR CARRINHO */
+            const item =
+                document.createElement("div");
 
-    document
-        .getElementById("fechar")
-        .addEventListener(
-            "click",
-            function() {
-
-                document
-                    .getElementById("carrinho")
-                    .classList
-                    .remove("aberto");
-
-            }
-        );
+            item.className =
+                "item";
 
 
-    /* ABRIR PIX */
+            item.innerHTML = `
 
-    function abrirPix() {
+                <strong>
+                    ${escapeHtml(produto.nome)}
+                </strong>
 
-        if (carrinho.length === 0) {
+                <br>
 
-            alert(
-                "Seu carrinho está vazio!"
-            );
+                R$
+                ${formatarMoeda(produto.preco)}
 
-            return;
+                <br>
+
+                <button
+                    onclick="remover(${index})"
+                >
+                    Remover
+                </button>
+
+            `;
+
+
+            lista.appendChild(item);
 
         }
+    );
 
 
-        let total = 0;
+    totalElemento.innerText =
+        formatarMoeda(total);
+
+    botaoPix.disabled =
+        false;
+}
 
 
-        carrinho.forEach(
-            produto => {
+/*
+====================================
+REMOVER PRODUTO
+====================================
+*/
 
-                total += produto.preco;
+function remover(index) {
 
-            }
+    carrinho.splice(
+        index,
+        1
+    );
+
+    atualizarCarrinho();
+}
+
+
+/*
+====================================
+ABRIR CARRINHO
+====================================
+*/
+
+document
+    .getElementById("cartButton")
+    .addEventListener(
+        "click",
+        function() {
+
+            document
+                .getElementById("carrinho")
+                .classList
+                .add("aberto");
+
+        }
+    );
+
+
+/*
+====================================
+FECHAR CARRINHO
+====================================
+*/
+
+document
+    .getElementById("fechar")
+    .addEventListener(
+        "click",
+        function() {
+
+            document
+                .getElementById("carrinho")
+                .classList
+                .remove("aberto");
+
+        }
+    );
+
+
+/*
+====================================
+ABRIR PIX
+====================================
+*/
+
+function abrirPix() {
+
+    if (carrinho.length === 0) {
+
+        alert(
+            "Seu carrinho está vazio!"
+        );
+
+        return;
+    }
+
+
+    let total = 0;
+
+
+    carrinho.forEach(
+        produto => {
+
+            total += produto.preco;
+
+        }
+    );
+
+
+    total =
+        Number(
+            total.toFixed(2)
         );
 
 
+    document
+        .getElementById("pixTotal")
+        .innerText =
+        formatarMoeda(total);
+
+
+    const codigo =
+        gerarPixCopiaECola(total);
+
+
+    document
+        .getElementById("codigoPix")
+        .innerText =
+        codigo;
+
+
+    document
+        .getElementById("modalPix")
+        .classList
+        .add("aberto");
+}
+
+
+/*
+====================================
+FECHAR PIX
+====================================
+*/
+
+function fecharPix() {
+
+    document
+        .getElementById("modalPix")
+        .classList
+        .remove("aberto");
+}
+
+
+/*
+====================================
+COPIAR PIX
+====================================
+*/
+
+function copiarPix() {
+
+    const codigo =
         document
-            .getElementById("pixTotal")
-            .innerText =
-            total
-                .toFixed(2)
-                .replace(".", ",");
+        .getElementById("codigoPix")
+        .innerText;
 
 
-        document
-            .getElementById("modalPix")
-            .classList
-            .add("aberto");
+    navigator
+        .clipboard
+        .writeText(codigo)
+        .then(
+            function() {
 
-    }
+                alert(
+                    "Código Pix copiado!"
+                );
 
+            }
+        )
+        .catch(
+            function() {
 
-    /* FECHAR PIX */
-
-    function fecharPix() {
-
-        document
-            .getElementById("modalPix")
-            .classList
-            .remove("aberto");
-
-    }
-
-
-    /* COPIAR PIX */
-
-    function copiarPix() {
-
-        const codigo =
-            "00020101021126580014br.gov.bcb.pix0136bb8a569e-2f49-481f-a97a-38977551cbc95204000053039865802BR5923ISAC FERNANDES DA SILVA6013PINDAMONHANGA62070503***6304912E";
-
-
-        navigator
-            .clipboard
-            .writeText(codigo)
-            .then(
-                function() {
-
-                    alert(
-                        "Código Pix copiado!"
+                const area =
+                    document.createElement(
+                        "textarea"
                     );
 
-                }
-            );
+                area.value =
+                    codigo;
 
+                document.body.appendChild(
+                    area
+                );
+
+                area.select();
+
+                document.execCommand(
+                    "copy"
+                );
+
+                area.remove();
+
+                alert(
+                    "Código Pix copiado!"
+                );
+
+            }
+        );
+}
+
+
+/*
+====================================
+GERAR PIX COPIA E COLA
+====================================
+*/
+
+function gerarPixCopiaECola(valor) {
+
+    const merchantAccount =
+        montarCampo(
+            "00",
+            "BR.GOV.BCB.PIX"
+        )
+        +
+        montarCampo(
+            "01",
+            CHAVE_PIX
+        );
+
+
+    const payloadSemCRC =
+
+        "000201" +
+
+        montarCampo(
+            "26",
+            merchantAccount
+        ) +
+
+        "52040000" +
+
+        "5303986" +
+
+        montarCampo(
+            "54",
+            valor.toFixed(2)
+        ) +
+
+        "5802BR" +
+
+        montarCampo(
+            "59",
+            NOME_RECEBEDOR.substring(
+                0,
+                25
+            )
+        ) +
+
+        montarCampo(
+            "60",
+            CIDADE_RECEBEDOR.substring(
+                0,
+                15
+            )
+        ) +
+
+        montarCampo(
+            "62",
+            montarCampo(
+                "05",
+                "***"
+            )
+        ) +
+
+        "6304";
+
+
+    return (
+        payloadSemCRC +
+        calcularCRC16(payloadSemCRC)
+    );
+}
+
+
+/*
+====================================
+MONTAR CAMPO PIX
+====================================
+*/
+
+function montarCampo(id, valor) {
+
+    return (
+        id +
+        String(valor.length)
+            .padStart(2, "0") +
+        valor
+    );
+}
+
+
+/*
+====================================
+CRC16
+====================================
+*/
+
+function calcularCRC16(texto) {
+
+    let crc =
+        0xFFFF;
+
+
+    for (
+        let i = 0;
+        i < texto.length;
+        i++
+    ) {
+
+        crc ^=
+            texto.charCodeAt(i)
+            << 8;
+
+
+        for (
+            let j = 0;
+            j < 8;
+            j++
+        ) {
+
+            if (
+                (crc & 0x8000) !== 0
+            ) {
+
+                crc =
+                    (crc << 1)
+                    ^ 0x1021;
+
+            } else {
+
+                crc <<=
+                    1;
+
+            }
+
+
+            crc &=
+                0xFFFF;
+        }
     }
+
+
+    return crc
+        .toString(16)
+        .toUpperCase()
+        .padStart(4, "0");
+}
+
+
+/*
+====================================
+FORMATAR DINHEIRO
+====================================
+*/
+
+function formatarMoeda(valor) {
+
+    return valor
+        .toFixed(2)
+        .replace(".", ",");
+}
+
+
+/*
+====================================
+SEGURANÇA HTML
+====================================
+*/
+
+function escapeHtml(texto) {
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+    div.textContent =
+        texto;
+
+    return div.innerHTML;
+}
 
 </script>
 
