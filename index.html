@@ -1,326 +1,362 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Black7 - Produtos Digitais</title>
+
+<title>BLACK7 - Produtos Digitais</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
 }
 
-body {
-    background: #0b0b0b;
-    color: white;
+body{
+    background:#080808;
+    color:#fff;
 }
 
-header {
-    background: #111;
-    padding: 18px 8%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #292929;
-    position: sticky;
-    top: 0;
-    z-index: 10;
+header{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:#111;
+    padding:18px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #292929;
 }
 
-.logo {
-    font-size: 28px;
-    font-weight: bold;
+.logo{
+    font-size:28px;
+    font-weight:bold;
 }
 
-.logo span {
-    color: #777;
+.logo span{
+    color:#777;
 }
 
-#cartButton {
-    background: white;
-    color: black;
-    border: none;
-    padding: 12px 18px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
+button{
+    cursor:pointer;
 }
 
-.hero {
-    text-align: center;
-    padding: 75px 20px;
-    background: linear-gradient(180deg, #151515, #0b0b0b);
+#cartButton{
+    border:0;
+    padding:12px 18px;
+    border-radius:8px;
+    font-weight:bold;
 }
 
-.hero h1 {
-    font-size: 48px;
-    margin-bottom: 15px;
+.hero{
+    text-align:center;
+    padding:80px 20px;
+    background:linear-gradient(#151515,#080808);
 }
 
-.hero p {
-    color: #aaa;
-    font-size: 18px;
+.hero h1{
+    font-size:52px;
+    margin-bottom:12px;
 }
 
-.produtos {
-    padding: 50px 8%;
+.hero p{
+    color:#aaa;
+    font-size:18px;
 }
 
-.produtos h2 {
-    text-align: center;
-    margin-bottom: 35px;
-    font-size: 32px;
+.produtos{
+    padding:50px 7%;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 25px;
+.produtos h2{
+    text-align:center;
+    margin-bottom:35px;
+    font-size:32px;
 }
 
-.produto {
-    background: #151515;
-    border: 1px solid #292929;
-    border-radius: 14px;
-    overflow: hidden;
-    transition: .25s;
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:22px;
 }
 
-.produto:hover {
-    transform: translateY(-5px);
-    border-color: #555;
+.produto{
+    background:#151515;
+    border:1px solid #292929;
+    border-radius:14px;
+    overflow:hidden;
+    transition:.2s;
 }
 
-.imagem {
-    height: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #202020;
-    font-size: 55px;
+.produto:hover{
+    transform:translateY(-5px);
+    border-color:#555;
 }
 
-.info {
-    padding: 20px;
+.imagem{
+    height:170px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#202020;
+    font-size:55px;
 }
 
-.info h3 {
-    margin-bottom: 10px;
+.info{
+    padding:20px;
 }
 
-.info p {
-    color: #999;
-    font-size: 14px;
-    min-height: 42px;
-    line-height: 1.4;
+.info h3{
+    margin-bottom:10px;
 }
 
-.preco {
-    font-size: 23px;
-    font-weight: bold;
-    margin: 18px 0;
+.info p{
+    color:#999;
+    font-size:14px;
+    min-height:55px;
+    line-height:1.5;
 }
 
-.comprar {
-    width: 100%;
-    padding: 13px;
-    border: none;
-    border-radius: 8px;
-    background: white;
-    color: black;
-    font-weight: bold;
-    cursor: pointer;
+.preco{
+    margin:16px 0;
+    font-size:22px;
+    font-weight:bold;
 }
 
-.comprar:hover {
-    background: #ddd;
+.comprar{
+    width:100%;
+    padding:13px;
+    border:0;
+    border-radius:8px;
+    font-weight:bold;
 }
 
-footer {
-    text-align: center;
-    padding: 35px;
-    color: #777;
-    border-top: 1px solid #222;
-    margin-top: 50px;
+.comprar:hover{
+    background:#ddd;
+}
+
+footer{
+    margin-top:50px;
+    padding:40px;
+    color:#777;
+    text-align:center;
+    border-top:1px solid #222;
 }
 
 /* CARRINHO */
 
-#carrinho {
-    position: fixed;
-    right: -410px;
-    top: 0;
-    width: 380px;
-    max-width: 92%;
-    height: 100%;
-    background: #111;
-    z-index: 20;
-    padding: 25px;
-    transition: .3s;
-    box-shadow: -5px 0 20px rgba(0,0,0,.5);
+#carrinho{
+    position:fixed;
+    right:-430px;
+    top:0;
+    width:400px;
+    max-width:94%;
+    height:100vh;
+    background:#111;
+    z-index:50;
+    padding:25px;
+    transition:.3s;
+    box-shadow:-8px 0 25px #000;
 }
 
-#carrinho.aberto {
-    right: 0;
+#carrinho.aberto{
+    right:0;
 }
 
-.carrinho-topo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
+.topoCarrinho{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:25px;
 }
 
-#fechar {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 25px;
-    cursor: pointer;
+#fecharCarrinho{
+    background:none;
+    border:0;
+    color:#fff;
+    font-size:24px;
 }
 
-#listaCarrinho {
-    max-height: 55%;
-    overflow-y: auto;
+.itemCarrinho{
+    padding:14px;
+    background:#1c1c1c;
+    border-radius:8px;
+    margin-bottom:10px;
 }
 
-.item {
-    background: #1c1c1c;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 10px;
+.remover{
+    margin-top:8px;
+    border:0;
+    padding:6px 10px;
+    border-radius:5px;
 }
 
-.item button {
-    margin-top: 8px;
-    background: #333;
-    color: white;
-    border: none;
-    padding: 6px 10px;
-    border-radius: 5px;
-    cursor: pointer;
+.total{
+    font-size:22px;
+    font-weight:bold;
+    margin-top:20px;
 }
 
-.total {
-    margin-top: 25px;
-    font-size: 22px;
-    font-weight: bold;
+#pagar{
+    margin-top:20px;
+    width:100%;
+    padding:14px;
+    border:0;
+    border-radius:8px;
+    background:#25D366;
+    color:white;
+    font-weight:bold;
 }
 
-#pagamentoPix {
-    width: 100%;
-    margin-top: 20px;
-    padding: 14px;
-    border: none;
-    border-radius: 8px;
-    background: #25D366;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
+/* MODAL */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.85);
+    z-index:100;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
 }
 
-#pagamentoPix:disabled {
-    opacity: .45;
-    cursor: not-allowed;
+.modal.aberto{
+    display:flex;
 }
 
-/* PIX */
-
-#modalPix {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.82);
-    z-index: 50;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+.caixa{
+    background:#151515;
+    border:1px solid #333;
+    width:500px;
+    max-width:100%;
+    max-height:90vh;
+    overflow:auto;
+    padding:28px;
+    border-radius:15px;
 }
 
-#modalPix.aberto {
-    display: flex;
+.caixa h2{
+    margin-bottom:15px;
 }
 
-.pix-box {
-    width: 460px;
-    max-width: 100%;
-    background: #151515;
-    border: 1px solid #333;
-    border-radius: 16px;
-    padding: 30px;
-    text-align: center;
+.codigoPix{
+    background:#222;
+    padding:14px;
+    border-radius:8px;
+    margin:15px 0;
+    word-break:break-all;
+    font-size:12px;
 }
 
-.pix-box h2 {
-    margin-bottom: 10px;
+.btn{
+    width:100%;
+    padding:13px;
+    border:0;
+    border-radius:8px;
+    margin-top:8px;
+    font-weight:bold;
 }
 
-.pix-box p {
-    color: #aaa;
-    margin-bottom: 20px;
+.btnBranco{
+    background:#fff;
+    color:#000;
 }
 
-.codigoPix {
-    background: #222;
-    border: 1px solid #444;
-    padding: 14px;
-    border-radius: 8px;
-    word-break: break-all;
-    font-size: 13px;
-    color: #ddd;
-    margin: 15px 0;
-    max-height: 150px;
-    overflow: auto;
-    text-align: left;
+.btnVerde{
+    background:#25D366;
+    color:#fff;
 }
 
-.copiar {
-    width: 100%;
-    padding: 13px;
-    border: none;
-    border-radius: 8px;
-    background: white;
-    color: black;
-    font-weight: bold;
-    cursor: pointer;
+.btnCinza{
+    background:#333;
+    color:#fff;
 }
 
-.fecharPix {
-    width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-    border: 1px solid #444;
-    border-radius: 8px;
-    background: transparent;
-    color: white;
-    cursor: pointer;
+.status{
+    padding:15px;
+    border-radius:8px;
+    margin:15px 0;
+    text-align:center;
+    font-weight:bold;
 }
 
-.aviso {
-    margin-top: 15px;
-    font-size: 12px;
-    color: #777 !important;
+.pendente{
+    background:#4b3b00;
+    color:#ffd85a;
 }
 
-@media(max-width:600px) {
+.aprovado{
+    background:#073d18;
+    color:#64ff91;
+}
 
-    .hero h1 {
-        font-size: 36px;
-    }
+.expirado{
+    background:#4a1010;
+    color:#ff7777;
+}
 
-    header {
-        padding: 15px 5%;
-    }
+#contador{
+    font-size:28px;
+    font-weight:bold;
+    text-align:center;
+    margin:15px;
+}
 
-    .produtos {
-        padding: 40px 5%;
-    }
+.codigoPedido{
+    text-align:center;
+    background:#222;
+    padding:12px;
+    border-radius:8px;
+    margin:12px 0;
+}
 
-    .pix-box {
-        padding: 20px;
+/* ADMIN */
+
+.admin-link{
+    margin-top:20px;
+    font-size:12px;
+    color:#444;
+    cursor:pointer;
+    text-align:center;
+}
+
+.adminPedido{
+    background:#222;
+    border-radius:10px;
+    padding:15px;
+    margin:12px 0;
+}
+
+.adminPedido p{
+    margin:5px 0;
+    color:#ccc;
+}
+
+.aprovar{
+    background:#25D366;
+    border:0;
+    padding:9px 12px;
+    border-radius:6px;
+    font-weight:bold;
+    margin-top:8px;
+}
+
+.rejeitar{
+    background:#aa3333;
+    color:white;
+    border:0;
+    padding:9px 12px;
+    border-radius:6px;
+    margin-left:6px;
+}
+
+@media(max-width:600px){
+    .hero h1{
+        font-size:38px;
     }
 }
 </style>
@@ -330,916 +366,1636 @@ footer {
 
 <header>
 
-    <div class="logo">
-        BLACK<span>7</span>
-    </div>
+<div class="logo">
+BLACK<span>7</span>
+</div>
 
-    <button id="cartButton">
-        🛒 Carrinho (<span id="quantidade">0</span>)
-    </button>
+<button id="cartButton">
+🛒 Carrinho (<span id="qtd">0</span>)
+</button>
 
 </header>
 
+
 <section class="hero">
 
-    <h1>BLACK7</h1>
+<h1>BLACK7</h1>
 
-    <p>
-        Produtos digitais para você aprender,
-        criar e evoluir.
-    </p>
+<p>
+Produtos digitais para aprender, criar e evoluir.
+</p>
 
 </section>
+
 
 <section class="produtos">
 
-    <h2>Produtos em destaque</h2>
+<h2>Produtos digitais</h2>
 
-    <div class="grid">
-
-        <!-- PRODUTO 1 -->
-
-        <div class="produto">
-
-            <div class="imagem">
-                📘
-            </div>
-
-            <div class="info">
-
-                <h3>
-                    Guia da Reserva de Emergência
-                </h3>
-
-                <p>
-                    Material digital para aprender
-                    conceitos básicos de organização financeira.
-                </p>
-
-                <div class="preco">
-                    R$ 19,90
-                </div>
-
-                <button
-                    class="comprar"
-                    onclick="adicionar('Guia da Reserva de Emergência', 19.90)"
-                >
-                    Adicionar ao carrinho
-                </button>
-
-            </div>
-
-        </div>
-
-        <!-- PRODUTO 2 -->
-
-        <div class="produto">
-
-            <div class="imagem">
-                📊
-            </div>
-
-            <div class="info">
-
-                <h3>
-                    Planilha Financeira
-                </h3>
-
-                <p>
-                    Organize seus gastos e acompanhe
-                    suas finanças de forma simples.
-                </p>
-
-                <div class="preco">
-                    R$ 14,90
-                </div>
-
-                <button
-                    class="comprar"
-                    onclick="adicionar('Planilha Financeira', 14.90)"
-                >
-                    Adicionar ao carrinho
-                </button>
-
-            </div>
-
-        </div>
-
-        <!-- PRODUTO 3 -->
-
-        <div class="produto">
-
-            <div class="imagem">
-                🎨
-            </div>
-
-            <div class="info">
-
-                <h3>
-                    Pack de Templates
-                </h3>
-
-                <p>
-                    Templates digitais para seus
-                    projetos e trabalhos.
-                </p>
-
-                <div class="preco">
-                    R$ 24,90
-                </div>
-
-                <button
-                    class="comprar"
-                    onclick="adicionar('Pack de Templates', 24.90)"
-                >
-                    Adicionar ao carrinho
-                </button>
-
-            </div>
-
-        </div>
-
-        <!-- PRODUTO 4 -->
-
-        <div class="produto">
-
-            <div class="imagem">
-                📚
-            </div>
-
-            <div class="info">
-
-                <h3>
-                    Kit de Estudos
-                </h3>
-
-                <p>
-                    Materiais digitais para ajudar
-                    na organização dos estudos.
-                </p>
-
-                <div class="preco">
-                    R$ 29,90
-                </div>
-
-                <button
-                    class="comprar"
-                    onclick="adicionar('Kit de Estudos', 29.90)"
-                >
-                    Adicionar ao carrinho
-                </button>
-
-            </div>
-
-        </div>
-
-        <!-- PRODUTO 5 -->
-
-        <div class="produto">
-
-            <div class="imagem">
-                💡
-            </div>
-
-            <div class="info">
-
-                <h3>
-                    Guia de Ideias para Renda Extra
-                </h3>
-
-                <p>
-                    Lista de ideias e orientações
-                    para começar projetos digitais.
-                </p>
-
-                <div class="preco">
-                    R$ 17,90
-                </div>
-
-                <button
-                    class="comprar"
-                    onclick="adicionar('Guia de Ideias para Renda Extra', 17.90)"
-                >
-                    Adicionar ao carrinho
-                </button>
-
-            </div>
-
-        </div>
-
-        <!-- PRODUTO 6 -->
-
-        <div class="produto">
-
-            <div class="imagem">
-                📝
-            </div>
-
-            <div class="info">
-
-                <h3>
-                    Pack de Checklists
-                </h3>
-
-                <p>
-                    Checklists prontos para organizar
-                    tarefas, estudos e projetos.
-                </p>
-
-                <div class="preco">
-                    R$ 12,90
-                </div>
-
-                <button
-                    class="comprar"
-                    onclick="adicionar('Pack de Checklists', 12.90)"
-                >
-                    Adicionar ao carrinho
-                </button>
-
-            </div>
-
-        </div>
-
-        <!-- PRODUTO 7 -->
-
-        <div class="produto">
-
-            <div class="imagem">
-                💻
-            </div>
-
-            <div class="info">
-
-                <h3>
-                    Kit para Criadores
-                </h3>
-
-                <p>
-                    Materiais digitais para ajudar
-                    na criação de conteúdo.
-                </p>
-
-                <div class="preco">
-                    R$ 22,90
-                </div>
-
-                <button
-                    class="comprar"
-                    onclick="adicionar('Kit para Criadores', 22.90)"
-                >
-                    Adicionar ao carrinho
-                </button>
-
-            </div>
-
-        </div>
-
-        <!-- PRODUTO 8 -->
-
-        <div class="produto">
-
-            <div class="imagem">
-                🚀
-            </div>
-
-            <div class="info">
-
-                <h3>
-                    Kit de Organização Digital
-                </h3>
-
-                <p>
-                    Modelos para organizar metas,
-                    tarefas e projetos.
-                </p>
-
-                <div class="preco">
-                    R$ 16,90
-                </div>
-
-                <button
-                    class="comprar"
-                    onclick="adicionar('Kit de Organização Digital', 16.90)"
-                >
-                    Adicionar ao carrinho
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
+<div class="grid" id="produtos"></div>
 
 </section>
 
+
 <footer>
 
-    © 2026 Black7 — Todos os direitos reservados.
+© 2026 BLACK7 — Todos os direitos reservados.
+
+<div class="admin-link" onclick="abrirAdmin()">
+Administração
+</div>
 
 </footer>
+
 
 <!-- CARRINHO -->
 
 <div id="carrinho">
 
-    <div class="carrinho-topo">
+<div class="topoCarrinho">
 
-        <h2>
-            Seu carrinho
-        </h2>
+<h2>Seu carrinho</h2>
 
-        <button id="fechar">
-            ✕
-        </button>
-
-    </div>
-
-    <div id="listaCarrinho">
-
-        <p>
-            Seu carrinho está vazio.
-        </p>
-
-    </div>
-
-    <div class="total">
-
-        Total:
-        R$
-        <span id="total">
-            0,00
-        </span>
-
-    </div>
-
-    <button
-        id="pagamentoPix"
-        onclick="abrirPix()"
-        disabled
-    >
-
-        💚 Pagar com Pix
-
-    </button>
+<button id="fecharCarrinho">
+✕
+</button>
 
 </div>
 
-<!-- MODAL PIX -->
+<div id="listaCarrinho">
+Carrinho vazio.
+</div>
 
-<div id="modalPix">
+<div class="total">
 
-    <div class="pix-box">
-
-        <h2>
-            💚 Pagamento via Pix
-        </h2>
-
-        <p>
-            Total do pedido:
-            <strong>
-                R$ <span id="pixTotal">0,00</span>
-            </strong>
-        </p>
-
-        <div
-            class="codigoPix"
-            id="codigoPix"
-        >
-            O código Pix será gerado aqui.
-        </div>
-
-        <button
-            class="copiar"
-            onclick="copiarPix()"
-        >
-            📋 Copiar código Pix
-        </button>
-
-        <button
-            class="fecharPix"
-            onclick="fecharPix()"
-        >
-            Fechar
-        </button>
-
-        <p class="aviso">
-            Confira o valor e o destinatário no aplicativo
-            do seu banco antes de confirmar o pagamento.
-        </p>
-
-    </div>
+Total:
+R$ <span id="total">0,00</span>
 
 </div>
+
+<button
+id="pagar"
+onclick="iniciarPagamento()"
+>
+💚 Pagar com Pix
+</button>
+
+</div>
+
+
+<!-- PAGAMENTO -->
+
+<div class="modal" id="modalPagamento">
+
+<div class="caixa">
+
+<h2>💚 Pagamento via Pix</h2>
+
+<p>
+Valor:
+<strong>
+R$ <span id="valorPix"></span>
+</strong>
+</p>
+
+<div class="codigoPix" id="codigoPix"></div>
+
+<button
+class="btn btnBranco"
+onclick="copiarPix()"
+>
+📋 Copiar Pix
+</button>
+
+<button
+class="btn btnVerde"
+onclick="criarPedido()"
+>
+✅ Já realizei o pagamento
+</button>
+
+<button
+class="btn btnCinza"
+onclick="fecharModalPagamento()"
+>
+Fechar
+</button>
+
+</div>
+
+</div>
+
+
+<!-- STATUS DO PEDIDO -->
+
+<div class="modal" id="modalPedido">
+
+<div class="caixa">
+
+<h2>Pedido recebido</h2>
+
+<div class="codigoPedido">
+
+Pedido:
+
+<strong id="numeroPedido"></strong>
+
+</div>
+
+<div id="statusPedido"
+class="status pendente">
+
+⏳ Aguardando aprovação
+
+</div>
+
+<p style="text-align:center;color:#aaa">
+
+Tempo restante para aprovação:
+
+</p>
+
+<div id="contador">
+30:00
+</div>
+
+<p style="text-align:center;color:#888">
+
+Seu pagamento será conferido manualmente.
+
+</p>
+
+<div id="downloads"></div>
+
+<button
+class="btn btnCinza"
+onclick="fecharPedido()"
+>
+Fechar
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ADMIN LOGIN -->
+
+<div class="modal" id="modalAdmin">
+
+<div class="caixa">
+
+<h2>🔐 Administração BLACK7</h2>
+
+<input
+id="adminEmail"
+type="email"
+placeholder="E-mail do administrador"
+style="
+width:100%;
+padding:13px;
+margin:7px 0;
+border-radius:7px;
+border:0;
+">
+
+<input
+id="adminSenha"
+type="password"
+placeholder="Senha"
+style="
+width:100%;
+padding:13px;
+margin:7px 0;
+border-radius:7px;
+border:0;
+">
+
+<button
+class="btn btnBranco"
+onclick="loginAdmin()"
+>
+Entrar
+</button>
+
+<button
+class="btn btnCinza"
+onclick="fecharAdmin()"
+>
+Fechar
+</button>
+
+<div id="painelAdmin" style="display:none">
+
+<hr style="margin:25px 0;border-color:#333">
+
+<h3>Pedidos</h3>
+
+<div id="listaPedidosAdmin"></div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- FIREBASE -->
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+
+
+<!-- PDF -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 
 <script>
 
+/*
+===================================================
+CONFIGURAÇÃO FIREBASE
+===================================================
+
+PEGUE ESSES DADOS NO FIREBASE.
+
+NÃO USE OS VALORES ABAIXO.
+*/
+
+const firebaseConfig = {
+
+    apiKey: "COLOQUE_AQUI",
+
+    authDomain: "COLOQUE_AQUI",
+
+    projectId: "COLOQUE_AQUI",
+
+    storageBucket: "COLOQUE_AQUI",
+
+    messagingSenderId: "COLOQUE_AQUI",
+
+    appId: "COLOQUE_AQUI"
+
+};
+
+
+firebase.initializeApp(firebaseConfig);
+
+const db = firebase.firestore();
+
+const auth = firebase.auth();
+
+
+/*
+===================================================
+PIX
+===================================================
+*/
+
+const CHAVE_PIX = "SUA_CHAVE_PIX";
+
+const NOME_RECEBEDOR = "NOME_RECEBEDOR";
+
+const CIDADE_RECEBEDOR = "SUA_CIDADE";
+
+
+/*
+===================================================
+TEMPO PARA APROVAÇÃO
+===================================================
+*/
+
+const TEMPO_APROVACAO = 30 * 60 * 1000;
+
+
+/*
+===================================================
+PRODUTOS
+===================================================
+*/
+
+const produtos = [
+
+{
+id:1,
+icone:"📘",
+nome:"Guia da Reserva de Emergência",
+preco:19.90,
+descricao:"Aprenda conceitos básicos para organizar sua reserva financeira.",
+conteudo:[
+"GUIA DA RESERVA DE EMERGÊNCIA",
+"",
+"O que é uma reserva de emergência?",
+"É uma quantia guardada para situações inesperadas.",
+"",
+"1. Organize suas despesas",
+"Anote gastos fixos e variáveis para entender seu orçamento.",
+"",
+"2. Defina uma meta",
+"Calcule quanto seria necessário para cobrir alguns meses das suas despesas essenciais.",
+"",
+"3. Guarde aos poucos",
+"Crie uma meta mensal compatível com sua realidade.",
+"",
+"4. Evite usar sem necessidade",
+"A reserva deve ser destinada principalmente a imprevistos importantes.",
+"",
+"5. Revise sua organização",
+"Atualize seus valores quando suas despesas mudarem."
+]
+},
+
+{
+id:2,
+icone:"📊",
+nome:"Planilha Financeira",
+preco:14.90,
+descricao:"Material para organizar receitas, despesas e planejamento mensal.",
+conteudo:[
+"PLANILHA FINANCEIRA - GUIA DE USO",
+"",
+"Organização mensal",
+"",
+"RECEITAS",
+"Salário:",
+"Renda extra:",
+"Outras entradas:",
+"",
+"DESPESAS FIXAS",
+"Moradia:",
+"Transporte:",
+"Alimentação:",
+"Internet:",
+"",
+"DESPESAS VARIÁVEIS",
+"Lazer:",
+"Compras:",
+"Outros:",
+"",
+"TOTAL DE RECEITAS:",
+"TOTAL DE DESPESAS:",
+"SALDO DO MÊS:",
+"",
+"Use este modelo para acompanhar sua organização financeira mensal."
+]
+},
+
+{
+id:3,
+icone:"🎨",
+nome:"Pack de Templates",
+preco:24.90,
+descricao:"Modelos digitais para projetos, planejamento e criação.",
+conteudo:[
+"PACK DE TEMPLATES BLACK7",
+"",
+"TEMPLATE 1 - PLANEJAMENTO SEMANAL",
+"Segunda:",
+"Terça:",
+"Quarta:",
+"Quinta:",
+"Sexta:",
+"Sábado:",
+"Domingo:",
+"",
+"TEMPLATE 2 - METAS",
+"Meta:",
+"Prazo:",
+"Etapas:",
+"Resultado:",
+"",
+"TEMPLATE 3 - PROJETO",
+"Nome do projeto:",
+"Objetivo:",
+"Materiais:",
+"Etapas:",
+"Prazo:"
+]
+},
+
+{
+id:4,
+icone:"📚",
+nome:"Kit de Estudos",
+preco:29.90,
+descricao:"Materiais para ajudar na organização da rotina de estudos.",
+conteudo:[
+"KIT DE ESTUDOS BLACK7",
+"",
+"PLANEJAMENTO",
+"",
+"Matéria:",
+"Conteúdo:",
+"Data:",
+"Tempo de estudo:",
+"",
+"MÉTODO",
+"",
+"1. Defina o assunto.",
+"2. Estude em blocos.",
+"3. Faça pequenas pausas.",
+"4. Crie perguntas sobre o conteúdo.",
+"5. Faça uma revisão.",
+"",
+"CHECKLIST",
+"[ ] Conteúdo estudado",
+"[ ] Exercícios realizados",
+"[ ] Dúvidas anotadas",
+"[ ] Revisão concluída"
+]
+},
+
+{
+id:5,
+icone:"💡",
+nome:"Guia de Ideias para Renda Extra",
+preco:17.90,
+descricao:"Ideias educativas para desenvolver pequenos projetos digitais.",
+conteudo:[
+"GUIA DE IDEIAS PARA RENDA EXTRA",
+"",
+"IDEIAS",
+"",
+"1. Criar artes digitais.",
+"2. Criar templates.",
+"3. Produzir materiais de estudo.",
+"4. Fazer edição básica de imagens.",
+"5. Criar apresentações.",
+"6. Criar planners digitais.",
+"7. Criar checklists.",
+"",
+"Antes de começar:",
+"Pesquise o público.",
+"Defina claramente o produto.",
+"Evite promessas de ganhos garantidos.",
+"Divulgue de maneira transparente."
+]
+},
+
+{
+id:6,
+icone:"📝",
+nome:"Pack de Checklists",
+preco:12.90,
+descricao:"Checklists para tarefas, estudos e organização pessoal.",
+conteudo:[
+"PACK DE CHECKLISTS",
+"",
+"CHECKLIST DIÁRIO",
+"[ ] Organizar prioridades",
+"[ ] Conferir compromissos",
+"[ ] Executar tarefas importantes",
+"[ ] Revisar tarefas concluídas",
+"",
+"CHECKLIST DE ESTUDOS",
+"[ ] Escolher matéria",
+"[ ] Separar material",
+"[ ] Estudar",
+"[ ] Fazer exercícios",
+"[ ] Revisar",
+"",
+"CHECKLIST DE PROJETOS",
+"[ ] Definir objetivo",
+"[ ] Planejar etapas",
+"[ ] Definir prazo",
+"[ ] Executar",
+"[ ] Revisar resultado"
+]
+},
+
+{
+id:7,
+icone:"💻",
+nome:"Kit para Criadores",
+preco:22.90,
+descricao:"Material de organização para criação de conteúdo digital.",
+conteudo:[
+"KIT PARA CRIADORES",
+"",
+"PLANEJAMENTO DE CONTEÚDO",
+"",
+"Tema:",
+"Objetivo:",
+"Público:",
+"Formato:",
+"Data:",
+"",
+"ROTEIRO",
+"",
+"1. Título",
+"2. Introdução",
+"3. Conteúdo principal",
+"4. Chamada para ação",
+"",
+"CHECKLIST",
+"[ ] Revisar texto",
+"[ ] Conferir informações",
+"[ ] Preparar imagem",
+"[ ] Publicar",
+"[ ] Analisar resultado"
+]
+},
+
+{
+id:8,
+icone:"🚀",
+nome:"Kit de Organização Digital",
+preco:16.90,
+descricao:"Modelos para organizar metas, tarefas e projetos.",
+conteudo:[
+"KIT DE ORGANIZAÇÃO DIGITAL",
+"",
+"METAS",
+"",
+"Meta principal:",
+"Prazo:",
+"Motivo:",
+"",
+"TAREFAS",
+"",
+"[ ] Tarefa 1",
+"[ ] Tarefa 2",
+"[ ] Tarefa 3",
+"",
+"PROJETOS",
+"",
+"Projeto:",
+"Objetivo:",
+"Etapa atual:",
+"Próxima etapa:",
+"",
+"REVISÃO SEMANAL",
+"",
+"O que foi concluído?",
+"O que ficou pendente?",
+"O que precisa melhorar?"
+]
+}
+
+];
+
+
+/*
+===================================================
+VARIÁVEIS
+===================================================
+*/
+
 let carrinho = [];
 
-/*
-====================================
-CONFIGURAÇÃO DO PIX
-====================================
-*/
+let pedidoAtual = null;
 
-const CHAVE_PIX =
-"bb8a569e-2f49-481f-a97a-38977551cbc9";
-
-const NOME_RECEBEDOR =
-"ISAC FERNANDES DA SILVA";
-
-const CIDADE_RECEBEDOR =
-"PINDAMONHANGA";
+let intervalo = null;
 
 
 /*
-====================================
-ADICIONAR PRODUTO
-====================================
+===================================================
+MOSTRAR PRODUTOS
+===================================================
 */
 
-function adicionar(nome, preco) {
+function mostrarProdutos(){
 
-    carrinho.push({
-        nome: nome,
-        preco: preco
-    });
+const area =
+document.getElementById("produtos");
 
-    atualizarCarrinho();
+area.innerHTML = "";
 
-    document
-        .getElementById("carrinho")
-        .classList
-        .add("aberto");
+produtos.forEach(produto=>{
+
+area.innerHTML += `
+
+<div class="produto">
+
+<div class="imagem">
+${produto.icone}
+</div>
+
+<div class="info">
+
+<h3>
+${produto.nome}
+</h3>
+
+<p>
+${produto.descricao}
+</p>
+
+<div class="preco">
+R$ ${moeda(produto.preco)}
+</div>
+
+<button
+class="comprar"
+onclick="adicionar(${produto.id})"
+>
+
+Adicionar ao carrinho
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
 }
 
 
 /*
-====================================
-ATUALIZAR CARRINHO
-====================================
+===================================================
+CARRINHO
+===================================================
 */
 
-function atualizarCarrinho() {
+function adicionar(id){
 
-    const lista =
-        document.getElementById("listaCarrinho");
+const produto =
+produtos.find(p=>p.id===id);
 
-    const quantidade =
-        document.getElementById("quantidade");
+carrinho.push(produto);
 
-    const totalElemento =
-        document.getElementById("total");
-
-    const botaoPix =
-        document.getElementById("pagamentoPix");
-
-
-    quantidade.innerText =
-        carrinho.length;
-
-
-    if (carrinho.length === 0) {
-
-        lista.innerHTML =
-            "<p>Seu carrinho está vazio.</p>";
-
-        totalElemento.innerText =
-            "0,00";
-
-        botaoPix.disabled =
-            true;
-
-        return;
-    }
-
-
-    lista.innerHTML = "";
-
-    let total = 0;
-
-
-    carrinho.forEach(
-        (produto, index) => {
-
-            total += produto.preco;
-
-
-            const item =
-                document.createElement("div");
-
-            item.className =
-                "item";
-
-
-            item.innerHTML = `
-
-                <strong>
-                    ${escapeHtml(produto.nome)}
-                </strong>
-
-                <br>
-
-                R$
-                ${formatarMoeda(produto.preco)}
-
-                <br>
-
-                <button
-                    onclick="remover(${index})"
-                >
-                    Remover
-                </button>
-
-            `;
-
-
-            lista.appendChild(item);
-
-        }
-    );
-
-
-    totalElemento.innerText =
-        formatarMoeda(total);
-
-    botaoPix.disabled =
-        false;
-}
-
-
-/*
-====================================
-REMOVER PRODUTO
-====================================
-*/
-
-function remover(index) {
-
-    carrinho.splice(
-        index,
-        1
-    );
-
-    atualizarCarrinho();
-}
-
-
-/*
-====================================
-ABRIR CARRINHO
-====================================
-*/
+atualizarCarrinho();
 
 document
-    .getElementById("cartButton")
-    .addEventListener(
-        "click",
-        function() {
+.getElementById("carrinho")
+.classList.add("aberto");
 
-            document
-                .getElementById("carrinho")
-                .classList
-                .add("aberto");
-
-        }
-    );
+}
 
 
-/*
-====================================
-FECHAR CARRINHO
-====================================
-*/
+function remover(index){
+
+carrinho.splice(index,1);
+
+atualizarCarrinho();
+
+}
+
+
+function atualizarCarrinho(){
+
+const lista =
+document.getElementById("listaCarrinho");
+
+document.getElementById("qtd").innerText =
+carrinho.length;
+
+if(carrinho.length===0){
+
+lista.innerHTML =
+"<p>Carrinho vazio.</p>";
+
+document.getElementById("total").innerText =
+"0,00";
+
+return;
+
+}
+
+lista.innerHTML = "";
+
+let total = 0;
+
+carrinho.forEach((produto,index)=>{
+
+total += produto.preco;
+
+lista.innerHTML += `
+
+<div class="itemCarrinho">
+
+<strong>
+${produto.nome}
+</strong>
+
+<br>
+
+R$ ${moeda(produto.preco)}
+
+<br>
+
+<button
+class="remover"
+onclick="remover(${index})"
+>
+Remover
+</button>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("total").innerText =
+moeda(total);
+
+}
+
 
 document
-    .getElementById("fechar")
-    .addEventListener(
-        "click",
-        function() {
+.getElementById("cartButton")
+.onclick=()=>{
 
-            document
-                .getElementById("carrinho")
-                .classList
-                .remove("aberto");
+document
+.getElementById("carrinho")
+.classList.add("aberto");
 
-        }
-    );
+};
+
+
+document
+.getElementById("fecharCarrinho")
+.onclick=()=>{
+
+document
+.getElementById("carrinho")
+.classList.remove("aberto");
+
+};
 
 
 /*
-====================================
-ABRIR PIX
-====================================
+===================================================
+PAGAMENTO
+===================================================
 */
 
-function abrirPix() {
+function iniciarPagamento(){
 
-    if (carrinho.length === 0) {
+if(carrinho.length===0){
 
-        alert(
-            "Seu carrinho está vazio!"
-        );
+alert("Seu carrinho está vazio.");
 
-        return;
-    }
+return;
 
+}
 
-    let total = 0;
+const total =
+calcularTotal();
 
+document.getElementById("valorPix").innerText =
+moeda(total);
 
-    carrinho.forEach(
-        produto => {
+document.getElementById("codigoPix").innerText =
+gerarPixCopiaECola(total);
 
-            total += produto.preco;
+document
+.getElementById("modalPagamento")
+.classList.add("aberto");
 
-        }
-    );
-
-
-    total =
-        Number(
-            total.toFixed(2)
-        );
+}
 
 
-    document
-        .getElementById("pixTotal")
-        .innerText =
-        formatarMoeda(total);
+function fecharModalPagamento(){
+
+document
+.getElementById("modalPagamento")
+.classList.remove("aberto");
+
+}
 
 
-    const codigo =
-        gerarPixCopiaECola(total);
+function copiarPix(){
 
+const texto =
+document.getElementById("codigoPix").innerText;
 
-    document
-        .getElementById("codigoPix")
-        .innerText =
-        codigo;
+navigator.clipboard.writeText(texto);
 
+alert("Código Pix copiado!");
 
-    document
-        .getElementById("modalPix")
-        .classList
-        .add("aberto");
 }
 
 
 /*
-====================================
-FECHAR PIX
-====================================
+===================================================
+CRIAR PEDIDO
+===================================================
 */
 
-function fecharPix() {
+async function criarPedido(){
 
-    document
-        .getElementById("modalPix")
-        .classList
-        .remove("aberto");
+if(carrinho.length===0){
+
+return;
+
+}
+
+try{
+
+const pedido = {
+
+produtos:
+carrinho.map(p=>({
+
+id:p.id,
+nome:p.nome,
+preco:p.preco
+
+})),
+
+total:calcularTotal(),
+
+status:"pendente",
+
+criadoEm:
+firebase.firestore.FieldValue.serverTimestamp()
+
+};
+
+
+const doc =
+await db.collection("pedidos").add(pedido);
+
+
+pedidoAtual = doc.id;
+
+
+fecharModalPagamento();
+
+
+document
+.getElementById("modalPedido")
+.classList.add("aberto");
+
+
+document
+.getElementById("numeroPedido")
+.innerText =
+doc.id.toUpperCase().substring(0,8);
+
+
+acompanharPedido(doc.id);
+
+
+carrinho = [];
+
+atualizarCarrinho();
+
+
+}catch(erro){
+
+console.error(erro);
+
+alert(
+"Não foi possível criar o pedido. Confira a configuração do Firebase."
+);
+
+}
+
 }
 
 
 /*
-====================================
-COPIAR PIX
-====================================
+===================================================
+ACOMPANHAR PEDIDO
+===================================================
 */
 
-function copiarPix() {
+function acompanharPedido(id){
 
-    const codigo =
-        document
-        .getElementById("codigoPix")
-        .innerText;
+db.collection("pedidos")
+.doc(id)
+.onSnapshot(doc=>{
+
+if(!doc.exists){
+return;
+}
+
+const dados =
+doc.data();
 
 
-    navigator
-        .clipboard
-        .writeText(codigo)
-        .then(
-            function() {
+if(dados.status==="aprovado"){
 
-                alert(
-                    "Código Pix copiado!"
-                );
+pedidoAprovado(dados);
 
-            }
-        )
-        .catch(
-            function() {
+}
 
-                const area =
-                    document.createElement(
-                        "textarea"
-                    );
 
-                area.value =
-                    codigo;
+if(dados.status==="rejeitado"){
 
-                document.body.appendChild(
-                    area
-                );
+pedidoRejeitado();
 
-                area.select();
+}
 
-                document.execCommand(
-                    "copy"
-                );
 
-                area.remove();
+if(dados.criadoEm){
 
-                alert(
-                    "Código Pix copiado!"
-                );
+iniciarContador(
+dados.criadoEm.toDate()
+);
 
-            }
-        );
+}
+
+});
+
 }
 
 
 /*
-====================================
-GERAR PIX COPIA E COLA
-====================================
+===================================================
+CONTADOR
+===================================================
 */
 
-function gerarPixCopiaECola(valor) {
+function iniciarContador(dataCriacao){
 
-    const merchantAccount =
-        montarCampo(
-            "00",
-            "BR.GOV.BCB.PIX"
-        )
-        +
-        montarCampo(
-            "01",
-            CHAVE_PIX
-        );
+clearInterval(intervalo);
 
 
-    const payloadSemCRC =
+intervalo =
+setInterval(()=>{
 
-        "000201" +
+const passou =
+Date.now() -
+dataCriacao.getTime();
 
-        montarCampo(
-            "26",
-            merchantAccount
-        ) +
-
-        "52040000" +
-
-        "5303986" +
-
-        montarCampo(
-            "54",
-            valor.toFixed(2)
-        ) +
-
-        "5802BR" +
-
-        montarCampo(
-            "59",
-            NOME_RECEBEDOR.substring(
-                0,
-                25
-            )
-        ) +
-
-        montarCampo(
-            "60",
-            CIDADE_RECEBEDOR.substring(
-                0,
-                15
-            )
-        ) +
-
-        montarCampo(
-            "62",
-            montarCampo(
-                "05",
-                "***"
-            )
-        ) +
-
-        "6304";
+const restante =
+TEMPO_APROVACAO -
+passou;
 
 
-    return (
-        payloadSemCRC +
-        calcularCRC16(payloadSemCRC)
-    );
+if(restante<=0){
+
+clearInterval(intervalo);
+
+document.getElementById("contador")
+.innerText =
+"00:00";
+
+
+const status =
+document.getElementById("statusPedido");
+
+if(
+!status.classList.contains("aprovado")
+){
+
+status.className =
+"status expirado";
+
+status.innerText =
+"⌛ Prazo de aprovação encerrado";
+
+}
+
+return;
+
+}
+
+
+const minutos =
+Math.floor(restante/60000);
+
+const segundos =
+Math.floor(
+(restante%60000)/1000
+);
+
+
+document.getElementById("contador")
+.innerText =
+
+String(minutos)
+.padStart(2,"0")
+
++
+
+":"
+
++
+
+String(segundos)
+.padStart(2,"0");
+
+
+},1000);
+
 }
 
 
 /*
-====================================
-MONTAR CAMPO PIX
-====================================
+===================================================
+PEDIDO APROVADO
+===================================================
 */
 
-function montarCampo(id, valor) {
+function pedidoAprovado(dados){
 
-    return (
-        id +
-        String(valor.length)
-            .padStart(2, "0") +
-        valor
-    );
+clearInterval(intervalo);
+
+const status =
+document.getElementById("statusPedido");
+
+status.className =
+"status aprovado";
+
+status.innerText =
+"✅ Pagamento aprovado";
+
+
+document.getElementById("contador")
+.innerText =
+"APROVADO";
+
+
+const area =
+document.getElementById("downloads");
+
+area.innerHTML =
+"<h3 style='margin:20px 0 10px'>Seus produtos</h3>";
+
+
+dados.produtos.forEach(item=>{
+
+area.innerHTML += `
+
+<button
+class="btn btnBranco"
+onclick="baixarProduto(${item.id})"
+>
+
+📥 Baixar ${item.nome}
+
+</button>
+
+`;
+
+});
+
 }
 
 
 /*
-====================================
-CRC16
-====================================
+===================================================
+PEDIDO REJEITADO
+===================================================
 */
 
-function calcularCRC16(texto) {
+function pedidoRejeitado(){
 
-    let crc =
-        0xFFFF;
+clearInterval(intervalo);
 
+const status =
+document.getElementById("statusPedido");
 
-    for (
-        let i = 0;
-        i < texto.length;
-        i++
-    ) {
+status.className =
+"status expirado";
 
-        crc ^=
-            texto.charCodeAt(i)
-            << 8;
+status.innerText =
+"❌ Pagamento não aprovado";
 
-
-        for (
-            let j = 0;
-            j < 8;
-            j++
-        ) {
-
-            if (
-                (crc & 0x8000) !== 0
-            ) {
-
-                crc =
-                    (crc << 1)
-                    ^ 0x1021;
-
-            } else {
-
-                crc <<=
-                    1;
-
-            }
-
-
-            crc &=
-                0xFFFF;
-        }
-    }
-
-
-    return crc
-        .toString(16)
-        .toUpperCase()
-        .padStart(4, "0");
 }
 
 
 /*
-====================================
-FORMATAR DINHEIRO
-====================================
+===================================================
+GERAR PDF
+===================================================
 */
 
-function formatarMoeda(valor) {
+function baixarProduto(id){
 
-    return valor
-        .toFixed(2)
-        .replace(".", ",");
+const produto =
+produtos.find(p=>p.id===id);
+
+if(!produto){
+return;
+}
+
+
+const { jsPDF } =
+window.jspdf;
+
+
+const pdf =
+new jsPDF();
+
+
+let y = 20;
+
+
+pdf.setFontSize(19);
+
+pdf.text(
+produto.nome,
+15,
+y
+);
+
+
+y += 15;
+
+
+pdf.setFontSize(11);
+
+
+produto.conteudo.forEach(linha=>{
+
+const texto =
+pdf.splitTextToSize(
+linha,
+175
+);
+
+
+if(y>275){
+
+pdf.addPage();
+
+y=20;
+
+}
+
+
+pdf.text(
+texto,
+15,
+y
+);
+
+
+y +=
+texto.length * 7;
+
+});
+
+
+pdf.save(
+produto.nome
+.replace(/[^\w]/g,"_")
++
+".pdf"
+);
+
 }
 
 
 /*
-====================================
-SEGURANÇA HTML
-====================================
+===================================================
+ADMIN
+===================================================
 */
 
-function escapeHtml(texto) {
+function abrirAdmin(){
 
-    const div =
-        document.createElement(
-            "div"
-        );
+document
+.getElementById("modalAdmin")
+.classList.add("aberto");
 
-    div.textContent =
-        texto;
-
-    return div.innerHTML;
 }
+
+
+function fecharAdmin(){
+
+document
+.getElementById("modalAdmin")
+.classList.remove("aberto");
+
+}
+
+
+async function loginAdmin(){
+
+const email =
+document.getElementById("adminEmail")
+.value.trim();
+
+
+const senha =
+document.getElementById("adminSenha")
+.value;
+
+
+try{
+
+await auth
+.signInWithEmailAndPassword(
+email,
+senha
+);
+
+
+document
+.getElementById("painelAdmin")
+.style.display =
+"block";
+
+
+carregarPedidos();
+
+
+}catch(e){
+
+alert(
+"E-mail ou senha incorretos."
+);
+
+}
+
+}
+
+
+/*
+===================================================
+PEDIDOS ADMIN
+===================================================
+*/
+
+function carregarPedidos(){
+
+db.collection("pedidos")
+
+.orderBy(
+"criadoEm",
+"desc"
+)
+
+.limit(30)
+
+.onSnapshot(snapshot=>{
+
+const lista =
+document.getElementById(
+"listaPedidosAdmin"
+);
+
+
+lista.innerHTML = "";
+
+
+snapshot.forEach(doc=>{
+
+const p =
+doc.data();
+
+
+let nomes =
+p.produtos
+.map(item=>item.nome)
+.join(", ");
+
+
+lista.innerHTML += `
+
+<div class="adminPedido">
+
+<strong>
+Pedido:
+${doc.id.substring(0,8).toUpperCase()}
+</strong>
+
+<p>
+Produtos:
+${nomes}
+</p>
+
+<p>
+Total:
+R$ ${moeda(p.total)}
+</p>
+
+<p>
+Status:
+${p.status}
+</p>
+
+${
+p.status==="pendente"
+
+?
+
+`
+
+<button
+class="aprovar"
+onclick="aprovarPedido('${doc.id}')"
+>
+✅ Aprovar
+</button>
+
+<button
+class="rejeitar"
+onclick="rejeitarPedido('${doc.id}')"
+>
+❌ Rejeitar
+</button>
+
+`
+
+:
+
+""
+
+}
+
+</div>
+
+`;
+
+});
+
+});
+
+}
+
+
+/*
+===================================================
+APROVAR
+===================================================
+*/
+
+async function aprovarPedido(id){
+
+if(
+!confirm(
+"Confirma que recebeu o pagamento?"
+)
+){
+
+return;
+
+}
+
+
+await db
+.collection("pedidos")
+.doc(id)
+.update({
+
+status:"aprovado",
+
+aprovadoEm:
+firebase.firestore.FieldValue.serverTimestamp()
+
+});
+
+}
+
+
+/*
+===================================================
+REJEITAR
+===================================================
+*/
+
+async function rejeitarPedido(id){
+
+if(
+!confirm(
+"Deseja rejeitar este pedido?"
+)
+){
+
+return;
+
+}
+
+
+await db
+.collection("pedidos")
+.doc(id)
+.update({
+
+status:"rejeitado"
+
+});
+
+}
+
+
+/*
+===================================================
+PIX
+===================================================
+*/
+
+function gerarPixCopiaECola(valor){
+
+const merchantAccount =
+
+montarCampo(
+"00",
+"BR.GOV.BCB.PIX"
+)
+
++
+
+montarCampo(
+"01",
+CHAVE_PIX
+);
+
+
+const payloadSemCRC =
+
+"000201"
+
++
+
+montarCampo(
+"26",
+merchantAccount
+)
+
++
+
+"52040000"
+
++
+
+"5303986"
+
++
+
+montarCampo(
+"54",
+valor.toFixed(2)
+)
+
++
+
+"5802BR"
+
++
+
+montarCampo(
+"59",
+NOME_RECEBEDOR
+.substring(0,25)
+)
+
++
+
+montarCampo(
+"60",
+CIDADE_RECEBEDOR
+.substring(0,15)
+)
+
++
+
+montarCampo(
+"62",
+montarCampo(
+"05",
+"***"
+)
+)
+
++
+
+"6304";
+
+
+return (
+
+payloadSemCRC
+
++
+
+calcularCRC16(
+payloadSemCRC
+)
+
+);
+
+}
+
+
+function montarCampo(id,valor){
+
+return (
+
+id
+
++
+
+String(valor.length)
+.padStart(2,"0")
+
++
+
+valor
+
+);
+
+}
+
+
+function calcularCRC16(texto){
+
+let crc =
+0xFFFF;
+
+
+for(
+let i=0;
+i<texto.length;
+i++
+){
+
+crc ^=
+texto.charCodeAt(i)
+<< 8;
+
+
+for(
+let j=0;
+j<8;
+j++
+){
+
+if(
+(crc & 0x8000)!==0
+){
+
+crc =
+(crc<<1)
+^
+0x1021;
+
+}else{
+
+crc <<=1;
+
+}
+
+crc &=0xFFFF;
+
+}
+
+}
+
+
+return crc
+.toString(16)
+.toUpperCase()
+.padStart(4,"0");
+
+}
+
+
+/*
+===================================================
+UTILIDADES
+===================================================
+*/
+
+function calcularTotal(){
+
+return Number(
+
+carrinho
+.reduce(
+(total,p)=>total+p.preco,
+0
+)
+.toFixed(2)
+
+);
+
+}
+
+
+function moeda(valor){
+
+return Number(valor)
+.toFixed(2)
+.replace(".",",");
+
+}
+
+
+function fecharPedido(){
+
+document
+.getElementById("modalPedido")
+.classList.remove("aberto");
+
+}
+
+
+/*
+===================================================
+INICIAR SITE
+===================================================
+*/
+
+mostrarProdutos();
+
+atualizarCarrinho();
 
 </script>
 
