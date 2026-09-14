@@ -1,2003 +1,269 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>BLACK7 - Produtos Digitais</title>
-
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    font-family:Arial,sans-serif;
-}
-
-body{
-    background:#080808;
-    color:#fff;
-}
-
-header{
-    position:sticky;
-    top:0;
-    z-index:20;
-    background:#111;
-    padding:18px 7%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    border-bottom:1px solid #292929;
-}
-
-.logo{
-    font-size:28px;
-    font-weight:bold;
-}
-
-.logo span{
-    color:#777;
-}
-
-button{
-    cursor:pointer;
-}
-
-#cartButton{
-    border:0;
-    padding:12px 18px;
-    border-radius:8px;
-    font-weight:bold;
-}
-
-.hero{
-    text-align:center;
-    padding:80px 20px;
-    background:linear-gradient(#151515,#080808);
-}
-
-.hero h1{
-    font-size:52px;
-    margin-bottom:12px;
-}
-
-.hero p{
-    color:#aaa;
-    font-size:18px;
-}
-
-.produtos{
-    padding:50px 7%;
-}
-
-.produtos h2{
-    text-align:center;
-    margin-bottom:35px;
-    font-size:32px;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:22px;
-}
-
-.produto{
-    background:#151515;
-    border:1px solid #292929;
-    border-radius:14px;
-    overflow:hidden;
-    transition:.2s;
-}
-
-.produto:hover{
-    transform:translateY(-5px);
-    border-color:#555;
-}
-
-.imagem{
-    height:170px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#202020;
-    font-size:55px;
-}
-
-.info{
-    padding:20px;
-}
-
-.info h3{
-    margin-bottom:10px;
-}
-
-.info p{
-    color:#999;
-    font-size:14px;
-    min-height:55px;
-    line-height:1.5;
-}
-
-.preco{
-    margin:16px 0;
-    font-size:22px;
-    font-weight:bold;
-}
-
-.comprar{
-    width:100%;
-    padding:13px;
-    border:0;
-    border-radius:8px;
-    font-weight:bold;
-}
-
-.comprar:hover{
-    background:#ddd;
-}
-
-footer{
-    margin-top:50px;
-    padding:40px;
-    color:#777;
-    text-align:center;
-    border-top:1px solid #222;
-}
-
-/* CARRINHO */
-
-#carrinho{
-    position:fixed;
-    right:-430px;
-    top:0;
-    width:400px;
-    max-width:94%;
-    height:100vh;
-    background:#111;
-    z-index:50;
-    padding:25px;
-    transition:.3s;
-    box-shadow:-8px 0 25px #000;
-}
-
-#carrinho.aberto{
-    right:0;
-}
-
-.topoCarrinho{
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:25px;
-}
-
-#fecharCarrinho{
-    background:none;
-    border:0;
-    color:#fff;
-    font-size:24px;
-}
-
-.itemCarrinho{
-    padding:14px;
-    background:#1c1c1c;
-    border-radius:8px;
-    margin-bottom:10px;
-}
-
-.remover{
-    margin-top:8px;
-    border:0;
-    padding:6px 10px;
-    border-radius:5px;
-}
-
-.total{
-    font-size:22px;
-    font-weight:bold;
-    margin-top:20px;
-}
-
-#pagar{
-    margin-top:20px;
-    width:100%;
-    padding:14px;
-    border:0;
-    border-radius:8px;
-    background:#25D366;
-    color:white;
-    font-weight:bold;
-}
-
-/* MODAL */
-
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.85);
-    z-index:100;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
-}
-
-.modal.aberto{
-    display:flex;
-}
-
-.caixa{
-    background:#151515;
-    border:1px solid #333;
-    width:500px;
-    max-width:100%;
-    max-height:90vh;
-    overflow:auto;
-    padding:28px;
-    border-radius:15px;
-}
-
-.caixa h2{
-    margin-bottom:15px;
-}
-
-.codigoPix{
-    background:#222;
-    padding:14px;
-    border-radius:8px;
-    margin:15px 0;
-    word-break:break-all;
-    font-size:12px;
-}
-
-.btn{
-    width:100%;
-    padding:13px;
-    border:0;
-    border-radius:8px;
-    margin-top:8px;
-    font-weight:bold;
-}
-
-.btnBranco{
-    background:#fff;
-    color:#000;
-}
-
-.btnVerde{
-    background:#25D366;
-    color:#fff;
-}
-
-.btnCinza{
-    background:#333;
-    color:#fff;
-}
-
-.status{
-    padding:15px;
-    border-radius:8px;
-    margin:15px 0;
-    text-align:center;
-    font-weight:bold;
-}
-
-.pendente{
-    background:#4b3b00;
-    color:#ffd85a;
-}
-
-.aprovado{
-    background:#073d18;
-    color:#64ff91;
-}
-
-.expirado{
-    background:#4a1010;
-    color:#ff7777;
-}
-
-#contador{
-    font-size:28px;
-    font-weight:bold;
-    text-align:center;
-    margin:15px;
-}
-
-.codigoPedido{
-    text-align:center;
-    background:#222;
-    padding:12px;
-    border-radius:8px;
-    margin:12px 0;
-}
-
-/* ADMIN */
-
-.admin-link{
-    margin-top:20px;
-    font-size:12px;
-    color:#444;
-    cursor:pointer;
-    text-align:center;
-}
-
-.adminPedido{
-    background:#222;
-    border-radius:10px;
-    padding:15px;
-    margin:12px 0;
-}
-
-.adminPedido p{
-    margin:5px 0;
-    color:#ccc;
-}
-
-.aprovar{
-    background:#25D366;
-    border:0;
-    padding:9px 12px;
-    border-radius:6px;
-    font-weight:bold;
-    margin-top:8px;
-}
-
-.rejeitar{
-    background:#aa3333;
-    color:white;
-    border:0;
-    padding:9px 12px;
-    border-radius:6px;
-    margin-left:6px;
-}
-
-@media(max-width:600px){
-    .hero h1{
-        font-size:38px;
-    }
-}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+body{background:#080808;color:#fff}
+header{position:sticky;top:0;z-index:20;background:#111;padding:18px 7%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #292929}
+.logo{font-size:28px;font-weight:bold}.logo span{color:#777}
+button{cursor:pointer}
+#cartButton{border:0;padding:12px 18px;border-radius:8px;font-weight:bold}
+.hero{text-align:center;padding:80px 20px;background:linear-gradient(#151515,#080808)}
+.hero h1{font-size:52px;margin-bottom:12px}.hero p{color:#aaa;font-size:18px}
+.produtos{padding:50px 7%}.produtos h2{text-align:center;margin-bottom:35px;font-size:32px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+.produto{background:#151515;border:1px solid #292929;border-radius:14px;overflow:hidden;transition:.2s}
+.produto:hover{transform:translateY(-5px);border-color:#555}
+.imagem{height:170px;display:flex;justify-content:center;align-items:center;background:#202020;font-size:55px}
+.info{padding:20px}.info h3{margin-bottom:10px}.info p{color:#999;font-size:14px;min-height:55px;line-height:1.5}
+.preco{margin:16px 0;font-size:22px;font-weight:bold}
+.comprar,.btn{width:100%;padding:13px;border:0;border-radius:8px;font-weight:bold;margin-top:8px}
+.comprar:hover{background:#ddd}
+footer{margin-top:50px;padding:40px;color:#777;text-align:center;border-top:1px solid #222}
+#carrinho{position:fixed;right:-430px;top:0;width:400px;max-width:94%;height:100vh;background:#111;z-index:50;padding:25px;transition:.3s;box-shadow:-8px 0 25px #000}
+#carrinho.aberto{right:0}.topoCarrinho{display:flex;justify-content:space-between;margin-bottom:25px}
+#fecharCarrinho{background:none;border:0;color:#fff;font-size:24px}
+.itemCarrinho{padding:14px;background:#1c1c1c;border-radius:8px;margin-bottom:10px}
+.remover{margin-top:8px;border:0;padding:6px 10px;border-radius:5px}
+.total{font-size:22px;font-weight:bold;margin-top:20px}
+#pagar{margin-top:20px;width:100%;padding:14px;border:0;border-radius:8px;background:#25D366;color:white;font-weight:bold}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:100;justify-content:center;align-items:center;padding:20px}
+.modal.aberto{display:flex}.caixa{background:#151515;border:1px solid #333;width:500px;max-width:100%;max-height:90vh;overflow:auto;padding:28px;border-radius:15px}
+.caixa h2{margin-bottom:15px}.codigoPix{background:#222;padding:14px;border-radius:8px;margin:15px 0;word-break:break-all;font-size:12px}
+.btnBranco{background:#fff;color:#000}.btnVerde{background:#25D366;color:#fff}.btnCinza{background:#333;color:#fff}
+.status{padding:15px;border-radius:8px;margin:15px 0;text-align:center;font-weight:bold}
+.pendente{background:#4b3b00;color:#ffd85a}.aprovado{background:#073d18;color:#64ff91}.expirado{background:#4a1010;color:#ff7777}
+#contador{font-size:28px;font-weight:bold;text-align:center;margin:15px}
+.codigoPedido{text-align:center;background:#222;padding:12px;border-radius:8px;margin:12px 0}
+.admin-link{margin-top:20px;font-size:12px;color:#555;cursor:pointer;text-align:center}
+.adminPedido{background:#222;border-radius:10px;padding:15px;margin:12px 0}.adminPedido p{margin:5px 0;color:#ccc}
+.aprovar{background:#25D366;border:0;padding:9px 12px;border-radius:6px;font-weight:bold;margin-top:8px}
+.rejeitar{background:#aa3333;color:white;border:0;padding:9px 12px;border-radius:6px;margin-left:6px}
+input{width:100%;padding:13px;margin:7px 0;border-radius:7px;border:0}
+@media(max-width:600px){.hero h1{font-size:38px}}
 </style>
 </head>
-
 <body>
 
 <header>
-
-<div class="logo">
-BLACK<span>7</span>
-</div>
-
-<button id="cartButton">
-🛒 Carrinho (<span id="qtd">0</span>)
-</button>
-
+<div class="logo">BLACK<span>7</span></div>
+<button id="cartButton">🛒 Carrinho (<span id="qtd">0</span>)</button>
 </header>
 
-
 <section class="hero">
-
 <h1>BLACK7</h1>
-
-<p>
-Produtos digitais para aprender, criar e evoluir.
-</p>
-
+<p>Produtos digitais para aprender, criar e evoluir.</p>
 </section>
-
 
 <section class="produtos">
-
 <h2>Produtos digitais</h2>
-
 <div class="grid" id="produtos"></div>
-
 </section>
 
-
 <footer>
-
 © 2026 BLACK7 — Todos os direitos reservados.
-
-<div class="admin-link" onclick="abrirAdmin()">
-Administração
-</div>
-
+<div class="admin-link" onclick="abrirAdmin()">Administração</div>
 </footer>
 
-
-<!-- CARRINHO -->
-
 <div id="carrinho">
-
-<div class="topoCarrinho">
-
-<h2>Seu carrinho</h2>
-
-<button id="fecharCarrinho">
-✕
-</button>
-
+<div class="topoCarrinho"><h2>Seu carrinho</h2><button id="fecharCarrinho">✕</button></div>
+<div id="listaCarrinho">Carrinho vazio.</div>
+<div class="total">Total: R$ <span id="total">0,00</span></div>
+<button id="pagar" onclick="iniciarPagamento()">💚 Pagar com Pix</button>
 </div>
-
-<div id="listaCarrinho">
-Carrinho vazio.
-</div>
-
-<div class="total">
-
-Total:
-R$ <span id="total">0,00</span>
-
-</div>
-
-<button
-id="pagar"
-onclick="iniciarPagamento()"
->
-💚 Pagar com Pix
-</button>
-
-</div>
-
-
-<!-- PAGAMENTO -->
 
 <div class="modal" id="modalPagamento">
-
 <div class="caixa">
-
 <h2>💚 Pagamento via Pix</h2>
-
-<p>
-Valor:
-<strong>
-R$ <span id="valorPix"></span>
-</strong>
-</p>
-
+<p>Valor: <strong>R$ <span id="valorPix"></span></strong></p>
 <div class="codigoPix" id="codigoPix"></div>
-
-<button
-class="btn btnBranco"
-onclick="copiarPix()"
->
-📋 Copiar Pix
-</button>
-
-<button
-class="btn btnVerde"
-onclick="criarPedido()"
->
-✅ Já realizei o pagamento
-</button>
-
-<button
-class="btn btnCinza"
-onclick="fecharModalPagamento()"
->
-Fechar
-</button>
-
+<button class="btn btnBranco" onclick="copiarPix()">📋 Copiar Pix</button>
+<button class="btn btnVerde" onclick="criarPedido()">✅ Já realizei o pagamento</button>
+<button class="btn btnCinza" onclick="fecharModalPagamento()">Fechar</button>
 </div>
-
 </div>
-
-
-<!-- STATUS DO PEDIDO -->
 
 <div class="modal" id="modalPedido">
-
 <div class="caixa">
-
 <h2>Pedido recebido</h2>
-
-<div class="codigoPedido">
-
-Pedido:
-
-<strong id="numeroPedido"></strong>
-
-</div>
-
-<div id="statusPedido"
-class="status pendente">
-
-⏳ Aguardando aprovação
-
-</div>
-
-<p style="text-align:center;color:#aaa">
-
-Tempo restante para aprovação:
-
-</p>
-
-<div id="contador">
-30:00
-</div>
-
-<p style="text-align:center;color:#888">
-
-Seu pagamento será conferido manualmente.
-
-</p>
-
+<div class="codigoPedido">Pedido: <strong id="numeroPedido"></strong></div>
+<div id="statusPedido" class="status pendente">⏳ Aguardando aprovação</div>
+<p style="text-align:center;color:#aaa">Tempo restante para aprovação:</p>
+<div id="contador">30:00</div>
+<p style="text-align:center;color:#888">Seu pagamento será conferido manualmente.</p>
 <div id="downloads"></div>
-
-<button
-class="btn btnCinza"
-onclick="fecharPedido()"
->
-Fechar
-</button>
-
+<button class="btn btnCinza" onclick="fecharPedido()">Fechar</button>
 </div>
-
 </div>
-
-
-<!-- ADMIN LOGIN -->
 
 <div class="modal" id="modalAdmin">
-
 <div class="caixa">
-
 <h2>🔐 Administração BLACK7</h2>
-
-<input
-id="adminEmail"
-type="email"
-placeholder="E-mail do administrador"
-style="
-width:100%;
-padding:13px;
-margin:7px 0;
-border-radius:7px;
-border:0;
-">
-
-<input
-id="adminSenha"
-type="password"
-placeholder="Senha"
-style="
-width:100%;
-padding:13px;
-margin:7px 0;
-border-radius:7px;
-border:0;
-">
-
-<button
-class="btn btnBranco"
-onclick="loginAdmin()"
->
-Entrar
-</button>
-
-<button
-class="btn btnCinza"
-onclick="fecharAdmin()"
->
-Fechar
-</button>
-
+<input id="adminEmail" type="email" placeholder="E-mail do administrador">
+<input id="adminSenha" type="password" placeholder="Senha">
+<button class="btn btnBranco" onclick="loginAdmin()">Entrar</button>
+<button class="btn btnCinza" onclick="fecharAdmin()">Fechar</button>
 <div id="painelAdmin" style="display:none">
-
 <hr style="margin:25px 0;border-color:#333">
-
 <h3>Pedidos</h3>
-
 <div id="listaPedidosAdmin"></div>
-
 </div>
-
 </div>
-
 </div>
-
-
-<!-- FIREBASE -->
 
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-
-
-<!-- PDF -->
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-
 <script>
-
 /*
-===================================================
-CONFIGURAÇÃO FIREBASE
-===================================================
-
-PEGUE ESSES DADOS NO FIREBASE.
-
-NÃO USE OS VALORES ABAIXO.
+=========================
+VOCÊ SÓ PRECISA MEXER AQUI
+=========================
+Cole abaixo os dados do seu Firebase.
 */
-
 const firebaseConfig = {
-
-    apiKey: "COLOQUE_AQUI",
-
-    authDomain: "COLOQUE_AQUI",
-
-    projectId: "COLOQUE_AQUI",
-
-    storageBucket: "COLOQUE_AQUI",
-
-    messagingSenderId: "COLOQUE_AQUI",
-
-    appId: "COLOQUE_AQUI"
-
+  apiKey: "COLE_AQUI",
+  authDomain: "COLE_AQUI",
+  projectId: "COLE_AQUI",
+  storageBucket: "COLE_AQUI",
+  messagingSenderId: "COLE_AQUI",
+  appId: "COLE_AQUI"
 };
 
-
 firebase.initializeApp(firebaseConfig);
-
 const db = firebase.firestore();
-
 const auth = firebase.auth();
 
-
-/*
-===================================================
-PIX
-===================================================
-*/
-
-const CHAVE_PIX = "SUA_CHAVE_PIX";
-
-const NOME_RECEBEDOR = "NOME_RECEBEDOR";
-
-const CIDADE_RECEBEDOR = "SUA_CIDADE";
-
-
-/*
-===================================================
-TEMPO PARA APROVAÇÃO
-===================================================
-*/
+/* PIX JÁ CONFIGURADO COM OS DADOS DO SEU ARQUIVO */
+const CHAVE_PIX = "bb8a569e-2f49-481f-a97a-38977551cbc9";
+const NOME_RECEBEDOR = "ISAC FERNANDES DA SILVA";
+const CIDADE_RECEBEDOR = "PINDAMONHANGA";
 
 const TEMPO_APROVACAO = 30 * 60 * 1000;
 
-
-/*
-===================================================
-PRODUTOS
-===================================================
-*/
-
 const produtos = [
-
-{
-id:1,
-icone:"📘",
-nome:"Guia da Reserva de Emergência",
-preco:19.90,
-descricao:"Aprenda conceitos básicos para organizar sua reserva financeira.",
-conteudo:[
-"GUIA DA RESERVA DE EMERGÊNCIA",
-"",
-"O que é uma reserva de emergência?",
-"É uma quantia guardada para situações inesperadas.",
-"",
-"1. Organize suas despesas",
-"Anote gastos fixos e variáveis para entender seu orçamento.",
-"",
-"2. Defina uma meta",
-"Calcule quanto seria necessário para cobrir alguns meses das suas despesas essenciais.",
-"",
-"3. Guarde aos poucos",
-"Crie uma meta mensal compatível com sua realidade.",
-"",
-"4. Evite usar sem necessidade",
-"A reserva deve ser destinada principalmente a imprevistos importantes.",
-"",
-"5. Revise sua organização",
-"Atualize seus valores quando suas despesas mudarem."
-]
-},
-
-{
-id:2,
-icone:"📊",
-nome:"Planilha Financeira",
-preco:14.90,
-descricao:"Material para organizar receitas, despesas e planejamento mensal.",
-conteudo:[
-"PLANILHA FINANCEIRA - GUIA DE USO",
-"",
-"Organização mensal",
-"",
-"RECEITAS",
-"Salário:",
-"Renda extra:",
-"Outras entradas:",
-"",
-"DESPESAS FIXAS",
-"Moradia:",
-"Transporte:",
-"Alimentação:",
-"Internet:",
-"",
-"DESPESAS VARIÁVEIS",
-"Lazer:",
-"Compras:",
-"Outros:",
-"",
-"TOTAL DE RECEITAS:",
-"TOTAL DE DESPESAS:",
-"SALDO DO MÊS:",
-"",
-"Use este modelo para acompanhar sua organização financeira mensal."
-]
-},
-
-{
-id:3,
-icone:"🎨",
-nome:"Pack de Templates",
-preco:24.90,
-descricao:"Modelos digitais para projetos, planejamento e criação.",
-conteudo:[
-"PACK DE TEMPLATES BLACK7",
-"",
-"TEMPLATE 1 - PLANEJAMENTO SEMANAL",
-"Segunda:",
-"Terça:",
-"Quarta:",
-"Quinta:",
-"Sexta:",
-"Sábado:",
-"Domingo:",
-"",
-"TEMPLATE 2 - METAS",
-"Meta:",
-"Prazo:",
-"Etapas:",
-"Resultado:",
-"",
-"TEMPLATE 3 - PROJETO",
-"Nome do projeto:",
-"Objetivo:",
-"Materiais:",
-"Etapas:",
-"Prazo:"
-]
-},
-
-{
-id:4,
-icone:"📚",
-nome:"Kit de Estudos",
-preco:29.90,
-descricao:"Materiais para ajudar na organização da rotina de estudos.",
-conteudo:[
-"KIT DE ESTUDOS BLACK7",
-"",
-"PLANEJAMENTO",
-"",
-"Matéria:",
-"Conteúdo:",
-"Data:",
-"Tempo de estudo:",
-"",
-"MÉTODO",
-"",
-"1. Defina o assunto.",
-"2. Estude em blocos.",
-"3. Faça pequenas pausas.",
-"4. Crie perguntas sobre o conteúdo.",
-"5. Faça uma revisão.",
-"",
-"CHECKLIST",
-"[ ] Conteúdo estudado",
-"[ ] Exercícios realizados",
-"[ ] Dúvidas anotadas",
-"[ ] Revisão concluída"
-]
-},
-
-{
-id:5,
-icone:"💡",
-nome:"Guia de Ideias para Renda Extra",
-preco:17.90,
-descricao:"Ideias educativas para desenvolver pequenos projetos digitais.",
-conteudo:[
-"GUIA DE IDEIAS PARA RENDA EXTRA",
-"",
-"IDEIAS",
-"",
-"1. Criar artes digitais.",
-"2. Criar templates.",
-"3. Produzir materiais de estudo.",
-"4. Fazer edição básica de imagens.",
-"5. Criar apresentações.",
-"6. Criar planners digitais.",
-"7. Criar checklists.",
-"",
-"Antes de começar:",
-"Pesquise o público.",
-"Defina claramente o produto.",
-"Evite promessas de ganhos garantidos.",
-"Divulgue de maneira transparente."
-]
-},
-
-{
-id:6,
-icone:"📝",
-nome:"Pack de Checklists",
-preco:12.90,
-descricao:"Checklists para tarefas, estudos e organização pessoal.",
-conteudo:[
-"PACK DE CHECKLISTS",
-"",
-"CHECKLIST DIÁRIO",
-"[ ] Organizar prioridades",
-"[ ] Conferir compromissos",
-"[ ] Executar tarefas importantes",
-"[ ] Revisar tarefas concluídas",
-"",
-"CHECKLIST DE ESTUDOS",
-"[ ] Escolher matéria",
-"[ ] Separar material",
-"[ ] Estudar",
-"[ ] Fazer exercícios",
-"[ ] Revisar",
-"",
-"CHECKLIST DE PROJETOS",
-"[ ] Definir objetivo",
-"[ ] Planejar etapas",
-"[ ] Definir prazo",
-"[ ] Executar",
-"[ ] Revisar resultado"
-]
-},
-
-{
-id:7,
-icone:"💻",
-nome:"Kit para Criadores",
-preco:22.90,
-descricao:"Material de organização para criação de conteúdo digital.",
-conteudo:[
-"KIT PARA CRIADORES",
-"",
-"PLANEJAMENTO DE CONTEÚDO",
-"",
-"Tema:",
-"Objetivo:",
-"Público:",
-"Formato:",
-"Data:",
-"",
-"ROTEIRO",
-"",
-"1. Título",
-"2. Introdução",
-"3. Conteúdo principal",
-"4. Chamada para ação",
-"",
-"CHECKLIST",
-"[ ] Revisar texto",
-"[ ] Conferir informações",
-"[ ] Preparar imagem",
-"[ ] Publicar",
-"[ ] Analisar resultado"
-]
-},
-
-{
-id:8,
-icone:"🚀",
-nome:"Kit de Organização Digital",
-preco:16.90,
-descricao:"Modelos para organizar metas, tarefas e projetos.",
-conteudo:[
-"KIT DE ORGANIZAÇÃO DIGITAL",
-"",
-"METAS",
-"",
-"Meta principal:",
-"Prazo:",
-"Motivo:",
-"",
-"TAREFAS",
-"",
-"[ ] Tarefa 1",
-"[ ] Tarefa 2",
-"[ ] Tarefa 3",
-"",
-"PROJETOS",
-"",
-"Projeto:",
-"Objetivo:",
-"Etapa atual:",
-"Próxima etapa:",
-"",
-"REVISÃO SEMANAL",
-"",
-"O que foi concluído?",
-"O que ficou pendente?",
-"O que precisa melhorar?"
-]
-}
-
+{id:1,icone:"📘",nome:"Guia da Reserva de Emergência",preco:19.90,descricao:"Aprenda conceitos básicos para organizar sua reserva financeira.",conteudo:["GUIA DA RESERVA DE EMERGÊNCIA","","O que é uma reserva de emergência?","É uma quantia guardada para situações inesperadas.","","1. Organize suas despesas","Anote gastos fixos e variáveis.","","2. Defina uma meta","Crie uma meta compatível com sua realidade.","","3. Guarde aos poucos","Separe uma quantia mensal.","","4. Use apenas quando necessário","Evite gastar a reserva sem necessidade."]},
+{id:2,icone:"📊",nome:"Planilha Financeira",preco:14.90,descricao:"Material para organizar receitas, despesas e planejamento mensal.",conteudo:["PLANILHA FINANCEIRA - GUIA DE USO","","RECEITAS","Salário:","Renda extra:","Outras entradas:","","DESPESAS FIXAS","Moradia:","Transporte:","Alimentação:","Internet:","","DESPESAS VARIÁVEIS","Lazer:","Compras:","Outros:","","TOTAL DE RECEITAS:","TOTAL DE DESPESAS:","SALDO DO MÊS:"]},
+{id:3,icone:"🎨",nome:"Pack de Templates",preco:24.90,descricao:"Modelos digitais para projetos, planejamento e criação.",conteudo:["PACK DE TEMPLATES BLACK7","","TEMPLATE 1 - PLANEJAMENTO SEMANAL","Segunda:","Terça:","Quarta:","Quinta:","Sexta:","Sábado:","Domingo:","","TEMPLATE 2 - METAS","Meta:","Prazo:","Etapas:","Resultado:"]},
+{id:4,icone:"📚",nome:"Kit de Estudos",preco:29.90,descricao:"Materiais para ajudar na organização da rotina de estudos.",conteudo:["KIT DE ESTUDOS BLACK7","","PLANEJAMENTO","Matéria:","Conteúdo:","Data:","Tempo de estudo:","","CHECKLIST","[ ] Conteúdo estudado","[ ] Exercícios realizados","[ ] Dúvidas anotadas","[ ] Revisão concluída"]},
+{id:5,icone:"💡",nome:"Guia de Ideias para Renda Extra",preco:17.90,descricao:"Ideias educativas para desenvolver pequenos projetos digitais.",conteudo:["GUIA DE IDEIAS PARA RENDA EXTRA","","1. Criar artes digitais.","2. Criar templates.","3. Produzir materiais de estudo.","4. Fazer edição básica de imagens.","5. Criar apresentações.","6. Criar planners digitais.","7. Criar checklists.","","Evite promessas de ganhos garantidos."]},
+{id:6,icone:"📝",nome:"Pack de Checklists",preco:12.90,descricao:"Checklists para tarefas, estudos e organização pessoal.",conteudo:["PACK DE CHECKLISTS","","CHECKLIST DIÁRIO","[ ] Organizar prioridades","[ ] Conferir compromissos","[ ] Executar tarefas importantes","[ ] Revisar tarefas concluídas","","CHECKLIST DE ESTUDOS","[ ] Escolher matéria","[ ] Separar material","[ ] Estudar","[ ] Fazer exercícios","[ ] Revisar"]},
+{id:7,icone:"💻",nome:"Kit para Criadores",preco:22.90,descricao:"Material de organização para criação de conteúdo digital.",conteudo:["KIT PARA CRIADORES","","PLANEJAMENTO DE CONTEÚDO","Tema:","Objetivo:","Público:","Formato:","Data:","","ROTEIRO","1. Título","2. Introdução","3. Conteúdo principal","4. Chamada para ação"]},
+{id:8,icone:"🚀",nome:"Kit de Organização Digital",preco:16.90,descricao:"Modelos para organizar metas, tarefas e projetos.",conteudo:["KIT DE ORGANIZAÇÃO DIGITAL","","METAS","Meta principal:","Prazo:","Motivo:","","TAREFAS","[ ] Tarefa 1","[ ] Tarefa 2","[ ] Tarefa 3","","PROJETOS","Projeto:","Objetivo:","Etapa atual:","Próxima etapa:"]}
 ];
 
-
-/*
-===================================================
-VARIÁVEIS
-===================================================
-*/
-
-let carrinho = [];
-
-let pedidoAtual = null;
-
-let intervalo = null;
-
-
-/*
-===================================================
-MOSTRAR PRODUTOS
-===================================================
-*/
+let carrinho = [], pedidoAtual = null, intervalo = null;
 
 function mostrarProdutos(){
-
-const area =
-document.getElementById("produtos");
-
-area.innerHTML = "";
-
-produtos.forEach(produto=>{
-
-area.innerHTML += `
-
-<div class="produto">
-
-<div class="imagem">
-${produto.icone}
-</div>
-
-<div class="info">
-
-<h3>
-${produto.nome}
-</h3>
-
-<p>
-${produto.descricao}
-</p>
-
-<div class="preco">
-R$ ${moeda(produto.preco)}
-</div>
-
-<button
-class="comprar"
-onclick="adicionar(${produto.id})"
->
-
-Adicionar ao carrinho
-
-</button>
-
-</div>
-
-</div>
-
-`;
-
-});
-
+  const area=document.getElementById("produtos"); area.innerHTML="";
+  produtos.forEach(p=>{
+    area.innerHTML += `<div class="produto"><div class="imagem">${p.icone}</div><div class="info"><h3>${p.nome}</h3><p>${p.descricao}</p><div class="preco">R$ ${moeda(p.preco)}</div><button class="comprar" onclick="adicionar(${p.id})">Adicionar ao carrinho</button></div></div>`;
+  });
 }
-
-
-/*
-===================================================
-CARRINHO
-===================================================
-*/
-
-function adicionar(id){
-
-const produto =
-produtos.find(p=>p.id===id);
-
-carrinho.push(produto);
-
-atualizarCarrinho();
-
-document
-.getElementById("carrinho")
-.classList.add("aberto");
-
-}
-
-
-function remover(index){
-
-carrinho.splice(index,1);
-
-atualizarCarrinho();
-
-}
-
-
+function adicionar(id){const p=produtos.find(x=>x.id===id);carrinho.push(p);atualizarCarrinho();document.getElementById("carrinho").classList.add("aberto")}
+function remover(i){carrinho.splice(i,1);atualizarCarrinho()}
 function atualizarCarrinho(){
-
-const lista =
-document.getElementById("listaCarrinho");
-
-document.getElementById("qtd").innerText =
-carrinho.length;
-
-if(carrinho.length===0){
-
-lista.innerHTML =
-"<p>Carrinho vazio.</p>";
-
-document.getElementById("total").innerText =
-"0,00";
-
-return;
-
+  const lista=document.getElementById("listaCarrinho");document.getElementById("qtd").innerText=carrinho.length;
+  if(!carrinho.length){lista.innerHTML="<p>Carrinho vazio.</p>";document.getElementById("total").innerText="0,00";return}
+  lista.innerHTML="";let total=0;
+  carrinho.forEach((p,i)=>{total+=p.preco;lista.innerHTML+=`<div class="itemCarrinho"><strong>${p.nome}</strong><br>R$ ${moeda(p.preco)}<br><button class="remover" onclick="remover(${i})">Remover</button></div>`});
+  document.getElementById("total").innerText=moeda(total)
 }
-
-lista.innerHTML = "";
-
-let total = 0;
-
-carrinho.forEach((produto,index)=>{
-
-total += produto.preco;
-
-lista.innerHTML += `
-
-<div class="itemCarrinho">
-
-<strong>
-${produto.nome}
-</strong>
-
-<br>
-
-R$ ${moeda(produto.preco)}
-
-<br>
-
-<button
-class="remover"
-onclick="remover(${index})"
->
-Remover
-</button>
-
-</div>
-
-`;
-
-});
-
-document.getElementById("total").innerText =
-moeda(total);
-
-}
-
-
-document
-.getElementById("cartButton")
-.onclick=()=>{
-
-document
-.getElementById("carrinho")
-.classList.add("aberto");
-
-};
-
-
-document
-.getElementById("fecharCarrinho")
-.onclick=()=>{
-
-document
-.getElementById("carrinho")
-.classList.remove("aberto");
-
-};
-
-
-/*
-===================================================
-PAGAMENTO
-===================================================
-*/
+document.getElementById("cartButton").onclick=()=>document.getElementById("carrinho").classList.add("aberto");
+document.getElementById("fecharCarrinho").onclick=()=>document.getElementById("carrinho").classList.remove("aberto");
 
 function iniciarPagamento(){
-
-if(carrinho.length===0){
-
-alert("Seu carrinho está vazio.");
-
-return;
-
+  if(!carrinho.length){alert("Seu carrinho está vazio.");return}
+  const total=calcularTotal();
+  document.getElementById("valorPix").innerText=moeda(total);
+  document.getElementById("codigoPix").innerText=gerarPixCopiaECola(total);
+  document.getElementById("modalPagamento").classList.add("aberto")
 }
-
-const total =
-calcularTotal();
-
-document.getElementById("valorPix").innerText =
-moeda(total);
-
-document.getElementById("codigoPix").innerText =
-gerarPixCopiaECola(total);
-
-document
-.getElementById("modalPagamento")
-.classList.add("aberto");
-
-}
-
-
-function fecharModalPagamento(){
-
-document
-.getElementById("modalPagamento")
-.classList.remove("aberto");
-
-}
-
-
-function copiarPix(){
-
-const texto =
-document.getElementById("codigoPix").innerText;
-
-navigator.clipboard.writeText(texto);
-
-alert("Código Pix copiado!");
-
-}
-
-
-/*
-===================================================
-CRIAR PEDIDO
-===================================================
-*/
+function fecharModalPagamento(){document.getElementById("modalPagamento").classList.remove("aberto")}
+function copiarPix(){navigator.clipboard.writeText(document.getElementById("codigoPix").innerText);alert("Código Pix copiado!")}
 
 async function criarPedido(){
-
-if(carrinho.length===0){
-
-return;
-
+  if(!carrinho.length)return;
+  try{
+    const pedido={produtos:carrinho.map(p=>({id:p.id,nome:p.nome,preco:p.preco})),total:calcularTotal(),status:"pendente",criadoEm:firebase.firestore.FieldValue.serverTimestamp()};
+    const doc=await db.collection("pedidos").add(pedido);
+    pedidoAtual=doc.id;fecharModalPagamento();
+    document.getElementById("modalPedido").classList.add("aberto");
+    document.getElementById("numeroPedido").innerText=doc.id.toUpperCase().substring(0,8);
+    acompanharPedido(doc.id);carrinho=[];atualizarCarrinho()
+  }catch(e){console.error(e);alert("Não foi possível criar o pedido. Confira a configuração do Firebase.")}
 }
-
-try{
-
-const pedido = {
-
-produtos:
-carrinho.map(p=>({
-
-id:p.id,
-nome:p.nome,
-preco:p.preco
-
-})),
-
-total:calcularTotal(),
-
-status:"pendente",
-
-criadoEm:
-firebase.firestore.FieldValue.serverTimestamp()
-
-};
-
-
-const doc =
-await db.collection("pedidos").add(pedido);
-
-
-pedidoAtual = doc.id;
-
-
-fecharModalPagamento();
-
-
-document
-.getElementById("modalPedido")
-.classList.add("aberto");
-
-
-document
-.getElementById("numeroPedido")
-.innerText =
-doc.id.toUpperCase().substring(0,8);
-
-
-acompanharPedido(doc.id);
-
-
-carrinho = [];
-
-atualizarCarrinho();
-
-
-}catch(erro){
-
-console.error(erro);
-
-alert(
-"Não foi possível criar o pedido. Confira a configuração do Firebase."
-);
-
-}
-
-}
-
-
-/*
-===================================================
-ACOMPANHAR PEDIDO
-===================================================
-*/
-
 function acompanharPedido(id){
-
-db.collection("pedidos")
-.doc(id)
-.onSnapshot(doc=>{
-
-if(!doc.exists){
-return;
+  db.collection("pedidos").doc(id).onSnapshot(doc=>{
+    if(!doc.exists)return;
+    const d=doc.data();
+    if(d.status==="aprovado")pedidoAprovado(d);
+    if(d.status==="rejeitado")pedidoRejeitado();
+    if(d.criadoEm)iniciarContador(d.criadoEm.toDate())
+  })
 }
-
-const dados =
-doc.data();
-
-
-if(dados.status==="aprovado"){
-
-pedidoAprovado(dados);
-
-}
-
-
-if(dados.status==="rejeitado"){
-
-pedidoRejeitado();
-
-}
-
-
-if(dados.criadoEm){
-
-iniciarContador(
-dados.criadoEm.toDate()
-);
-
-}
-
-});
-
-}
-
-
-/*
-===================================================
-CONTADOR
-===================================================
-*/
-
 function iniciarContador(dataCriacao){
-
-clearInterval(intervalo);
-
-
-intervalo =
-setInterval(()=>{
-
-const passou =
-Date.now() -
-dataCriacao.getTime();
-
-const restante =
-TEMPO_APROVACAO -
-passou;
-
-
-if(restante<=0){
-
-clearInterval(intervalo);
-
-document.getElementById("contador")
-.innerText =
-"00:00";
-
-
-const status =
-document.getElementById("statusPedido");
-
-if(
-!status.classList.contains("aprovado")
-){
-
-status.className =
-"status expirado";
-
-status.innerText =
-"⌛ Prazo de aprovação encerrado";
-
+  clearInterval(intervalo);
+  intervalo=setInterval(()=>{
+    const restante=TEMPO_APROVACAO-(Date.now()-dataCriacao.getTime());
+    if(restante<=0){clearInterval(intervalo);document.getElementById("contador").innerText="00:00";const s=document.getElementById("statusPedido");if(!s.classList.contains("aprovado")){s.className="status expirado";s.innerText="⌛ Prazo de aprovação encerrado"}return}
+    const m=Math.floor(restante/60000),s=Math.floor((restante%60000)/1000);
+    document.getElementById("contador").innerText=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0")
+  },1000)
 }
-
-return;
-
+function pedidoAprovado(d){
+  clearInterval(intervalo);const s=document.getElementById("statusPedido");s.className="status aprovado";s.innerText="✅ Pagamento aprovado";document.getElementById("contador").innerText="APROVADO";
+  const area=document.getElementById("downloads");area.innerHTML="<h3 style='margin:20px 0 10px'>Seus produtos</h3>";
+  d.produtos.forEach(item=>area.innerHTML+=`<button class="btn btnBranco" onclick="baixarProduto(${item.id})">📥 Baixar ${item.nome}</button>`)
 }
-
-
-const minutos =
-Math.floor(restante/60000);
-
-const segundos =
-Math.floor(
-(restante%60000)/1000
-);
-
-
-document.getElementById("contador")
-.innerText =
-
-String(minutos)
-.padStart(2,"0")
-
-+
-
-":"
-
-+
-
-String(segundos)
-.padStart(2,"0");
-
-
-},1000);
-
-}
-
-
-/*
-===================================================
-PEDIDO APROVADO
-===================================================
-*/
-
-function pedidoAprovado(dados){
-
-clearInterval(intervalo);
-
-const status =
-document.getElementById("statusPedido");
-
-status.className =
-"status aprovado";
-
-status.innerText =
-"✅ Pagamento aprovado";
-
-
-document.getElementById("contador")
-.innerText =
-"APROVADO";
-
-
-const area =
-document.getElementById("downloads");
-
-area.innerHTML =
-"<h3 style='margin:20px 0 10px'>Seus produtos</h3>";
-
-
-dados.produtos.forEach(item=>{
-
-area.innerHTML += `
-
-<button
-class="btn btnBranco"
-onclick="baixarProduto(${item.id})"
->
-
-📥 Baixar ${item.nome}
-
-</button>
-
-`;
-
-});
-
-}
-
-
-/*
-===================================================
-PEDIDO REJEITADO
-===================================================
-*/
-
-function pedidoRejeitado(){
-
-clearInterval(intervalo);
-
-const status =
-document.getElementById("statusPedido");
-
-status.className =
-"status expirado";
-
-status.innerText =
-"❌ Pagamento não aprovado";
-
-}
-
-
-/*
-===================================================
-GERAR PDF
-===================================================
-*/
-
+function pedidoRejeitado(){clearInterval(intervalo);const s=document.getElementById("statusPedido");s.className="status expirado";s.innerText="❌ Pagamento não aprovado"}
 function baixarProduto(id){
-
-const produto =
-produtos.find(p=>p.id===id);
-
-if(!produto){
-return;
+  const p=produtos.find(x=>x.id===id);if(!p)return;
+  const {jsPDF}=window.jspdf;const pdf=new jsPDF();let y=20;pdf.setFontSize(19);pdf.text(p.nome,15,y);y+=15;pdf.setFontSize(11);
+  p.conteudo.forEach(l=>{const t=pdf.splitTextToSize(l,175);if(y>275){pdf.addPage();y=20}pdf.text(t,15,y);y+=t.length*7});
+  pdf.save(p.nome.replace(/[^\w]/g,"_")+".pdf")
 }
 
-
-const { jsPDF } =
-window.jspdf;
-
-
-const pdf =
-new jsPDF();
-
-
-let y = 20;
-
-
-pdf.setFontSize(19);
-
-pdf.text(
-produto.nome,
-15,
-y
-);
-
-
-y += 15;
-
-
-pdf.setFontSize(11);
-
-
-produto.conteudo.forEach(linha=>{
-
-const texto =
-pdf.splitTextToSize(
-linha,
-175
-);
-
-
-if(y>275){
-
-pdf.addPage();
-
-y=20;
-
-}
-
-
-pdf.text(
-texto,
-15,
-y
-);
-
-
-y +=
-texto.length * 7;
-
-});
-
-
-pdf.save(
-produto.nome
-.replace(/[^\w]/g,"_")
-+
-".pdf"
-);
-
-}
-
-
-/*
-===================================================
-ADMIN
-===================================================
-*/
-
-function abrirAdmin(){
-
-document
-.getElementById("modalAdmin")
-.classList.add("aberto");
-
-}
-
-
-function fecharAdmin(){
-
-document
-.getElementById("modalAdmin")
-.classList.remove("aberto");
-
-}
-
-
+function abrirAdmin(){document.getElementById("modalAdmin").classList.add("aberto")}
+function fecharAdmin(){document.getElementById("modalAdmin").classList.remove("aberto")}
 async function loginAdmin(){
-
-const email =
-document.getElementById("adminEmail")
-.value.trim();
-
-
-const senha =
-document.getElementById("adminSenha")
-.value;
-
-
-try{
-
-await auth
-.signInWithEmailAndPassword(
-email,
-senha
-);
-
-
-document
-.getElementById("painelAdmin")
-.style.display =
-"block";
-
-
-carregarPedidos();
-
-
-}catch(e){
-
-alert(
-"E-mail ou senha incorretos."
-);
-
+  const email=document.getElementById("adminEmail").value.trim(),senha=document.getElementById("adminSenha").value;
+  try{await auth.signInWithEmailAndPassword(email,senha);document.getElementById("painelAdmin").style.display="block";carregarPedidos()}
+  catch(e){alert("E-mail ou senha incorretos.")}
 }
-
-}
-
-
-/*
-===================================================
-PEDIDOS ADMIN
-===================================================
-*/
-
 function carregarPedidos(){
-
-db.collection("pedidos")
-
-.orderBy(
-"criadoEm",
-"desc"
-)
-
-.limit(30)
-
-.onSnapshot(snapshot=>{
-
-const lista =
-document.getElementById(
-"listaPedidosAdmin"
-);
-
-
-lista.innerHTML = "";
-
-
-snapshot.forEach(doc=>{
-
-const p =
-doc.data();
-
-
-let nomes =
-p.produtos
-.map(item=>item.nome)
-.join(", ");
-
-
-lista.innerHTML += `
-
-<div class="adminPedido">
-
-<strong>
-Pedido:
-${doc.id.substring(0,8).toUpperCase()}
-</strong>
-
-<p>
-Produtos:
-${nomes}
-</p>
-
-<p>
-Total:
-R$ ${moeda(p.total)}
-</p>
-
-<p>
-Status:
-${p.status}
-</p>
-
-${
-p.status==="pendente"
-
-?
-
-`
-
-<button
-class="aprovar"
-onclick="aprovarPedido('${doc.id}')"
->
-✅ Aprovar
-</button>
-
-<button
-class="rejeitar"
-onclick="rejeitarPedido('${doc.id}')"
->
-❌ Rejeitar
-</button>
-
-`
-
-:
-
-""
-
+  db.collection("pedidos").orderBy("criadoEm","desc").limit(30).onSnapshot(snapshot=>{
+    const lista=document.getElementById("listaPedidosAdmin");lista.innerHTML="";
+    snapshot.forEach(doc=>{
+      const p=doc.data(),nomes=p.produtos.map(i=>i.nome).join(", ");
+      lista.innerHTML+=`<div class="adminPedido"><strong>Pedido: ${doc.id.substring(0,8).toUpperCase()}</strong><p>Produtos: ${nomes}</p><p>Total: R$ ${moeda(p.total)}</p><p>Status: ${p.status}</p>${p.status==="pendente"?`<button class="aprovar" onclick="aprovarPedido('${doc.id}')">✅ Aprovar</button><button class="rejeitar" onclick="rejeitarPedido('${doc.id}')">❌ Rejeitar</button>`:""}</div>`
+    })
+  })
 }
-
-</div>
-
-`;
-
-});
-
-});
-
-}
-
-
-/*
-===================================================
-APROVAR
-===================================================
-*/
-
-async function aprovarPedido(id){
-
-if(
-!confirm(
-"Confirma que recebeu o pagamento?"
-)
-){
-
-return;
-
-}
-
-
-await db
-.collection("pedidos")
-.doc(id)
-.update({
-
-status:"aprovado",
-
-aprovadoEm:
-firebase.firestore.FieldValue.serverTimestamp()
-
-});
-
-}
-
-
-/*
-===================================================
-REJEITAR
-===================================================
-*/
-
-async function rejeitarPedido(id){
-
-if(
-!confirm(
-"Deseja rejeitar este pedido?"
-)
-){
-
-return;
-
-}
-
-
-await db
-.collection("pedidos")
-.doc(id)
-.update({
-
-status:"rejeitado"
-
-});
-
-}
-
-
-/*
-===================================================
-PIX
-===================================================
-*/
+async function aprovarPedido(id){if(!confirm("Confirma que recebeu o pagamento?"))return;await db.collection("pedidos").doc(id).update({status:"aprovado",aprovadoEm:firebase.firestore.FieldValue.serverTimestamp()})}
+async function rejeitarPedido(id){if(!confirm("Deseja rejeitar este pedido?"))return;await db.collection("pedidos").doc(id).update({status:"rejeitado"})}
 
 function gerarPixCopiaECola(valor){
-
-const merchantAccount =
-
-montarCampo(
-"00",
-"BR.GOV.BCB.PIX"
-)
-
-+
-
-montarCampo(
-"01",
-CHAVE_PIX
-);
-
-
-const payloadSemCRC =
-
-"000201"
-
-+
-
-montarCampo(
-"26",
-merchantAccount
-)
-
-+
-
-"52040000"
-
-+
-
-"5303986"
-
-+
-
-montarCampo(
-"54",
-valor.toFixed(2)
-)
-
-+
-
-"5802BR"
-
-+
-
-montarCampo(
-"59",
-NOME_RECEBEDOR
-.substring(0,25)
-)
-
-+
-
-montarCampo(
-"60",
-CIDADE_RECEBEDOR
-.substring(0,15)
-)
-
-+
-
-montarCampo(
-"62",
-montarCampo(
-"05",
-"***"
-)
-)
-
-+
-
-"6304";
-
-
-return (
-
-payloadSemCRC
-
-+
-
-calcularCRC16(
-payloadSemCRC
-)
-
-);
-
+  const merchantAccount=montarCampo("00","BR.GOV.BCB.PIX")+montarCampo("01",CHAVE_PIX);
+  const payload="000201"+montarCampo("26",merchantAccount)+"52040000"+"5303986"+montarCampo("54",valor.toFixed(2))+"5802BR"+montarCampo("59",NOME_RECEBEDOR.substring(0,25))+montarCampo("60",CIDADE_RECEBEDOR.substring(0,15))+montarCampo("62",montarCampo("05","***"))+"6304";
+  return payload+calcularCRC16(payload)
 }
-
-
-function montarCampo(id,valor){
-
-return (
-
-id
-
-+
-
-String(valor.length)
-.padStart(2,"0")
-
-+
-
-valor
-
-);
-
-}
-
-
+function montarCampo(id,valor){return id+String(valor.length).padStart(2,"0")+valor}
 function calcularCRC16(texto){
-
-let crc =
-0xFFFF;
-
-
-for(
-let i=0;
-i<texto.length;
-i++
-){
-
-crc ^=
-texto.charCodeAt(i)
-<< 8;
-
-
-for(
-let j=0;
-j<8;
-j++
-){
-
-if(
-(crc & 0x8000)!==0
-){
-
-crc =
-(crc<<1)
-^
-0x1021;
-
-}else{
-
-crc <<=1;
-
+  let crc=0xFFFF;
+  for(let i=0;i<texto.length;i++){crc^=texto.charCodeAt(i)<<8;for(let j=0;j<8;j++){crc=(crc&0x8000)!==0?(crc<<1)^0x1021:crc<<1;crc&=0xFFFF}}
+  return crc.toString(16).toUpperCase().padStart(4,"0")
 }
+function calcularTotal(){return Number(carrinho.reduce((t,p)=>t+p.preco,0).toFixed(2))}
+function moeda(v){return Number(v).toFixed(2).replace(".",",")}
+function fecharPedido(){document.getElementById("modalPedido").classList.remove("aberto")}
 
-crc &=0xFFFF;
-
-}
-
-}
-
-
-return crc
-.toString(16)
-.toUpperCase()
-.padStart(4,"0");
-
-}
-
-
-/*
-===================================================
-UTILIDADES
-===================================================
-*/
-
-function calcularTotal(){
-
-return Number(
-
-carrinho
-.reduce(
-(total,p)=>total+p.preco,
-0
-)
-.toFixed(2)
-
-);
-
-}
-
-
-function moeda(valor){
-
-return Number(valor)
-.toFixed(2)
-.replace(".",",");
-
-}
-
-
-function fecharPedido(){
-
-document
-.getElementById("modalPedido")
-.classList.remove("aberto");
-
-}
-
-
-/*
-===================================================
-INICIAR SITE
-===================================================
-*/
-
-mostrarProdutos();
-
-atualizarCarrinho();
-
+mostrarProdutos();atualizarCarrinho();
 </script>
-
 </body>
 </html>
