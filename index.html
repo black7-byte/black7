@@ -50,9 +50,32 @@ input{width:100%;padding:13px;margin:7px 0;border-radius:8px;border:1px solid #3
 .legal p,.legal li{color:#b5b5b5;margin:8px 0}.legal ul{padding-left:20px}.empty{text-align:center;color:#888;padding:28px 10px}
 @media(max-width:850px){nav{display:none}.benefits,.steps{grid-template-columns:1fr 1fr}.about,.freebox{grid-template-columns:1fr}.freeicon{display:none}}
 @media(max-width:560px){.hero h1{letter-spacing:-2px}.benefits,.steps{grid-template-columns:1fr}.section{padding:50px 0}.section-head{display:block}.section-head p{margin-top:7px}.actions,.recebe-lista{grid-template-columns:1fr}.header{gap:8px}.logo{font-size:24px}.hbtn{padding:9px 10px}}
+
+#telaObrigado{display:none;position:fixed;inset:0;z-index:500;background:#070707;color:#fff;align-items:center;justify-content:center;padding:20px}
+#telaObrigado.aberto{display:flex}
+.obrigado-card{width:min(520px,100%);background:#131313;border:1px solid #2a2a2a;border-radius:22px;padding:42px 26px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.obrigado-icone{width:78px;height:78px;margin:0 auto 20px;border-radius:50%;display:grid;place-items:center;background:#073d18;font-size:40px}
+.obrigado-card h1{font-size:30px;line-height:1.15;margin-bottom:12px}
+.obrigado-card p{color:#aaa;line-height:1.6;margin:0 auto 26px;max-width:410px}
+.obrigado-actions{display:grid;gap:10px}
+.obrigado-actions button{width:100%;padding:14px 18px;border-radius:10px;font-weight:800;border:0}
+
 </style>
 </head>
 <body>
+
+<div id="telaObrigado">
+  <div class="obrigado-card">
+    <div class="obrigado-icone">✓</div>
+    <h1>Pagamento concluído!<br>Obrigado pela compra.</h1>
+    <p>Seu pagamento foi aprovado e seus produtos digitais já estão disponíveis no seu pedido.</p>
+    <div class="obrigado-actions">
+      <button class="btn light" onclick="abrirProdutosAprovados()">📥 Acessar meus produtos</button>
+      <button class="btn dark" onclick="voltarLoja()">Voltar para a BLACK7</button>
+    </div>
+  </div>
+</div>
+
 <header><div class="container header"><a href="#" class="logo">BLACK<span>7</span></a><nav><a href="#produtos">Produtos</a><a href="#gratis">Grátis</a><a href="#como">Como funciona</a><a href="#faq">FAQ</a></nav><button id="pedidoButton" class="hbtn" onclick="abrirUltimoPedido()">Meu pedido</button><button id="cartButton" class="hbtn">🛒 <span id="qtd">0</span></button></div></header>
 
 <section class="hero"><div class="container"><div class="eyebrow">Materiais digitais BLACK7</div><h1>Aprenda. Organize.<br>Coloque em prática.</h1><p>Guias, planners, templates e kits digitais para ajudar você a estudar, criar e se organizar de um jeito simples.</p><div class="hero-actions"><a class="cta primary" href="#produtos">Ver produtos</a><a class="cta secondary" href="#gratis">Baixar material grátis</a></div><div class="chips"><span class="chip">✓ Pagamento por Pix</span><span class="chip">✓ Conferência manual</span><span class="chip">✓ Liberação após aprovação</span><span class="chip">✓ Materiais digitais</span></div></div></section>
@@ -146,7 +169,20 @@ function resetPedido(){clearInterval(intervalo);document.getElementById("statusP
 function abrirPedido(id){pedidoAtual=id;document.getElementById("numeroPedido").textContent=id.toUpperCase().substring(0,8);resetPedido();abrirModal("modalPedido");acompanharPedido(id)}
 function acompanharPedido(id){if(unsubscribePedido)unsubscribePedido();unsubscribePedido=db.collection("pedidos").doc(id).onSnapshot(doc=>{if(!doc.exists){pedidoNaoEncontrado();return}const d=doc.data();if(d.status==="aprovado"){pedidoAprovado(d);return}if(d.status==="rejeitado"){pedidoRejeitado();return}const exp=d.expiraEm?.toDate?.()||(d.criadoEm?.toDate?.()?new Date(d.criadoEm.toDate().getTime()+TEMPO_APROVACAO):new Date(Date.now()+TEMPO_APROVACAO));iniciarContador(exp)},pedidoNaoEncontrado)}
 function iniciarContador(exp){clearInterval(intervalo);function tick(){const r=exp.getTime()-Date.now();if(r<=0){clearInterval(intervalo);document.getElementById("contador").textContent="00:00";const s=document.getElementById("statusPedido");s.className="status expirado";s.textContent="⌛ Prazo de aprovação encerrado";document.getElementById("mensagemPedido").textContent="Se você pagou dentro do prazo, procure o canal oficial de suporte.";return}const m=Math.floor(r/60000),s=Math.floor((r%60000)/1000);document.getElementById("contador").textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0")}tick();intervalo=setInterval(tick,1000)}
-function pedidoAprovado(d){clearInterval(intervalo);const s=document.getElementById("statusPedido");s.className="status aprovado";s.textContent="✅ Pagamento aprovado";document.getElementById("contador").textContent="APROVADO";document.getElementById("mensagemPedido").textContent="Seu material está liberado para download.";const a=document.getElementById("downloads");a.innerHTML="<h3 style='margin:20px 0 10px'>Seus produtos</h3>";d.produtos.forEach(i=>a.innerHTML+=`<button class="btn light" style="margin-top:8px" onclick="baixarProduto(${i.id})">📥 Baixar ${i.nome}</button>`)}
+function pedidoAprovado(d){
+ clearInterval(intervalo);
+ const s=document.getElementById("statusPedido");
+ s.className="status aprovado";
+ s.textContent="✅ Pagamento aprovado";
+ document.getElementById("contador").textContent="APROVADO";
+ document.getElementById("mensagemPedido").textContent="Pagamento concluído! Obrigado pela compra.";
+ const a=document.getElementById("downloads");
+ a.innerHTML="<h3 style='margin:20px 0 10px'>Seus produtos</h3>";
+ d.produtos.forEach(i=>a.innerHTML+=`<button class="btn light" style="margin-top:8px" onclick="baixarProduto(${i.id})">📥 Baixar ${i.nome}</button>`);
+ history.replaceState({},"",location.pathname+"?obrigado=1");
+ fecharPedido();
+ document.getElementById("telaObrigado").classList.add("aberto");
+}
 function pedidoRejeitado(){clearInterval(intervalo);const s=document.getElementById("statusPedido");s.className="status expirado";s.textContent="❌ Pagamento não aprovado";document.getElementById("contador").textContent="—";document.getElementById("mensagemPedido").textContent="Se acredita que houve um erro, procure o canal oficial de suporte."} function pedidoNaoEncontrado(){clearInterval(intervalo);const s=document.getElementById("statusPedido");s.className="status expirado";s.textContent="Pedido não encontrado"}
 function fecharPedido(){fecharModal("modalPedido")} function atualizarBotaoPedido(){document.getElementById("pedidoButton").style.display=localStorage.getItem("black7_ultimo_pedido")?"inline-block":"none"} function abrirUltimoPedido(){const id=localStorage.getItem("black7_ultimo_pedido");if(!id){toast("Nenhum pedido salvo neste dispositivo.");return}abrirPedido(id)}
 
@@ -163,10 +199,25 @@ async function rejeitarPedido(id){if(!confirm("Deseja encerrar/rejeitar este ped
 
 function abrirLegal(t){const title=document.getElementById("legalTitulo"),c=document.getElementById("legalConteudo");if(t==="termos"){title.textContent="Termos de uso";c.innerHTML="<p>Os produtos da BLACK7 são materiais digitais para uso pessoal do comprador.</p><ul><li>Os preços exibidos no site são os valores cobrados no pedido.</li><li>A liberação ocorre após a conferência manual do pagamento.</li><li>Não é permitido revender, redistribuir ou apresentar os materiais como criação própria.</li><li>Solicitações relacionadas ao pedido devem ser tratadas pelo canal oficial da loja e conforme a legislação aplicável.</li></ul>"}else{title.textContent="Privacidade";c.innerHTML="<p>Este checkout não solicita nome, telefone ou e-mail do comprador.</p><p>Para processar o pedido, são registrados no Firebase os produtos comprados, valor, status e horários.</p><p>Serviços de hospedagem e do Firebase podem processar dados técnicos necessários ao funcionamento da página conforme suas próprias políticas.</p>"}abrirModal("modalLegal")}
 
+
+function abrirProdutosAprovados(){
+ document.getElementById("telaObrigado").classList.remove("aberto");
+ const id=localStorage.getItem("black7_ultimo_pedido");
+ if(id)abrirPedido(id);
+}
+function voltarLoja(){
+ document.getElementById("telaObrigado").classList.remove("aberto");
+ history.replaceState({},"",location.pathname);
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
 function gerarPixCopiaECola(valor){const merchantAccount=montarCampo("00","BR.GOV.BCB.PIX")+montarCampo("01",CHAVE_PIX);const payload="000201"+montarCampo("26",merchantAccount)+"52040000"+"5303986"+montarCampo("54",valor.toFixed(2))+"5802BR"+montarCampo("59",NOME_RECEBEDOR.substring(0,25))+montarCampo("60",CIDADE_RECEBEDOR.substring(0,15))+montarCampo("62",montarCampo("05","***"))+"6304";return payload+calcularCRC16(payload)}
 function montarCampo(id,valor){return id+String(valor.length).padStart(2,"0")+valor}
 function calcularCRC16(texto){let crc=0xFFFF;for(let i=0;i<texto.length;i++){crc^=texto.charCodeAt(i)<<8;for(let j=0;j<8;j++){crc=(crc&0x8000)!==0?(crc<<1)^0x1021:crc<<1;crc&=0xFFFF}}return crc.toString(16).toUpperCase().padStart(4,"0")}
 
 carregarCarrinho();atualizarCarrinho();renderFiltros();renderizarProdutos();atualizarBotaoPedido();
+if(new URLSearchParams(location.search).get("obrigado")==="1"){
+ document.getElementById("telaObrigado").classList.add("aberto");
+}
 </script>
 </body></html>
